@@ -1,0 +1,22 @@
+{
+  "binary": {
+    "QML_gradient_error": 1.3747864652247088e-10,
+    "GVA_gradient_error": 1.5030301985657912e-09,
+    "local_residual": 2.552908462405412e-08,
+    "empirical_to_delta_sd_ratio": 1.0253291897735344
+  },
+  "poisson": {
+    "QML_gradient_error": 2.2868024140976217e-10,
+    "GVA_gradient_error": 5.979539918765653e-09,
+    "local_residual": 6.927432383285748e-08,
+    "analytic_GH_error": 2.4868995751603507e-14,
+    "eta51_gradient_relative_error": 3.3384907846462615e-10,
+    "empirical_to_delta_sd_ratio": 1.03972050630843
+  },
+  "nb": {
+    "QML_gradient_error": 3.1368972193022635e-10,
+    "GVA_gradient_error": 3.2975264185886033e-09,
+    "local_residual": 8.447032051606129e-08,
+    "empirical_to_delta_sd_ratio": 1.0127517337153455
+  }
+}

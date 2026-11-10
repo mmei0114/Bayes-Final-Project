@@ -1,0 +1,20 @@
+{
+  "kernel": "joint_independence_MH",
+  "seed": 21161111,
+  "subjects": 30,
+  "chains": 4,
+  "burn": 2000,
+  "draws": 8000,
+  "acceptance": 0.35666916666666665,
+  "max_split_rhat": 1.0037644162484065,
+  "mean_mcse": 0.0032434261376348803,
+  "mcmc_mean_rmse": 0.004486951589183871,
+  "gva_mean_rmse": 0.00015161117489492467,
+  "mcmc_responsibility_rmse": 0.0010822117931048767,
+  "gva_responsibility_rmse": 9.976028352071022e-06,
+  "mcmc_variance_ratio": 1.0015379250950414,
+  "gva_variance_ratio": 0.9861589064526198,
+  "seconds": 6.939094081521034,
+  "target_record_sha256": "4995e663e8a4c9b6363106f40705c34e9c3e4aa5c68c351c556a8a9c5320ce61",
+  "sampler_source_sha256": "0c018e27f1240f586ebfbd99b1116f070962c6f3f3b0a87fad36ef5ef51156aa"
+}

@@ -1,0 +1,22 @@
+# Local history and complete cloud backups stay on this computer.
+/archive/
+/cloud/private/
+/cloud/config.env
+/cloud/received/
+/cloud/snapshots/
+/cloud/logs/
+
+# Rebuildable caches, page renders, and new exploratory runs.
+.DS_Store
+__pycache__/
+*.py[cod]
+build/
+*.tmp
+*.checkpoint.json
+/.repo-check/
+/local_runs/
+/revision_v2/results/main/
+/revision_v2/qa/final/
+.venv/
+.env
+.env.*

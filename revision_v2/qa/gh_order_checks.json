@@ -1,0 +1,58 @@
+[
+  {
+    "scenario": "baseline",
+    "absolute_ELBO_difference": 0.0
+  },
+  {
+    "scenario": "hard",
+    "absolute_ELBO_difference": 0.0
+  },
+  {
+    "scenario": "original",
+    "absolute_ELBO_difference": 0.0
+  },
+  {
+    "scenario": "n100",
+    "absolute_ELBO_difference": 0.0
+  },
+  {
+    "scenario": "n1000",
+    "absolute_ELBO_difference": 0.0
+  },
+  {
+    "scenario": "T10",
+    "absolute_ELBO_difference": 0.0
+  },
+  {
+    "scenario": "T50",
+    "absolute_ELBO_difference": 0.0
+  },
+  {
+    "scenario": "K2",
+    "absolute_ELBO_difference": 0.0
+  },
+  {
+    "scenario": "K4",
+    "absolute_ELBO_difference": 0.0
+  },
+  {
+    "scenario": "var01",
+    "absolute_ELBO_difference": 4.547473508864641e-13
+  },
+  {
+    "scenario": "var15",
+    "absolute_ELBO_difference": 0.0
+  },
+  {
+    "scenario": "poisson",
+    "absolute_ELBO_difference": 1.8189894035458565e-12
+  },
+  {
+    "scenario": "nb",
+    "absolute_ELBO_difference": 0.0
+  },
+  {
+    "scenario": "irregular",
+    "absolute_ELBO_difference": 0.0
+  }
+]

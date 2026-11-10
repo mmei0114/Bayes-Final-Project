@@ -1,0 +1,17 @@
+{
+  "observed_local_date": "2026-11-11",
+  "cpu_affinity_count": 16,
+  "cpu_cfs_quota_us": -1,
+  "cpu_cfs_period_us": 100000,
+  "memory_limit_in_bytes": 85899345920,
+  "memory_limit_GiB": 80,
+  "fit_processes": 8,
+  "numerical_library_threads_per_process": 1,
+  "python_environment": "base",
+  "software_versions_source": "../../data/environment.json",
+  "resource_sources": [
+    "/sys/fs/cgroup/cpu/cpu.cfs_quota_us",
+    "/sys/fs/cgroup/cpu/cpu.cfs_period_us",
+    "/sys/fs/cgroup/memory/memory.limit_in_bytes"
+  ]
+}

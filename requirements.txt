@@ -1,0 +1,5 @@
+# 实际运行版本；本地Python 3.11.11/yellow，远程Python 3.11.4/base。
+numpy==2.4.2
+scipy==1.16.3
+matplotlib==3.10.8
+# 报告编译另需 XeLaTeX + ctex/Fandol；PDF QA 需 Poppler。

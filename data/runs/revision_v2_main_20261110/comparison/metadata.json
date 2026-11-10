@@ -1,0 +1,24 @@
+{
+  "spec": {
+    "reps": 5,
+    "starts": 3,
+    "maxiter": 250,
+    "scenarios": [
+      "baseline",
+      "poisson",
+      "nb"
+    ],
+    "methods": [
+      "MCEM"
+    ],
+    "source": {
+      "inference.py": "b1f9467d18e3928f8c2eb83095e1b589f4b1435c10c870cce77c140b0a55bb81",
+      "legacy_model.py": "4f2ce320822cc8ca2ba0ac5aed7ad7637f9dab76bd76d5c5d0919d14f9bace26",
+      "experiment.py": "bf87c463484da80d6feb3c0858ca291eef67d4676223ebd75a08642ad2515979"
+    }
+  },
+  "python": "3.11.4 (main, Jul  5 2023, 13:45:01) [GCC 11.2.0]",
+  "numpy": "2.4.2",
+  "platform": "Linux-4.19.0-14-amd64-x86_64-with-glibc2.35",
+  "jobs": 8
+}

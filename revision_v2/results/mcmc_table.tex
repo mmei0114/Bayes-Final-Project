@@ -1,0 +1,8 @@
+\begin{table}[H]\centering\small
+\caption{同一固定QML参数下，30个体条件分布的核验。误差对101点积分计算；成对数值为MCMC/GVA。方差比为各个体边缘$b_i$方差之和相对于积分的比。}
+\begin{tabular}{lccccc}\toprule
+响应 & MH接受率 & 最大split $\widehat R$ & 均值RMSE & 责任度RMSE & 方差比\\\midrule
+基准 & 0.365 & 1.0021 & 0.0083/0.0002 & 0.0026/0.0001 & 0.995/0.997 \\
+Poisson & 0.357 & 1.0038 & 0.0045/0.0002 & 0.0011/0.0000 & 1.002/0.986 \\
+负二项 & 0.354 & 1.0016 & 0.0047/0.0002 & 0.0007/0.0000 & 0.996/0.990 \\
+\bottomrule\end{tabular}\end{table}

@@ -1,0 +1,148 @@
+{
+  "protocol": {
+    "likelihood_relative_tolerance": 1e-06,
+    "consecutive_changes": 3,
+    "parameter_scaled_tolerance": 0.001,
+    "extra_iterations": 30,
+    "require_an_accepted_update_in_window": true,
+    "quadrature_order": 61,
+    "final_quadrature_order": 101
+  },
+  "records": 21,
+  "mcem_records": 15,
+  "input_record_sha256": {
+    "baseline_0_QML.json": "2d04e4c80fa767c7326d27f1a53be763ef86919c32645bda7a4853b782f3e1df",
+    "baseline_0_GVA.json": "9355848723205f65e0b416cce3ff201835d2d27c633fd239d61e89b2e8351505",
+    "baseline_0_MCEM.json": "4a74dd003f0320aaea045233897cf8e2f9662211b2c3edd56f31a5985993caa9",
+    "baseline_1_MCEM.json": "080059adf4c9d8ece9bd9c5815b38e49f47c496e1be58435f0d862a318f5679c",
+    "baseline_2_MCEM.json": "1d865ae950cee607a11d8cef9453a99941814dc6872ff2b2a8546f71c706ae9c",
+    "baseline_3_MCEM.json": "7624306d5a63a8e6b19050cc3d98419f289686b18dcdbff9f115be080460c14a",
+    "baseline_4_MCEM.json": "49873b7f8306761b1319e3edb2481eaeb41377aaa02c7fcadd28ed6b1fcaae22",
+    "poisson_0_QML.json": "bdee2de60b3d30cb2b27dbe6e9846d0d340c4a55ebc5bd4913e2ac1514790e1c",
+    "poisson_0_GVA.json": "1c89f5a2cb23e4b79ac1fe267676e2c1b04434c746465e853e1458835a22fad5",
+    "poisson_0_MCEM.json": "ef58b82331f1e91a2a5ac289b2728c54b0307dcf151e33d5e1a59f3319e2e26b",
+    "poisson_1_MCEM.json": "1601d5db2ddc9f39592d2188207f58eea0aed583b92fcfe611a8c5ed585a1ea0",
+    "poisson_2_MCEM.json": "65167d5cfc7f9b1cdd40834d90dd32511dec788d5911256bbf3205b21f99e7fd",
+    "poisson_3_MCEM.json": "0ebccf52b19bdaaf358ff3705f077a2c3fa3f82b83c7c34217174f9436b01145",
+    "poisson_4_MCEM.json": "2f9c18fcf38b8685120cae7e213fba8ce439424f5f326f5c2985391ae9021a0e",
+    "nb_0_QML.json": "93ff9690b28ba89a75b51697f483616e6925f73276525b69e1b9636eafe78fa7",
+    "nb_0_GVA.json": "d7cc285ef385ede6e0078ed6f04f8fe60b966d9b3d708b0b672f5281bd2a8997",
+    "nb_0_MCEM.json": "bbc81853bcefb1bee0b8825d927f743c150d74c209abc4bbb7f3282f09f02411",
+    "nb_1_MCEM.json": "6ea22e62006346b6bf827590542c66e7c0d0b578e632e71430bfbc57cc18b1b7",
+    "nb_2_MCEM.json": "e8e2ebd15ae8e0315296a3854705bd16152c6ebfc8ebd4aa55cfa136e33ade6e",
+    "nb_3_MCEM.json": "d6c7dd0d0bc404907c77dc007604aa52d2c593797d70da377e50b25aab3ab18e",
+    "nb_4_MCEM.json": "8aa369724a13275ebb1e3b4b546fbfc017baa7a2f1c253f3d8d3f948d871308d"
+  },
+  "individual_checks": {
+    "baseline_0_QML.json": {
+      "high_order_loglik_max_difference": 0.0,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "baseline_0_GVA.json": {
+      "high_order_loglik_max_difference": 0.0,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "baseline_0_MCEM.json": {
+      "high_order_loglik_max_difference": 0.0,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "baseline_1_MCEM.json": {
+      "high_order_loglik_max_difference": 0.0,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "baseline_2_MCEM.json": {
+      "high_order_loglik_max_difference": 0.0,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "baseline_3_MCEM.json": {
+      "high_order_loglik_max_difference": 0.0,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "baseline_4_MCEM.json": {
+      "high_order_loglik_max_difference": 9.094947017729282e-13,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "poisson_0_QML.json": {
+      "high_order_loglik_max_difference": 0.0,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "poisson_0_GVA.json": {
+      "high_order_loglik_max_difference": 1.8189894035458565e-12,
+      "observed_likelihood_decreases": 7,
+      "input_files_verified": true
+    },
+    "poisson_0_MCEM.json": {
+      "high_order_loglik_max_difference": 1.8189894035458565e-12,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "poisson_1_MCEM.json": {
+      "high_order_loglik_max_difference": 1.8189894035458565e-12,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "poisson_2_MCEM.json": {
+      "high_order_loglik_max_difference": 1.8189894035458565e-12,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "poisson_3_MCEM.json": {
+      "high_order_loglik_max_difference": 0.0,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "poisson_4_MCEM.json": {
+      "high_order_loglik_max_difference": 1.8189894035458565e-12,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "nb_0_QML.json": {
+      "high_order_loglik_max_difference": 0.0,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "nb_0_GVA.json": {
+      "high_order_loglik_max_difference": 0.0,
+      "observed_likelihood_decreases": 6,
+      "input_files_verified": true
+    },
+    "nb_0_MCEM.json": {
+      "high_order_loglik_max_difference": 0.0,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "nb_1_MCEM.json": {
+      "high_order_loglik_max_difference": 0.0,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "nb_2_MCEM.json": {
+      "high_order_loglik_max_difference": 1.8189894035458565e-12,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "nb_3_MCEM.json": {
+      "high_order_loglik_max_difference": 1.8189894035458565e-12,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    },
+    "nb_4_MCEM.json": {
+      "high_order_loglik_max_difference": 0.0,
+      "observed_likelihood_decreases": 0,
+      "input_files_verified": true
+    }
+  },
+  "matching_original_iteration_states": 15,
+  "mcem_likelihood_stable": 10,
+  "mcem_parameter_stable": 7,
+  "execution_environment_file_mapping_verified": true,
+  "original_results_untouched": true
+}

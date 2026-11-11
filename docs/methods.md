@@ -1,12 +1,24 @@
 # 方法与复现
 
-**最新交付：[report.pdf](../report.pdf)（8页）与 [report.tex](../report.tex)。** 旧版整体归档于原电脑的 `../archive/v1/`，未删除，也不进入新版汇总。
+**最新交付：[report.pdf](../report.pdf)（11页）与 [report.tex](../report.tex)。** 旧版整体归档于原电脑的 `../archive/v1/`，未删除，也不进入新版汇总。
 
 ## 方法与结果
 
 1. MCEM最大化单一加权Q，不平均两次M步参数；独立验证样本评估Q增量，分层自归一化IS的delta方差包含责任度归一化误差。参考Booth–Hobert及Caffo等的误差控制/上升思想，具体适配与有限样本局限在正文说明。
 2. GVA保留标签与随机效应的条件依赖，局部二维严格凹优化，外层用剖面ELBO和包络梯度；Poisson采用解析高斯期望。它是参数点估计，不是全贝叶斯参数VB。
 3. 随机截距一维，以61点自适应GH的积分ML作局部优化参照，101点复核；固定同一QML参数，用联合独立MH和积分核对潜变量近似。
+
+### 积分与抽样技术
+
+有限类别直接求和；随机截距积分为一维。MCEM在每个个体/簇下以条件众数和逆曲率建立t₅提议，独立抽样，以重要性比率估计积分、归一化权重估计条件期望；候选更新的Q增量及MCSE另用独立验证样本。这里没有使用参数Gibbs，也不以MCMC代替E步。
+
+观测log似然及QML使用条件众数/曲率中心化的61点自适应Gauss–Hermite求积，101点复核。GVA中Poisson的高斯指数矩解析计算，二元和负二项的高斯期望用31点标准GH。固定参数的潜变量核验另外使用联合独立MH；正文给出提议、接受率及实际链长。这些技术对应不同计算目标，不混称为同一种积分方法。
+
+### 参数与观测似然轨迹
+
+`src/convergence.py`仅重跑原选中的一个初始化：三类响应各5条MCEM，另各取第一次重复的QML/GVA，共21条。每轮记录原尺度beta、D、pi和61点观测log似然；初始点、原轮数处与终点用101点核对。MCEM原Q增量、MCSE、抽样量和接受标记也完整保存。GVA仍优化ELBO，其观测似然轨迹仅作额外诊断。
+
+协议在运行前固定：连续3轮 `abs(ell_t-ell_prev)/(1+abs(ell_prev)) <= 1e-6`，且MCEM末窗至少有一次接受更新；参数最大缩放变化不超过1e-3仅作辅助。MCEM至少运行原轮数，必要时最多多30轮；全拒绝窗和预算耗尽不算通过。阈值不是教师指定的唯一标准，检查不证明全局最优。新轨迹不替换155次原拟合参数或耗时；原轮数处与保存结果的数值一致性另行报告。
 
 正式设计冻结为：GVA/QML在14场景各5次重复，共140次拟合；MCEM在基准二元、Poisson、负二项各5次，共15次拟合；每拟合3起点。合计70份不同数据、155次拟合，不声称所有方法覆盖所有场景。
 
@@ -26,13 +38,15 @@
 | `src/experiment.py` | 场景、种子、多起点、原子结果与检查点、源码/配置校验 |
 | `src/conditional_mcmc.py` | 固定参数的分开条件更新与联合独立MH；正式对照使用 `--blocked` |
 | `src/summarize.py` | 检查正式输入与源码，生成表图和一致性审计 |
+| `src/convergence.py` | 固定协议的参数/观测似然补充轨迹，保留逐轮记录与来源哈希 |
+| `src/summarize_convergence.py` | 核验21条补充轨迹、积分阶数及接受逻辑，生成新表图和审计 |
 | [theory.md](../theory.md)、[sources.md](../sources.md) | 推导、补充来源和适用边界 |
 | `results/` | 155次逐拟合指标、31组汇总以及报告LaTeX表格 |
-| `figures/` | 条件轨迹、目标/增量/增样诊断及MCMC轨迹PDF |
+| `figures/` | 条件轨迹、目标/增量/增样诊断、MCMC轨迹及新参数/观测似然图PDF |
 | `qa/` | 数值验证、正式审计 `audit.json`、积分阶数核对、服务器资源与PDF文本 |
 | `report.tex`、`report.pdf` | 当前LaTeX正文及最终PDF |
 | `Makefile` | 数值核验、汇总及双次XeLaTeX编译 |
-| `build/`、`qa/final/`（本地） | 编译中间文件和已检查的8页PNG，不上传GitHub |
+| `build/`、`qa/final/`（本地） | 编译中间文件和逐页PNG，不上传GitHub |
 
 本地早期探索预检已移入 `../archive/pilot_local/`，未计入正式结果；旧报告参照副本在 `../archive/v1/reference_copies/`。旧交付清单按旧布局保存在本地整理记录中，当前仓库使用根目录 `MANIFEST.sha256`。
 
@@ -44,6 +58,7 @@
 make verify
 make check
 make summarize
+make convergence
 make report
 ```
 
@@ -62,4 +77,4 @@ conda run --no-capture-output -n yellow python src/experiment.py --output local_
 conda run --no-capture-output -n yellow python src/experiment.py --output local_runs/comparison --reps 5 --starts 3 --jobs 8 --maxiter 250 --methods MCEM --scenarios baseline poisson nb
 ```
 
-上述命令在仓库根目录执行，会重新拟合；它们不是重建现有报告所必需的步骤。完整云端工作副本、检查点、预检与快照仍在原电脑的 `../cloud/received/`、`snapshots/`，未重复上传。整理仅改汇总默认输入路径及文档，未修改统计内核或原始结果。
+上述命令在仓库根目录执行，会重新拟合；它们不是重建现有报告所必需的步骤。补充轨迹的重算使用 `src/convergence.py --output local_runs/convergence --jobs 8`，远程入口为 `../cloud/remote_convergence.sh`。补充运行本地yellow完成11条，新服务器base完成10条，执行环境与对应文件哈希见 `../data/convergence/`。完整云端工作副本、检查点、预检与快照仍在原电脑的 `../cloud/received/`、`snapshots/`，未重复上传。原统计内核和155次原始结果未修改。

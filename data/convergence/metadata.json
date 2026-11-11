@@ -1,0 +1,33 @@
+{
+  "spec": {
+    "protocol": {
+      "likelihood_relative_tolerance": 1e-06,
+      "consecutive_changes": 3,
+      "parameter_scaled_tolerance": 0.001,
+      "extra_iterations": 30,
+      "require_an_accepted_update_in_window": true,
+      "quadrature_order": 61,
+      "final_quadrature_order": 101
+    },
+    "sources": {
+      "convergence.py": "8eb3e17ee96811a78708f56ae8b1e2ea4cb70b1df5ce4b184a30ae5cf433cad1",
+      "inference.py": "b1f9467d18e3928f8c2eb83095e1b589f4b1435c10c870cce77c140b0a55bb81",
+      "legacy_model.py": "4f2ce320822cc8ca2ba0ac5aed7ad7637f9dab76bd76d5c5d0919d14f9bace26"
+    },
+    "scenarios": [
+      "baseline",
+      "poisson",
+      "nb"
+    ],
+    "reps": 5,
+    "methods": [
+      "MCEM",
+      "QML",
+      "GVA"
+    ]
+  },
+  "python": "3.11.11 | packaged by conda-forge | (main, Dec  5 2024, 08:47:03) [Clang 18.1.8 ]",
+  "numpy": "2.4.2",
+  "platform": "macOS-15.8.1-arm64-arm-64bit",
+  "jobs": 3
+}

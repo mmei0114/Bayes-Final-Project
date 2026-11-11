@@ -73,11 +73,11 @@ def main():
     G={(r['scenario'],r['method']):r for r in summaries}
     fmt=lambda g,k:f"{g[k]:.3f}" if g[k] is not None else '--'
     ari=lambda g:f"{g['ari']:.3f}$\\pm${g['ari_sd']:.3f}"
-    t=[r'\begin{table}[H]\centering\small',r'\caption{全部14场景的5次重复。ARI为均值$\pm$标准差；RMSE为GVA跨重复均值，误设$K$不比较参数。收敛数按QML/GVA，分母各为5。}',r'\begin{tabular}{lcccccc}\toprule',r'场景 & ARI(QML) & ARI(GVA) & $\beta$ RMSE & $D$ RMSE & $\pi$ RMSE & 收敛\\\midrule']
+    t=[r'\begin{table}[H]\centering\small',r'\caption{全部14场景的5次重复。ARI为均值$\pm$标准差；RMSE为GVA跨重复均值，误设$K$不比较参数。原停止数按QML/GVA，分母各为5，按原算法规则计数。}',r'\begin{tabular}{lcccccc}\toprule',r'场景 & ARI(QML) & ARI(GVA) & $\beta$ RMSE & $D$ RMSE & $\pi$ RMSE & 原停止\\\midrule']
     for name in SCENARIOS:
         q,g=G[name,'QML'],G[name,'GVA'];t.append(f"{LABELS[name]} & {ari(q)} & {ari(g)} & {fmt(g,'beta_rmse')} & {fmt(g,'var_rmse')} & {fmt(g,'pi_rmse')} & {q['converged']}/{g['converged']} \\\\")
     t+=[r'\bottomrule\end{tabular}\end{table}'];(ROOT/'results/robustness_table.tex').write_text('\n'.join(t)+'\n')
-    t=[r'\begin{table}[H]\centering\small',r'\caption{三类响应的同数据比较。各格为5次均值；耗时为三起点总墙钟秒数。$\Delta\ell/n=(\ell_{\mathrm{QML}}-\ell_{\mathrm{fit}})/n$，fit表示对应方法，可因不同局部解出现负值，不是KL散度。}',r'\begin{tabular}{llcccccc}\toprule',r'响应 & 方法 & ARI & 错分率 & $\beta$ RMSE & 秒 & 收敛/5 & $\Delta\ell/n$\\\midrule']
+    t=[r'\begin{table}[H]\centering\small',r'\caption{三类响应的同数据比较。各格为5次均值；耗时为三起点总墙钟秒数。原停止按第3节原算法规则，新增似然口径另表核验。$\Delta\ell/n=(\ell_{\mathrm{QML}}-\ell_{\mathrm{fit}})/n$，fit表示对应方法，可因不同局部解出现负值，不是KL散度。}',r'\begin{tabular}{llcccccc}\toprule',r'响应 & 方法 & ARI & 错分率 & $\beta$ RMSE & 秒 & 原停止/5 & $\Delta\ell/n$\\\midrule']
     for name in ('baseline','poisson','nb'):
         for method in ('QML','GVA','MCEM'):
             g=G[name,method];t.append(f"{LABELS[name]} & {method} & {ari(g)} & {g['error']:.3f} & {g['beta_rmse']:.3f} & {g['seconds']:.1f} & {g['converged']} & {g['likelihood_gap_per_subject']:.5f} \\\\")
@@ -85,7 +85,7 @@ def main():
     b=G['baseline','GVA'];hard=G['hard','GVA'];orig=G['original','GVA']
     (ROOT/'results/abstract_result.tex').write_text(f"基准中GVA的平均ARI为{b['ari']:.3f}，积分参照为{G['baseline','QML']['ari']:.3f}；分离减半时GVA降至{hard['ari']:.3f}。")
     text=(f"基准GVA的平均ARI为{b['ari']:.3f}、错分率{b['error']:.3f}；分离减半和作业建议参数时ARI为{hard['ari']:.3f}、{orig['ari']:.3f}。"
-          f"全部155次拟合中，{sum(r['fit']['converged'] for r in records)}次满足各自停止标准；未收敛和边界记录完整保留。"
+          f"全部155次原拟合中，{sum(r['fit']['converged'] for r in records)}次满足各自原停止标准；新增似然检查见补充表，内部求解器状态和参数边界另行记录。"
           "各因素的实测结果见表，不从5次重复推断普遍优势。不同目标的差异、同一目标的积分误差和参数恢复误差分别评价。")
     text+=f"Poisson场景GVA三起点平均耗时{G['poisson','GVA']['seconds']:.1f}秒、收敛{G['poisson','GVA']['converged']}/5；其解析期望与剖面优化的实现不再采用旧版高维局部数值优化，但新旧硬件/容差不同，不能直接用旧耗时计算加速比。"
     scores=[r['fit']['gradient'] for r in records if r['method']=='MCEM']

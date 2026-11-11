@@ -36,11 +36,11 @@ case "$ACTION" in
     DEST="$CLOUD_DIR/snapshots/$ID"
     [[ ! -e "$DEST" ]] || { echo 'Snapshot already exists; use a new ID' >&2; exit 2; }
     mkdir "$DEST"
-    COPYFILE_DISABLE=1 tar --format=ustar --exclude='./.git' --exclude='./.repo-check' --exclude='./cloud/config.env' \
+    COPYFILE_DISABLE=1 tar --format=ustar --exclude='./.git' --exclude='./.repo-check' --exclude='./archive' --exclude='./cloud/config.env' \
       --exclude='./cloud/private' --exclude='./cloud/snapshots' \
       --exclude='./cloud/received' --exclude='./cloud/logs' \
       --exclude='./build' --exclude='./qa/draft' --exclude='./qa/final' \
-      --exclude='__pycache__' -czf "$DEST/project.tar.gz" -C "$PROJECT_DIR" .
+      --exclude='__pycache__' --exclude='*.tmp' --exclude='*.checkpoint.json' -czf "$DEST/project.tar.gz" -C "$PROJECT_DIR" .
     (cd "$DEST" && shasum -a 256 project.tar.gz > SHA256SUMS)
     "${SSH[@]}" "test ! -e '$CLOUD_ROOT/releases/$ID' && mkdir -p '$CLOUD_ROOT/releases/$ID/project' '$CLOUD_ROOT/runs'"
     rsync -a --partial --delay-updates -e "$RSH" "$DEST/" "bayes-cloud:$CLOUD_ROOT/releases/$ID/"
@@ -49,19 +49,22 @@ case "$ACTION" in
     echo "Snapshot $ID is stored locally and uploaded with SHA256 verification."
     ;;
   pull)
-    rsync -a --partial --delay-updates --exclude='*.tmp' -e "$RSH" \
+    rsync -az --partial --delay-updates --exclude='*.tmp' -e "$RSH" \
       "bayes-cloud:$CLOUD_ROOT/runs/" "$CLOUD_DIR/received/runs/"
     echo "Local run copies: $CLOUD_DIR/received/runs"
     ;;
   verify)
     # Run only when writers have stopped; compares every regular run file.
+    LABEL=${2:-latest}
+    [[ "$LABEL" =~ ^[a-zA-Z0-9_-]+$ ]] || exit 2
+    if [[ "$LABEL" == latest ]]; then MANIFEST=SHA256SUMS; else MANIFEST="SHA256SUMS_$LABEL"; fi
     bash "$0" pull
     "${SSH[@]}" "cd '$CLOUD_ROOT' && find runs -type f ! -name '*.tmp' -print0 | sort -z | xargs -0 -r sha256sum" \
       > "$CLOUD_DIR/private/SHA256SUMS.incoming"
-    mv "$CLOUD_DIR/private/SHA256SUMS.incoming" "$CLOUD_DIR/received/SHA256SUMS"
-    (cd "$CLOUD_DIR/received" && shasum -a 256 -c SHA256SUMS) \
-      > "$CLOUD_DIR/logs/verification_latest.log" 2>&1
-    echo "All remote run files match local copies. See cloud/logs/verification_latest.log."
+    mv "$CLOUD_DIR/private/SHA256SUMS.incoming" "$CLOUD_DIR/received/$MANIFEST"
+    (cd "$CLOUD_DIR/received" && shasum -a 256 -c "$MANIFEST") \
+      > "$CLOUD_DIR/logs/verification_$LABEL.log" 2>&1
+    echo "All remote run files match local copies. See cloud/logs/verification_$LABEL.log."
     ;;
   watch)
     INTERVAL=${2:-60}

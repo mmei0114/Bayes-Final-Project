@@ -6,18 +6,24 @@ for run in sorted(root.iterdir()):
     if not run.is_dir():continue
     state=run/'STATE'
     if state.exists():print(run.name,state.read_text().strip())
-    for name in ('robustness','comparison','output'):
+    for name in ('robustness','comparison','output','convergence'):
         folder=run/name
         if not folder.exists():continue
-        complete=[p for p in folder.glob('*.json') if not any(s in p.name for s in ('.checkpoint.','.error.')) and p.name not in ('metadata.json','STATUS.json')]
+        complete=[]
+        for p in folder.glob('*.json'):
+            if any(s in p.name for s in ('.checkpoint.','.error.')):continue
+            try:
+                value=json.loads(p.read_text())
+                if 'fit' in value or ('points' in value and 'method' in value):complete.append(p)
+            except (OSError,ValueError):pass
         errors=list(folder.glob('*.error.json'))
         print(' ',name,'complete=',len(complete),'exceptions=',len(errors))
         for path in sorted(folder.glob('*.checkpoint.json')):
             tag=path.name.removesuffix('.checkpoint.json')
             if (folder/(tag+'.json')).exists():continue
             try:
-                v=json.loads(path.read_text())['state'];tr=v.get('trace',[])
+                payload=json.loads(path.read_text());v=payload.get('state',payload);tr=v.get('trace',v.get('points',[]))
                 print('  ',tag,'finished starts=',len(v.get('completed_starts',[])),
                       'active=',v.get('active_start'), 'last=',
-                      {k:tr[-1].get(k) for k in ('iteration','M','delta_Q','mcse','accepted')} if tr else None)
+                      {k:tr[-1].get(k) for k in ('iteration','M','delta_Q','mcse','accepted','loglik')} if tr else None)
             except (OSError,ValueError):print('  ',tag,'checkpoint changed during read')

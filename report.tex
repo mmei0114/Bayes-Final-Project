@@ -29,6 +29,16 @@ A_{ik}=\int e^{\ell_{ik}(b;\beta_k)}\phi(b;0,D_k)\,db.
 未观测时点不求和，未被选择的簇不需额外的随机效应。模型不含随机斜率或额外时间相关结构。
 
 \section{方法}
+本题每个体仅有一个随机截距，簇类别的有限求和直接计算，随机效应积分均为一维；离散响应使$A_{ik}$和部分条件期望没有闭式。具体数值技术如下，抽样用于近似积分，并不改变模型。
+\begin{table}[H]\centering\small
+\caption{本文各处积分或条件分布的实际计算技术。}\begin{tabular}{p{.18\linewidth}p{.27\linewidth}p{.43\linewidth}}\toprule
+位置 & 积分或期望 & 实际计算技术\\\midrule
+MCEM的E步 & $A_{ik}$、$\E_{h_{ik}}g(b)$，如$b^2$与条件log密度 & 各$(i,k)$独立$t_5$重要性抽样；归一化权重近似条件期望，独立验证样本估计更新误差\\
+观测似然与QML & $\log L=\sum_i\log\sum_k\pi_kA_{ik}$ & 条件众数/曲率中心化的一维自适应Gauss--Hermite（GH）求积，61点计算、101点复核\\
+GVA & 高斯$q$下的$\E_q\ell_{ik}(b)$ & Poisson用解析高斯指数矩；二元/负二项标准化后用31点GH\\
+条件分布核验 & 固定参数的$p(U_i,b_i\mid Y_i;\widehat\Omega)$ & 联合独立MH；保存4链样本，与101点积分比较\\\bottomrule
+\end{tabular}\end{table}
+MCEM的E步采用独立重要性抽样，条件核验中的MH另行实现；两者的提议、权重或接受率分别在下面给出。
 \subsection{MCEM 的 E 步与单目标 M 步}
 以 $(U,b)$ 为缺失数据，将 McCulloch 的 MCEM 分解加入类别责任度。在旧参数 $\Omega^r$ 下，
 \[
@@ -36,6 +46,7 @@ A_{ik}=\int e^{\ell_{ik}(b;\beta_k)}\phi(b;0,D_k)\,db.
 h_{ik}(b)=p(b_i\mid Y_i,U_i=k;\Omega^r)\propto e^{\ell_{ik}(b;\beta_k^r)}\phi(b;0,D_k^r).
 \]
 这与 Zeger--Karim 的条件随机效应计算直接相连；其全贝叶斯方案另抽样参数，本文不做参数 Gibbs。该文主要用拒绝抽样处理非标准条件分布，不能把所有步骤都写成 MH。
+对一般函数$g$，$\E_{h_{ik}}g(b)=\{\int g(b)e^{\ell_{ik}(b;\beta_k^r)}\phi(b;0,D_k^r)\,db\}/A_{ik}^r$；因此既要近似积分归一化常数，也要近似加权条件期望。
 沿用 Booth--Hobert 的独立 $t$ 重要性抽样思想，以带回溯的 Newton 法求条件众数 $\widehat b_{ik}$ 和逆曲率 $V_{ik}=\{-\ell''_{ik}(\widehat b_{ik})+1/D_k^r\}^{-1}$。最多80轮，位移容差 $10^{-9}$，核对得分残差。每个 $(i,k)$ 独立抽 $M$ 个 $t_5(\widehat b_{ik},s_{ik}^2)$，scale平方为 $s_{ik}^2=3V_{ik}/5$，使方差为 $V_{ik}$。令
 \[
 v_{ikm}=\frac{\pi_k^r e^{\ell_{ik}(b_{ikm};\beta_k^r)}\phi(b_{ikm};0,D_k^r)}{q_{ik}(b_{ikm})},\quad
@@ -118,7 +129,7 @@ $q_{ih}$ 沿用上述基于条件众数和曲率的$t_5$提议，在固定参数
 基准为 $n=300,T=20$，等距时间 $[-1,1]$，真值和拟合 $K=3$，$\pi=(0.5,0.3,0.2)$、$D_k=0.5$，二元响应；$\beta_k$ 为 $(-1.5,-1.8),(0.5,1.8),(1.5,-1.8)$。另保留作业建议 $(-1.5,0.2),(0.5,-0.2),(1,0.3)$ 作为困难场景。
 14场景为：基准；$\beta_k$ 向三簇均值收缩一半；作业建议参数；$n=100,1000$；$T=10,50$；拟合 $K=2,4$；$D_k=0.1,1.5$；Poisson；负二项；不规则时间。最后一项先生成每人20个排序的均匀时间，再独立取 $T_i\in\{10,\ldots,20\}$ 并保留前 $T_i$ 个，因此部分人的观测偏向早期，不声称均匀覆盖区间。
 GVA/QML 各场景5次重复；MCEM 在基准二元、Poisson、负二项各5次，每次3起点，共70份不同数据、155次拟合。不声称每个方法在每个场景均运行。数据种子 $20261110+10000s+r$，场景 $s=0,\ldots,13$ 按上段顺序，重复 $r=0,\ldots,4$；拟合种子加200000，起点再加 $1009h$，MC流另加73。MCMC种子为 $20261110+900000+f$，$f=0,1,2$ 为二元、Poisson、负二项。
-服务器可用16个逻辑CPU、内存限额约80 GiB，使用8个并行拟合进程，每进程数值库单线程；Python 3.11.4、NumPy 2.4.2、SciPy 1.16.3、Matplotlib 3.10.8。源码、配置、逐起点记录、全部保留MCMC样本及SHA256清单在本地保存。
+原正式实验服务器可用16个逻辑CPU、内存限额约80 GiB，使用8个并行拟合进程，每进程数值库单线程；Python 3.11.4、NumPy 2.4.2、SciPy 1.16.3、Matplotlib 3.10.8。源码、配置、逐起点记录、全部保留MCMC样本及SHA256清单在本地保存。
 
 ARI 对标签置换不变并校正随机一致性；错分率用最优一对一匹配。正确 $K$ 时按固定效应距离匹配，分别计算固定效应、方差、比例的 RMSE；误设 $K$ 不强行一一比较参数。表中为重复均值，ARI另列样本标准差；5次重复仍只支持初步观察。全部预算不足或未收敛结果保留。
 \subsection{结果}
@@ -131,6 +142,20 @@ ARI 对标签置换不变并校正随机一致性；错分率用最优一对一�
 剖面梯度与中心差分核对；Poisson 解析期望与高阶积分核对，并检查 $\eta>50$ 的梯度一致性。MCSE 与80次独立抽样的经验标准差对照，细节见 \texttt{qa/validation.json}。
 \input{results/mcmc_table.tex}\input{results/validation_text.tex}
 \begin{figure}[H]\centering\includegraphics[width=.9\linewidth]{figures/mcmc_trace.pdf}\caption{Poisson同一参数下的链。选择原分开更新中split诊断最大的个体作示例；右图用标准联合独立MH跨越标签--随机截距的联合模式。轨迹每20次显示一点，诊断使用全部保留样本。}\end{figure}
+
+\subsection{补充的参数与整体似然轨迹}
+按教师补充要求，参数逐项稳定较慢时，也检查整体观测log似然是否稳定。对相邻迭代定义
+\[
+\rho_t=\frac{|\ell(\Omega^{t})-\ell(\Omega^{t-1})|}{1+|\ell(\Omega^{t-1})|},\qquad
+d_t=\max_j\frac{|\vartheta_j^t-\vartheta_j^{t-1}|}{1+|\vartheta_j^{t-1}|},
+\]
+其中$\vartheta$按原尺度拼接$\beta,D,\pi$。本次预先取连续3轮$\rho_t\leq10^{-6}$，MCEM末窗还须至少接受一次更新，避免把连续拒绝造成的平直视为充分证据；$d_t\leq10^{-3}$仅作参数平稳辅助诊断。这是明确的数值口径，不是教师指定的统一阈值或全局最优证明。
+
+原实验没有保存完整参数历史，因此对原来所选初始化补充重跑：三类响应各5次MCEM，另各取第一次重复的QML/GVA，共21条轨迹。数据、种子、原选中起点及数值内核沿用；每轮观测似然用61点自适应GH计算，初始点、原记录轮数处和终点用101点独立核对。MCEM运行至原记录轮数后，若未通过新口径，最多再加30轮，预算耗尽仍保留未通过状态。GVA同时保留自己的ELBO，不把它当观测似然。补充运行11条在本地、10条在新服务器（16逻辑CPU、32 GiB）完成，环境随记录保存。
+\input{results/convergence_table.tex}
+\input{results/convergence_text.tex}
+\begin{figure}[H]\centering\includegraphics[width=\linewidth]{figures/parameter_convergence.pdf}\caption{二元基准第一次重复的补充参数轨迹。行依次为QML、GVA、MCEM，列为固定效应、方差、混合比例；颜色对应簇，固定效应实线/虚线为截距/斜率。仅在绘图时按末端固定效应作一次标签匹配，同一置换用于整条轨迹。竖虚线为MCEM原记录轮数，灰底为额外迭代。计数响应的参数图随代码保存。}\end{figure}
+\begin{figure}[H]\centering\includegraphics[width=\linewidth]{figures/likelihood_convergence.pdf}\caption{三类响应第一次重复的整体观测log似然（左，除以$n$便于显示）及相对变化$\rho_t$（右）。三方法均按同一观测似然计算，GVA曲线不是ELBO。红虚线为$10^{-6}$，竖虚线为MCEM原记录轮数；右图用含线性零附近区间的对称对数轴，零变化仍按零记录。代表性图不代替全部15次MCEM的汇总检查。}\end{figure}
 
 \section{讨论}
 MCEM 继承缺失数据分解和独立重要性抽样；增量误差包括责任度归一化。GVA 为现代扩展，利用高斯族及 Poisson 解析结构。其误差包含变分族限制、积分与优化误差；同一参数的 MCMC/积分比较只检验潜变量近似，不能验证参数后验区间。单个GLMM中已有的GVA一致性结果也不能直接当作本混合模型的一致性证明，本文仅作数值验证。

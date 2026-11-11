@@ -1,0 +1,14 @@
+{
+  "baseline": {
+    "seconds_per_1024_draw_iteration": 9.166344749974087,
+    "rough_serial_seconds": 4142.0420338945405
+  },
+  "poisson": {
+    "seconds_per_1024_draw_iteration": 0.39358833292499185,
+    "rough_serial_seconds": 614.0469979046029
+  },
+  "nb": {
+    "seconds_per_1024_draw_iteration": 9.106672458001412,
+    "rough_serial_seconds": 6991.647779630584
+  }
+}

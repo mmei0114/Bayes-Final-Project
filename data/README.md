@@ -13,6 +13,7 @@
 | `runs/*/{STATE,EXIT_CODE,source_snapshot.txt,source_archive.sha256}` | 完成标记、退出码、来源快照和归档校验值 |
 | `environment.json` | 实际远程Python与数值库版本 |
 | `inventory.json`、`SHA256SUMS` | 上述280份原始文件的路径、大小与SHA256 |
+| [convergence/](convergence/README.md) | 另行补充的21条参数/观测似然轨迹与执行环境，不覆盖原始拟合 |
 
 在本目录运行 `shasum -a 256 -c SHA256SUMS` 可核对原始文件。项目根目录的 `make summarize` 使用这些输入，不需要服务器或未上传的本地备份。
 

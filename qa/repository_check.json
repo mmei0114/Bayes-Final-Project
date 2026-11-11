@@ -1,30 +1,80 @@
 {
   "date": "2026-11-11",
-  "moved_original_files_verified": 217,
-  "curated_raw_input_files_verified": 280,
-  "formal_fits": 155,
-  "distinct_datasets": 70,
-  "original_report_and_statistical_core_sha256": {
-    "report.pdf": "f078f9fad28cd2a816ac53e53e34769dfa66d8878037ba5ba4f3beb95ab7688d",
-    "report.tex": "0a668bd15cb776ce929c793287bffc711d66749a897d2606a0cf38f91c58bc00",
-    "src/conditional_mcmc.py": "0c018e27f1240f586ebfbd99b1116f070962c6f3f3b0a87fad36ef5ef51156aa",
-    "src/experiment.py": "80926331be3ca193f43e17227293a95e2b2fdd6e3560555a69b629d2e96d71cc",
-    "src/inference.py": "b1f9467d18e3928f8c2eb83095e1b589f4b1435c10c870cce77c140b0a55bb81",
-    "src/legacy_model.py": "4f2ce320822cc8ca2ba0ac5aed7ad7637f9dab76bd76d5c5d0919d14f9bace26"
-  },
-  "checks": {
-    "isolated_staged_checkout_checksums": "passed",
-    "raw_data_checksums": "passed",
-    "numerical_gradient_expectation_and_MCSE_validation": "passed",
-    "default_summarization_without_cloud_backups": "passed",
-    "regenerated_JSON_audits_and_LaTeX_tables_identical": "passed",
-    "markdown_links": "passed",
-    "shell_syntax": "passed",
-    "private_paths_excluded": "passed",
-    "credential_pattern_scan": "passed",
-    "flat_root_report_dependencies": "passed"
-  },
-  "note": "The active project is maintained at one root. Historical execution paths remain only in immutable experiment records. No formal simulation fits were rerun; the report and statistical core are unchanged.",
   "project_layout": "single project root with src, results, figures, qa, data and docs",
-  "root_layout_moved_files_verified": 53
+  "original_organization_audit": {
+    "date": "2026-11-11",
+    "moved_original_files_verified": 217,
+    "curated_raw_input_files_verified": 280,
+    "formal_fits": 155,
+    "distinct_datasets": 70,
+    "original_report_and_statistical_core_sha256": {
+      "report.pdf": "f078f9fad28cd2a816ac53e53e34769dfa66d8878037ba5ba4f3beb95ab7688d",
+      "report.tex": "0a668bd15cb776ce929c793287bffc711d66749a897d2606a0cf38f91c58bc00",
+      "src/conditional_mcmc.py": "0c018e27f1240f586ebfbd99b1116f070962c6f3f3b0a87fad36ef5ef51156aa",
+      "src/experiment.py": "80926331be3ca193f43e17227293a95e2b2fdd6e3560555a69b629d2e96d71cc",
+      "src/inference.py": "b1f9467d18e3928f8c2eb83095e1b589f4b1435c10c870cce77c140b0a55bb81",
+      "src/legacy_model.py": "4f2ce320822cc8ca2ba0ac5aed7ad7637f9dab76bd76d5c5d0919d14f9bace26"
+    },
+    "checks": {
+      "isolated_staged_checkout_checksums": "passed",
+      "raw_data_checksums": "passed",
+      "numerical_gradient_expectation_and_MCSE_validation": "passed",
+      "default_summarization_without_cloud_backups": "passed",
+      "regenerated_JSON_audits_and_LaTeX_tables_identical": "passed",
+      "markdown_links": "passed",
+      "shell_syntax": "passed",
+      "private_paths_excluded": "passed",
+      "credential_pattern_scan": "passed",
+      "flat_root_report_dependencies": "passed"
+    },
+    "note": "The active project is maintained at one root. Historical execution paths remain only in immutable experiment records. No formal simulation fits were rerun; the report and statistical core are unchanged.",
+    "project_layout": "single project root with src, results, figures, qa, data and docs",
+    "root_layout_moved_files_verified": 53
+  },
+  "convergence_supplement": {
+    "completed_trajectories": 21,
+    "mcem_trajectories": 15,
+    "original_length_numerical_matches": 15,
+    "likelihood_stable_mcem": 10,
+    "parameter_stable_mcem": 7,
+    "original_155_fit_results_and_statistics_unchanged": true,
+    "original_statistical_kernels_unchanged": true,
+    "original_report_archived_locally": "archive/convergence_20261111/",
+    "current_report_sha256": {
+      "report.pdf": "3e0708c7755e44b642d64cd1d9466514202656195474615573a10628c9b6ec98",
+      "report.tex": "1ca820c46d223aea734eea7b0e5cf57cf51ef1690ebf9df69b5886a718084d68"
+    },
+    "report_pages": 11,
+    "all_11_pages_visually_inspected_at_dpi": 110,
+    "isolated_staged_tree": "391291b28e1188f5cb62e473fb938ea00b447a55",
+    "isolated_raw_and_delivery_checksums": "passed",
+    "isolated_default_summarize": "passed",
+    "isolated_default_convergence": "passed",
+    "isolated_double_XeLaTeX_report": "passed",
+    "rebuilt_metrics_tables_audits_and_report_text_identical": [
+      "qa/audit.json",
+      "qa/convergence_audit.json",
+      "qa/report_text.txt",
+      "results/abstract_result.tex",
+      "results/comparison_table.tex",
+      "results/convergence_summary.csv",
+      "results/convergence_summary.json",
+      "results/convergence_table.tex",
+      "results/convergence_text.tex",
+      "results/findings.tex",
+      "results/mcmc_table.tex",
+      "results/replicates.csv",
+      "results/replicates.json",
+      "results/robustness_table.tex",
+      "results/summary.csv",
+      "results/summary.json",
+      "results/validation_text.tex"
+    ],
+    "preserved_old_cloud_backup_files": 1448,
+    "sensitive_path_or_content_matches": 0,
+    "new_server_files_SHA256_verified": 398,
+    "all_jobs_stopped": true,
+    "github_visibility": "public, confirmed by user"
+  },
+  "note": "The historical organization audit describes the earlier unchanged 8-page report. The current supplement intentionally edits the report and adds trajectories; it preserves the original statistical kernels, 155 fits, 280 raw inputs and old cloud backups."
 }

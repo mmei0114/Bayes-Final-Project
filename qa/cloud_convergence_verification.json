@@ -1,0 +1,21 @@
+{
+  "date": "2026-11-11",
+  "run": "convergence_20261111",
+  "state": "COMPLETE",
+  "exit_code": 0,
+  "expected_trajectories": 21,
+  "complete_trajectories": 21,
+  "remote_run_files_SHA256_verified": 398,
+  "verification_manifest_sha256": "696bb12d95cef0c4281f307d6258264ae2abeaeae28e702d9e6efd7ecb3af486",
+  "verification_log_sha256": "166c286fa2afbae020132c4301240f6ae25cb113870954c90ec11eb32e6e8ea1",
+  "executed_work_copy_sources_sha256": {
+    "convergence.py": "8eb3e17ee96811a78708f56ae8b1e2ea4cb70b1df5ce4b184a30ae5cf433cad1",
+    "inference.py": "b1f9467d18e3928f8c2eb83095e1b589f4b1435c10c870cce77c140b0a55bb81",
+    "legacy_model.py": "4f2ce320822cc8ca2ba0ac5aed7ad7637f9dab76bd76d5c5d0919d14f9bace26"
+  },
+  "source_archive_sha256": "87e23fc1771393c610d936a0c61fb87c18e3788cfccaac48501602f97c472da5",
+  "full_local_copy": "cloud/received/runs/convergence_20261111/",
+  "source_snapshot": "cloud/snapshots/convergence_20261111/",
+  "local_periodic_sync_stopped": true,
+  "server_can_be_released": true
+}

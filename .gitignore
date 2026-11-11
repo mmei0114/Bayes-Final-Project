@@ -15,8 +15,8 @@ build/
 *.checkpoint.json
 /.repo-check/
 /local_runs/
-/revision_v2/results/main/
-/revision_v2/qa/final/
+/results/main/
+/qa/final/
 .venv/
 .env
 .env.*

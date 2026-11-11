@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-11",
+  "moved_original_files_verified": 217,
+  "curated_raw_input_files_verified": 280,
+  "formal_fits": 155,
+  "distinct_datasets": 70,
+  "original_report_and_statistical_core_sha256": {
+    "report.pdf": "f078f9fad28cd2a816ac53e53e34769dfa66d8878037ba5ba4f3beb95ab7688d",
+    "report.tex": "0a668bd15cb776ce929c793287bffc711d66749a897d2606a0cf38f91c58bc00",
+    "src/conditional_mcmc.py": "0c018e27f1240f586ebfbd99b1116f070962c6f3f3b0a87fad36ef5ef51156aa",
+    "src/experiment.py": "80926331be3ca193f43e17227293a95e2b2fdd6e3560555a69b629d2e96d71cc",
+    "src/inference.py": "b1f9467d18e3928f8c2eb83095e1b589f4b1435c10c870cce77c140b0a55bb81",
+    "src/legacy_model.py": "4f2ce320822cc8ca2ba0ac5aed7ad7637f9dab76bd76d5c5d0919d14f9bace26"
+  },
+  "checks": {
+    "isolated_staged_checkout_checksums": "passed",
+    "raw_data_checksums": "passed",
+    "numerical_gradient_expectation_and_MCSE_validation": "passed",
+    "default_summarization_without_cloud_backups": "passed",
+    "regenerated_JSON_audits_and_LaTeX_tables_identical": "passed",
+    "markdown_links": "passed",
+    "shell_syntax": "passed",
+    "private_paths_excluded": "passed",
+    "credential_pattern_scan": "passed",
+    "flat_root_report_dependencies": "passed"
+  },
+  "note": "The active project is maintained at one root. Historical execution paths remain only in immutable experiment records. No formal simulation fits were rerun; the report and statistical core are unchanged.",
+  "project_layout": "single project root with src, results, figures, qa, data and docs",
+  "root_layout_moved_files_verified": 53
+}

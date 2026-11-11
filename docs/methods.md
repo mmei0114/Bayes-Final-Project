@@ -1,6 +1,6 @@
-# 方法修订版 v2
+# 方法与复现
 
-**最新交付：[report.pdf](report.pdf)（8页）与 [report.tex](report.tex)。** 旧版整体归档于原电脑的 `../archive/v1/`，未删除，也不进入新版汇总。
+**最新交付：[report.pdf](../report.pdf)（8页）与 [report.tex](../report.tex)。** 旧版整体归档于原电脑的 `../archive/v1/`，未删除，也不进入新版汇总。
 
 ## 方法与结果
 
@@ -16,6 +16,8 @@
 
 ## 文件
 
+下表路径相对项目根目录，项目按用途维护，版本历史由Git记录。
+
 | 路径 | 用途 |
 |---|---|
 | `src/inference.py` | 三类响应一致的目标与导数、GVA、积分ML、独立验证MCEM |
@@ -24,7 +26,7 @@
 | `src/experiment.py` | 场景、种子、多起点、原子结果与检查点、源码/配置校验 |
 | `src/conditional_mcmc.py` | 固定参数的分开条件更新与联合独立MH；正式对照使用 `--blocked` |
 | `src/summarize.py` | 检查正式输入与源码，生成表图和一致性审计 |
-| [theory.md](theory.md)、[sources.md](sources.md) | 推导、补充来源和适用边界 |
+| [theory.md](../theory.md)、[sources.md](../sources.md) | 推导、补充来源和适用边界 |
 | `results/` | 155次逐拟合指标、31组汇总以及报告LaTeX表格 |
 | `figures/` | 条件轨迹、目标/增量/增样诊断及MCMC轨迹PDF |
 | `qa/` | 数值验证、正式审计 `audit.json`、积分阶数核对、服务器资源与PDF文本 |
@@ -49,15 +51,15 @@ make report
 
 `results/replicates.csv` 为155次拟合指标，`summary.csv` 为31组均值/标准差。详细参数、全部起点及数据在 `../data/runs/revision_v2_main_20261110/{robustness,comparison}/`；联合MH的保留样本在独立诊断目录的 `mcmc/*.chains.npz`。主运行 `probe_mcmc/poisson.*` 为报告图3的旧链。输入文件说明和校验见 [data/README.md](../data/README.md)。
 
-## 原始执行版本与完整重算
+## 实验来源与完整重算
 
 实际拟合源码在 `../data/runs/revision_v2_main_20261110/work/revision_v2/src/`，联合采样执行源码在独立诊断运行的对应 `work/` 中；两者保持原样。冻结运行器的 `failed_in_this_run` 曾把数值错分率 `error` 误计为失败，不影响拟合；当前版本已修正这一计数。正式完成判据是155份结果、无异常文件和源码/数据审计。
 
 完整重算参数在 `../cloud/remote_revision_main.sh`、`remote_revision_diagnostic.sh`，服务器当时使用base，本地使用yellow。重算用新目录，例如：
 
 ```sh
-conda run --no-capture-output -n yellow python revision_v2/src/experiment.py --output local_runs/robustness --reps 5 --starts 3 --jobs 8 --maxiter 300 --methods QML GVA
-conda run --no-capture-output -n yellow python revision_v2/src/experiment.py --output local_runs/comparison --reps 5 --starts 3 --jobs 8 --maxiter 250 --methods MCEM --scenarios baseline poisson nb
+conda run --no-capture-output -n yellow python src/experiment.py --output local_runs/robustness --reps 5 --starts 3 --jobs 8 --maxiter 300 --methods QML GVA
+conda run --no-capture-output -n yellow python src/experiment.py --output local_runs/comparison --reps 5 --starts 3 --jobs 8 --maxiter 250 --methods MCEM --scenarios baseline poisson nb
 ```
 
 上述命令在仓库根目录执行，会重新拟合；它们不是重建现有报告所必需的步骤。完整云端工作副本、检查点、预检与快照仍在原电脑的 `../cloud/received/`、`snapshots/`，未重复上传。整理仅改汇总默认输入路径及文档，未修改统计内核或原始结果。

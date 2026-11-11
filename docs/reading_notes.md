@@ -1,6 +1,6 @@
 # 阅读笔记与方法来源
 
-以下“本初稿/本实现”的取舍描述是v1阅读阶段记录。v2已改正MCEM单目标与误差控制，并增加固定参数的联合MH核验；修订来源和实际方法见 `../revision_v2/sources.md`、`theory.md` 和报告，不用下面的v1取舍描述代替新版实现。
+以下“本初稿/本实现”的取舍描述是v1阅读阶段记录。v2已改正MCEM单目标与误差控制，并增加固定参数的联合MH核验；修订来源和实际方法见 `../sources.md`、`../theory.md` 和报告，不用下面的v1取舍描述代替新版实现。
 
 ## Zeger and Karim (1991), JASA 86:79–86
 
@@ -34,4 +34,4 @@
 - Blei, Kucukelbir and McAuliffe (2017), *Variational Inference: A Review for Statisticians*, JASA 112:859–877，DOI [10.1080/01621459.2017.1285773](https://doi.org/10.1080/01621459.2017.1285773)。作者版 [PDF](https://www.cs.columbia.edu/~blei/papers/BleiKucukelbirMcAuliffe2017.pdf)，[arXiv 全文](https://arxiv.org/html/1601.00670v9)，查阅日期 2026-11-10。
 - 补充文献用于确认 KL/ELBO 与坐标变分优化的标准原理；本文具体混合随机截距目标与梯度按所写模型推导。这里对潜变量变分、对参数点估计，称为变分 EM；不是全贝叶斯 VB，也未实现 SVI、EP 或 HMC。
 
-原始三篇PDF是本地课程材料，未放入本仓库；全文提取副本保存在原电脑的 `archive/v1/sources/*.txt`，保留扫描文字/OCR差错，公式以原始PDF和推导为准。报告的书目信息与补充链接在 `../revision_v2/sources.md`。
+原始三篇PDF是本地课程材料，未放入本仓库；全文提取副本保存在原电脑的 `archive/v1/sources/*.txt`，保留扫描文字/OCR差错，公式以原始PDF和推导为准。报告的书目信息与补充链接在 `../sources.md`。

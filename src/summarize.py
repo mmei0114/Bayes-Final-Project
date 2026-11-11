@@ -14,7 +14,7 @@ LABELS={'baseline':'基准','hard':'分离减半','original':'作业建议参数
 
 def main():
     for folder in ('results','figures','qa'):(ROOT/folder).mkdir(parents=True,exist_ok=True)
-    ap=argparse.ArgumentParser();ap.add_argument('--run-root',default=str(ROOT.parent/'data/runs/revision_v2_main_20261110'));ap.add_argument('--mcmc-root',default=str(ROOT.parent/'data/runs/revision_v2_diagnostic_20261110'));args=ap.parse_args();runroot=Path(args.run_root);mcroot=Path(args.mcmc_root)
+    ap=argparse.ArgumentParser();ap.add_argument('--run-root',default=str(ROOT/'data/runs/revision_v2_main_20261110'));ap.add_argument('--mcmc-root',default=str(ROOT/'data/runs/revision_v2_diagnostic_20261110'));args=ap.parse_args();runroot=Path(args.run_root);mcroot=Path(args.mcmc_root)
     records=[]
     for folder,expected in [('robustness',140),('comparison',15)]:
         status=json.loads((runroot/folder/'STATUS.json').read_text());assert status['status']=='COMPLETE' and status['complete']==expected

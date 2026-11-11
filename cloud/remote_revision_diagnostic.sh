@@ -11,7 +11,7 @@ mkdir -p "$RUN_DIR/mcmc"
 pids=()
 for name in baseline poisson nb; do
   test -f "$TARGET/${name}_0_QML.json"
-  /root/miniconda3/bin/conda run --no-capture-output -n base python revision_v2/src/conditional_mcmc.py --blocked --results "$TARGET" --scenario "$name" --output "$RUN_DIR/mcmc/$name.json" > "$RUN_DIR/mcmc/$name.log" 2>&1 &
+  /root/miniconda3/bin/conda run --no-capture-output -n base python src/conditional_mcmc.py --blocked --results "$TARGET" --scenario "$name" --output "$RUN_DIR/mcmc/$name.json" > "$RUN_DIR/mcmc/$name.log" 2>&1 &
   pids+=("$!")
 done
 for pid in "${pids[@]}"; do wait "$pid"; done

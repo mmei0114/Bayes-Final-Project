@@ -8,7 +8,7 @@
   "fit_processes": 8,
   "numerical_library_threads_per_process": 1,
   "python_environment": "base",
-  "software_versions_source": "../../data/environment.json",
+  "software_versions_source": "../data/environment.json",
   "resource_sources": [
     "/sys/fs/cgroup/cpu/cpu.cfs_quota_us",
     "/sys/fs/cgroup/cpu/cpu.cfs_period_us",

@@ -8,6 +8,8 @@
 
 **最新报告：[11页PDF](report.pdf) · [LaTeX正文](report.tex) · [教师要求对应清单](requirements.md)**
 
+2026-11-18新增 [SBI扩展计划](docs/sbi_plan.md) 与 [论文/代码核对记录](docs/sbi_references.md)：建议依照Amortized Bayesian Mixture Models，以BayesFlow NPE＋条件簇分类器与现有方法比较。本次仅调研和规划，未安装依赖、训练或新增实验结果；当前11页报告仍为已完成版本。建议下一阶段单张24GB NVIDIA GPU、12–16逻辑CPU、64GB内存，先短租试跑再按实测确定正式预算。
+
 正式实验为14个场景、70份不同模拟数据、155次拟合，每次3起点。QML 70/70、GVA 70/70、MCEM 15/15满足各自数值停止标准；28次参数边界、4次内部求解器历史非成功状态均保留并在报告中说明。每场景5次重复，结论限于基础版本；小Q增量停止不等于高精度似然最优。
 
 教师最新补充允许以整体似然的稳定性评价收敛，不强求每个参数都达到高精度稳定；另要求写清具体积分和抽样技术。该要求已记入 [任务清单](requirements.md)。正文已加入积分技术表，区分MCEM独立重要性抽样、观测似然的自适应GH、GVA的解析/GH期望，以及条件核验的联合独立MH。
@@ -25,6 +27,7 @@
 | [figures/](figures/) | 报告图件；三类响应各自的参数图及整体观测似然图 |
 | [qa/](qa/) | 数值检查、正式审计与交付核验 |
 | [docs/methods.md](docs/methods.md) | 方法细节、实验设计和复现说明 |
+| [docs/sbi_plan.md](docs/sbi_plan.md)、[docs/sbi_references.md](docs/sbi_references.md) | 待实施的SBI方法、比较/校准步骤、服务器预算与已核对论文代码来源 |
 | [data/](data/README.md) | 已完成正式拟合、原始模拟数据、原始采样链、实际执行源码副本及SHA256，随仓库保存 |
 | [docs/reading_notes.md](docs/reading_notes.md) | 三篇课程论文阅读笔记；v1取舍与当前修订范围已区分 |
 | [requirements.md](requirements.md)、[Project.pdf](Project.pdf) | 老师任务清单、九问对应与原始要求 |
@@ -65,4 +68,4 @@ make report       # 双次XeLaTeX编译当前报告
 
 GitHub仓库当前公开。服务器连接配置、SSH私有目录、历史压缩包、重复工作树、编译缓存和逐页PNG预览由 `.gitignore` 排除，仍在本地保留。重新租用服务器时按 `cloud/config.env.example` 建立本机配置；正常阅读、检查和生成报告不需要服务器。
 
-维护约定：新增交付文件、实验批次或目录变更时同步更新相应README及校验清单。当前整理日期为2026-11-11。
+维护约定：新增交付文件、实验批次或目录变更时同步更新相应README及校验清单。最近更新为2026-11-18（SBI调研与计划；实验/报告完成记录仍为2026-11-11）。

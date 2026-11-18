@@ -1,0 +1,22 @@
+{
+  "family": "poisson",
+  "source_checkpoints": {
+    "npe": {
+      "state.data-00000-of-00001": "d6a1bd4a2aef5ccd6df20f0fc336e1d28c1902d9eebb65946d5c9b9b05dfc2dd",
+      "state.index": "448072bb4961bdbea08c4ff0989d82c2fcb80c5503ebdcf35e7bbc42ef3a5fd0"
+    },
+    "classifier": {
+      "state.data-00000-of-00001": "d6a1bd4a2aef5ccd6df20f0fc336e1d28c1902d9eebb65946d5c9b9b05dfc2dd",
+      "state.index": "448072bb4961bdbea08c4ff0989d82c2fcb80c5503ebdcf35e7bbc42ef3a5fd0"
+    }
+  },
+  "selection": {
+    "best_npe_step": 10000,
+    "best_classifier_step": 10000,
+    "best_validation_nll": 0.25870530121028423,
+    "best_validation_ce": 0.18712497875094414
+  },
+  "device": "CPU",
+  "max_parameter_sample_difference": 0.0,
+  "max_class_probability_difference": 0.0
+}

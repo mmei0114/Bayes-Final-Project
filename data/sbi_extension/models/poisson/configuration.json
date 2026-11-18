@@ -1,0 +1,56 @@
+{
+  "stage": "pilot, not formal comparison",
+  "prior": {
+    "beta_normal_sd": 1.5,
+    "logvar_normal_mean": -0.6931471805599453,
+    "logvar_normal_sd": 0.7,
+    "variance_lower": 0.005,
+    "variance_upper": 5.0,
+    "dirichlet_alpha": [
+      2.0,
+      2.0,
+      2.0
+    ],
+    "intercept_order": "ascending",
+    "coefficient_support": "real, proper Normal prior; not ML optimization bounds"
+  },
+  "design": {
+    "n": 300,
+    "T": 20,
+    "K": 3,
+    "times": [
+      -1.0,
+      1.0
+    ],
+    "nb_size": 5.0
+  },
+  "family": "poisson",
+  "framework": "BayesFlow 1.1.6; TF 2.15.1, paper-compatible legacy implementation",
+  "network_seed": 20261118,
+  "training_seed": 20261818,
+  "max_steps": 10000,
+  "max_seconds": 2340.0,
+  "batch_size": 1024,
+  "validation_every": 500,
+  "early_stop_patience": 8,
+  "prior_statistics_seed": 20261918,
+  "sources": {
+    "sbi_pilot.py": "42c285fb134a00d65e238144303d946688039bf8f5489ed21dbcfca5d78b045e",
+    "sbi_networks.py": "201611858d1d1a582d2129d8177ec78918e82e11e3eb87c5c7bb40909336e404",
+    "sbi_model.py": "9cfd945ba7be669e02c6059c01b5a5cd7ac534756becc1a442e58f6433db8b81"
+  },
+  "gpu": [
+    {
+      "name": "/physical_device:GPU:0",
+      "details": {
+        "compute_capability": [
+          6,
+          0
+        ],
+        "device_name": "Tesla P100-SXM2-16GB"
+      }
+    }
+  ],
+  "unique_training_datasets": 100000,
+  "training_mode": "offline, sampling with replacement"
+}

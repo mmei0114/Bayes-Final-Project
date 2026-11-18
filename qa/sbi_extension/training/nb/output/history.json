@@ -1,0 +1,282 @@
+[
+  {
+    "step": 500,
+    "examples_seen": 512000,
+    "seconds": 67.81911665666848,
+    "train_nll": 9.395108339309692,
+    "train_ce": 0.4230772590637207,
+    "validation_nll": 7.30845832824707,
+    "validation_ce": 0.2595251649618149,
+    "examples_per_second": 7549.385451456367,
+    "gpu_memory": {
+      "current": 11175680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 1000,
+    "examples_seen": 1024000,
+    "seconds": 111.69835037272424,
+    "train_nll": 6.476369545936585,
+    "train_ce": 0.253286080211401,
+    "validation_nll": 5.894767343997955,
+    "validation_ce": 0.2329797949641943,
+    "examples_per_second": 11806.225762326234,
+    "gpu_memory": {
+      "current": 11303680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 1500,
+    "examples_seen": 1536000,
+    "seconds": 155.2963146371767,
+    "train_nll": 5.174219880104065,
+    "train_ce": 0.2409333864748478,
+    "validation_nll": 4.869075417518616,
+    "validation_ce": 0.22646290622651577,
+    "examples_per_second": 11861.979796514534,
+    "gpu_memory": {
+      "current": 11431680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 2000,
+    "examples_seen": 2048000,
+    "seconds": 198.81346104852855,
+    "train_nll": 4.439316299915314,
+    "train_ce": 0.2353090091049671,
+    "validation_nll": 3.9575783908367157,
+    "validation_ce": 0.22242710180580616,
+    "examples_per_second": 11881.631548641757,
+    "gpu_memory": {
+      "current": 11559680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 2500,
+    "examples_seen": 2560000,
+    "seconds": 242.6605960605666,
+    "train_nll": 3.8361426653862,
+    "train_ce": 0.23189568078517914,
+    "validation_nll": 3.5538602471351624,
+    "validation_ce": 0.2197749074548483,
+    "examples_per_second": 11877.371023037504,
+    "gpu_memory": {
+      "current": 11687680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 3000,
+    "examples_seen": 3072000,
+    "seconds": 286.1796319000423,
+    "train_nll": 3.3617951765060425,
+    "train_ce": 0.22942535895109176,
+    "validation_nll": 3.3074393272399902,
+    "validation_ce": 0.21772229112684727,
+    "examples_per_second": 11887.058805292898,
+    "gpu_memory": {
+      "current": 11815680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 3500,
+    "examples_seen": 3584000,
+    "seconds": 329.5402911575511,
+    "train_nll": 2.9611603083610536,
+    "train_ce": 0.2280759730041027,
+    "validation_nll": 2.749013274908066,
+    "validation_ce": 0.2168873678892851,
+    "examples_per_second": 11929.65710154436,
+    "gpu_memory": {
+      "current": 11943680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 4000,
+    "examples_seen": 4096000,
+    "seconds": 372.97715935017914,
+    "train_nll": 2.6155283308029174,
+    "train_ce": 0.2269443126320839,
+    "validation_nll": 2.692545711994171,
+    "validation_ce": 0.21577080339193344,
+    "examples_per_second": 11901.671888935602,
+    "gpu_memory": {
+      "current": 12071680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 4500,
+    "examples_seen": 4608000,
+    "seconds": 416.56106763053685,
+    "train_nll": 2.2977403614521026,
+    "train_ce": 0.22625765892863273,
+    "validation_nll": 2.194997638463974,
+    "validation_ce": 0.2146026063710451,
+    "examples_per_second": 11881.11675771411,
+    "gpu_memory": {
+      "current": 12199680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 5000,
+    "examples_seen": 5120000,
+    "seconds": 459.9200408188626,
+    "train_nll": 2.0049932601451874,
+    "train_ce": 0.22543495839834213,
+    "validation_nll": 2.1175788044929504,
+    "validation_ce": 0.2140694335103035,
+    "examples_per_second": 11929.544795123647,
+    "gpu_memory": {
+      "current": 12327680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 5500,
+    "examples_seen": 5632000,
+    "seconds": 503.3160210605711,
+    "train_nll": 1.7211039125919343,
+    "train_ce": 0.22471734887361527,
+    "validation_nll": 1.764529064297676,
+    "validation_ce": 0.21385426446795464,
+    "examples_per_second": 11913.272782465152,
+    "gpu_memory": {
+      "current": 12455680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 6000,
+    "examples_seen": 6144000,
+    "seconds": 546.7825260795653,
+    "train_nll": 1.475984360575676,
+    "train_ce": 0.22465299767255784,
+    "validation_nll": 1.7474701553583145,
+    "validation_ce": 0.21354234777390957,
+    "examples_per_second": 11922.632464499253,
+    "gpu_memory": {
+      "current": 12583680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 6500,
+    "examples_seen": 6656000,
+    "seconds": 590.2094374755397,
+    "train_nll": 1.2350219197273253,
+    "train_ce": 0.22368128618597985,
+    "validation_nll": 1.3410182446241379,
+    "validation_ce": 0.21340691484510899,
+    "examples_per_second": 11912.140765963208,
+    "gpu_memory": {
+      "current": 12711680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 7000,
+    "examples_seen": 7168000,
+    "seconds": 633.5581563971937,
+    "train_nll": 1.0465889806747437,
+    "train_ce": 0.22443276265263556,
+    "validation_nll": 1.1915227621793747,
+    "validation_ce": 0.21290658973157406,
+    "examples_per_second": 11930.882486962446,
+    "gpu_memory": {
+      "current": 12839680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 7500,
+    "examples_seen": 7680000,
+    "seconds": 677.2850270541385,
+    "train_nll": 0.8427217418551445,
+    "train_ce": 0.2231913576722145,
+    "validation_nll": 1.0346701592206955,
+    "validation_ce": 0.2126954048871994,
+    "examples_per_second": 11848.133778166273,
+    "gpu_memory": {
+      "current": 12967680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 8000,
+    "examples_seen": 8192000,
+    "seconds": 720.3512505535036,
+    "train_nll": 0.6522237715721131,
+    "train_ce": 0.2237361723780632,
+    "validation_nll": 0.8093492239713669,
+    "validation_ce": 0.2126832101494074,
+    "examples_per_second": 12008.66530899636,
+    "gpu_memory": {
+      "current": 13095680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 8500,
+    "examples_seen": 8704000,
+    "seconds": 763.7631530305371,
+    "train_nll": 0.5072209059149027,
+    "train_ce": 0.22350863456726075,
+    "validation_nll": 0.725690945982933,
+    "validation_ce": 0.21242120116949081,
+    "examples_per_second": 11916.50833188316,
+    "gpu_memory": {
+      "current": 13223680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 9000,
+    "examples_seen": 9216000,
+    "seconds": 807.0757171865553,
+    "train_nll": 0.3774374555721879,
+    "train_ce": 0.22323080903291703,
+    "validation_nll": 0.5621684547513723,
+    "validation_ce": 0.2122952938079834,
+    "examples_per_second": 11948.309618095947,
+    "gpu_memory": {
+      "current": 13351680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 9500,
+    "examples_seen": 9728000,
+    "seconds": 850.5843451414257,
+    "train_nll": 0.25583313466235996,
+    "train_ce": 0.2232566094994545,
+    "validation_nll": 0.4924679286777973,
+    "validation_ce": 0.2122628353536129,
+    "examples_per_second": 11886.690879239488,
+    "gpu_memory": {
+      "current": 13479680,
+      "peak": 1659999232
+    }
+  },
+  {
+    "step": 10000,
+    "examples_seen": 10240000,
+    "seconds": 893.7049996005371,
+    "train_nll": 0.17523891083151102,
+    "train_ce": 0.2233317570388317,
+    "validation_nll": 0.3606132585555315,
+    "validation_ce": 0.21220571175217628,
+    "examples_per_second": 11994.112653440234,
+    "gpu_memory": {
+      "current": 13607680,
+      "peak": 1659999232
+    }
+  }
+]

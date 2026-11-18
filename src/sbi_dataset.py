@@ -13,27 +13,32 @@ from sbi_model import prior_sample,unconstrain,generate,PRIOR,DESIGN,atomic_json
 
 
 def shard(task):
-    destination,index,size,seed=task;destination=Path(destination)
+    destination,index,size,seed,family=task;destination=Path(destination)
     path=destination/f'shard_{index:04d}.npz'
     if path.exists():return path.name
     rng=np.random.default_rng(np.random.SeedSequence([seed,index]))
-    p=prior_sample(rng,size);z=unconstrain(p).astype(np.float32);d=generate(rng,p)
+    p=prior_sample(rng,size);z=unconstrain(p).astype(np.float32);d=generate(rng,p,family)
+    y=d['y']
+    if family!='binary':
+        if np.min(y)<0:raise ValueError('Negative simulated count')
+        y=y.astype(np.min_scalar_type(int(y.max())))
     temp=path.with_suffix('.npz.tmp')
     with temp.open('wb') as f:
-        np.savez_compressed(f,y=d['y'],u=d['u'],theta=z,
+        np.savez_compressed(f,y=y,u=d['u'],theta=z,
                             beta=p['beta'],var=p['var'],pi=p['pi'])
     temp.replace(path)
     return path.name
 
 
-def create(output,split,size,seed,jobs,chunk=1000):
+def create(output,split,size,seed,jobs,chunk=1000,family='binary'):
     destination=Path(output)/split;destination.mkdir(parents=True,exist_ok=True)
     begin=time.monotonic()
     spec=dict(split=split,size=size,seed=seed,chunk=chunk,prior=PRIOR,design=DESIGN,
               simulator_sha256=hashlib.sha256(Path(__file__).with_name('sbi_model.py').read_bytes()).hexdigest())
+    if family!='binary':spec['family']=family
     if (destination/'spec.json').exists():assert json.loads((destination/'spec.json').read_text())==spec
     else:atomic_json(destination/'spec.json',spec)
-    tasks=[(str(destination),i,min(chunk,size-i*chunk),seed) for i in range((size+chunk-1)//chunk)]
+    tasks=[(str(destination),i,min(chunk,size-i*chunk),seed,family) for i in range((size+chunk-1)//chunk)]
     with ProcessPoolExecutor(max_workers=jobs) as pool:
         for name in pool.map(shard,tasks):print(split,name,flush=True)
     files={name:hashlib.sha256((destination/name).read_bytes()).hexdigest()
@@ -45,7 +50,10 @@ def create(output,split,size,seed,jobs,chunk=1000):
 if __name__=='__main__':
     ap=argparse.ArgumentParser();ap.add_argument('--output',type=Path,required=True)
     ap.add_argument('--size',type=int,default=100000);ap.add_argument('--jobs',type=int,default=6)
+    ap.add_argument('--family',choices=('binary','poisson','nb'),default='binary')
+    ap.add_argument('--calibration',type=int,default=128)
     args=ap.parse_args()
+    offset={'binary':0,'poisson':100000,'nb':200000}[args.family]
     for split,size,seed in (('train',args.size,20261318),('validation',512,20261418),
-                            ('calibration',128,20261518),('classifier',32,20261618)):
-        create(args.output,split,size,seed,args.jobs)
+                            ('calibration',args.calibration,20261518),('classifier',32,20261618)):
+        create(args.output,split,size,seed+offset,args.jobs,family=args.family)

@@ -1,0 +1,126 @@
+{
+  "family": "binary",
+  "gpus": [
+    {
+      "name": "/physical_device:GPU:0",
+      "details": {
+        "compute_capability": [
+          6,
+          0
+        ],
+        "device_name": "Tesla P100-SXM2-16GB"
+      }
+    }
+  ],
+  "selection": {
+    "best_npe_step": 9500,
+    "best_classifier_step": 10000,
+    "best_validation_nll": 3.368617296218872,
+    "best_validation_ce": 0.3919637128710747
+  },
+  "checkpoint_sha256": {
+    "npe": {
+      "state.data-00000-of-00001": "0db7bcafed79625fece39942406a3d9eb32380ada444ecd256fefbf280e2fee8",
+      "state.index": "97685abd41168b1290878f33394679e0aaa4a305de87f8eb91dc2467088331e3"
+    },
+    "classifier": {
+      "state.data-00000-of-00001": "5b18cd8a5289928403bb934b5ba7147b777be41f01ef01d3a87d628d85de5769",
+      "state.index": "3cf9bdc1e99a39340c0c88d44da3bd1e17ffc5c62cb5318a864925dd93da5f3d"
+    }
+  },
+  "draws": 1024,
+  "calibration_datasets": 500,
+  "calibration": {
+    "spec": {
+      "split": "calibration",
+      "size": 500,
+      "seed": 20263518,
+      "chunk": 1000,
+      "prior": {
+        "beta_normal_sd": 1.5,
+        "logvar_normal_mean": -0.6931471805599453,
+        "logvar_normal_sd": 0.7,
+        "variance_lower": 0.005,
+        "variance_upper": 5.0,
+        "dirichlet_alpha": [
+          2.0,
+          2.0,
+          2.0
+        ],
+        "intercept_order": "ascending",
+        "coefficient_support": "real, proper Normal prior; not ML optimization bounds"
+      },
+      "design": {
+        "n": 300,
+        "T": 20,
+        "K": 3,
+        "times": [
+          -1.0,
+          1.0
+        ],
+        "nb_size": 5.0
+      },
+      "simulator_sha256": "9cfd945ba7be669e02c6059c01b5a5cd7ac534756becc1a442e58f6433db8b81"
+    },
+    "files": {
+      "shard_0000.npz": "c2dacd8bee67bf2e6b13eb952c0a0add66b132348e9d33eeb7c1e5e4ffd2f3ed"
+    },
+    "seconds": 0.7420935286208987,
+    "status": "COMPLETE"
+  },
+  "conditional": {
+    "spec": {
+      "split": "classifier",
+      "size": 32,
+      "seed": 20261618,
+      "chunk": 1000,
+      "prior": {
+        "beta_normal_sd": 1.5,
+        "logvar_normal_mean": -0.6931471805599453,
+        "logvar_normal_sd": 0.7,
+        "variance_lower": 0.005,
+        "variance_upper": 5.0,
+        "dirichlet_alpha": [
+          2.0,
+          2.0,
+          2.0
+        ],
+        "intercept_order": "ascending",
+        "coefficient_support": "real, proper Normal prior; not ML optimization bounds"
+      },
+      "design": {
+        "n": 300,
+        "T": 20,
+        "K": 3,
+        "times": [
+          -1.0,
+          1.0
+        ],
+        "nb_size": 5.0
+      },
+      "simulator_sha256": "9cfd945ba7be669e02c6059c01b5a5cd7ac534756becc1a442e58f6433db8b81"
+    },
+    "files": {
+      "shard_0000.npz": "fef94862e84a9091227ae212a8ce554cc7011f59115281b1a5c0a341bc6c10a9"
+    },
+    "seconds": 0.08835898339748383,
+    "status": "COMPLETE"
+  },
+  "comparison_inputs_sha256": {
+    "baseline_0_data.npz": "fff846154971df751f9780e1b35b46ac256ecb34acab57466b00e3a81da53be5",
+    "baseline_1_data.npz": "f50b28125e5b9495ae33fb7533ee6d206997c43f70977a1d07dcd05c8ac33469",
+    "baseline_2_data.npz": "7b6644b21895c922ef5f42d7eb287391600310519a41e9146c8b60a10e880300",
+    "baseline_3_data.npz": "4718e00caddc2111cf315d127a299d498b83b8f8db0a983c4efd271a85d64258",
+    "baseline_4_data.npz": "af6c6135257975c84db88ef28dbf3cc21b42d817df72d9c7cb508b35073d5c42"
+  },
+  "restore_seconds": 1.7793083181604743,
+  "comparison_timing": "Warm per-dataset wall time, data already loaded; feature encoding, draws and classification included",
+  "comparison_seconds": [
+    0.47950529493391514,
+    0.5126867741346359,
+    0.4752665748819709,
+    0.4772867616266012,
+    0.47797886095941067
+  ],
+  "wall_seconds": 110.26382629014552
+}

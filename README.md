@@ -12,6 +12,8 @@
 
 本次代码、100000份无损训练数据、全部检查点及原始诊断已在本地 `cloud/received/runs/sbi_*` 保存，613个文件逐一通过SHA256校验。仓库保存精选检查点、独立校准输入、后验样本、数据生成协议及环境清单。见 [SBI数据索引](data/sbi_pilot/README.md) 和 [回传核验](qa/sbi_pilot/cloud_verification.json)。
 
+同日复用现有 P100 完成三类响应的 SBI 训练与推断。Poisson 和负二项各用 10 万份先验预测数据，训练各约 15 分钟。二元沿用预检权重。各族对 500 份独立数据做校准，并在原固定设计的 15 份数据上保存后验样本和分类概率。SBI 的平均 ARI 为 0.765、0.915、0.914，在这组数据上均低于三种经典方法。精简权重、预测和图表已在本地，完整数据与 GPU 输出另在矩池私有网盘逐包校验，允许释放服务器后继续下载。参数后验的同先验 MCMC 对照留在 CPU 阶段。见 [三类 SBI 记录](docs/sbi_extension.md) 和 [数据与恢复](data/sbi_extension/README.md)。
+
 正式实验为14个场景、70份不同模拟数据、155次拟合，每次3起点。QML 70/70、GVA 70/70、MCEM 15/15满足各自数值停止标准；28次参数边界、4次内部求解器历史非成功状态均保留并在报告中说明。每场景5次重复，结论限于基础版本；小Q增量停止不等于高精度似然最优。
 
 教师最新补充允许以整体似然的稳定性评价收敛，不强求每个参数都达到高精度稳定；另要求写清具体积分和抽样技术。该要求已记入 [任务清单](requirements.md)。正文已加入积分技术表，区分MCEM独立重要性抽样、观测似然的自适应GH、GVA的解析/GH期望，以及条件核验的联合独立MH。
@@ -32,6 +34,7 @@
 | [docs/sbi_plan.md](docs/sbi_plan.md)、[docs/sbi_references.md](docs/sbi_references.md)、[docs/sbi_pilot.md](docs/sbi_pilot.md) | SBI后续计划、已核对论文代码来源和本批冻结预检协议 |
 | [data/](data/README.md) | 已完成正式拟合、原始模拟数据、原始采样链、实际执行源码副本及SHA256，随仓库保存 |
 | [data/sbi_pilot/](data/sbi_pilot/README.md)、[qa/sbi_pilot/](qa/sbi_pilot/) | SBI预检输入、精选权重、后验样本、环境与审计 |
+| [data/sbi_extension/](data/sbi_extension/README.md)、[qa/sbi_extension/](qa/sbi_extension/) | 三族SBI数据协议、精简权重、比较样本以及原始运行恢复清单 |
 | [docs/reading_notes.md](docs/reading_notes.md) | 三篇课程论文阅读笔记；v1取舍与当前修订范围已区分 |
 | [requirements.md](requirements.md)、[Project.pdf](Project.pdf) | 老师任务清单、九问对应与原始要求 |
 | [scripts/collect_results.py](scripts/collect_results.py) | 从本地完整备份提取报告输入，逐文件核对，不运行实验 |
@@ -72,4 +75,4 @@ make report       # 双次XeLaTeX编译当前报告
 
 GitHub仓库当前公开。服务器连接配置、SSH私有目录、历史压缩包、重复工作树、编译缓存和逐页PNG预览由 `.gitignore` 排除，仍在本地保留。重新租用服务器时按 `cloud/config.env.example` 建立本机配置；正常阅读、检查和生成报告不需要服务器。
 
-维护约定：新增交付文件、实验批次或目录变更时同步更新相应README及校验清单。最近更新为2026-11-18，二元SBI预检已完成。
+维护约定：新增交付文件、实验批次或目录变更时同步更新相应README及校验清单。最近更新为2026-11-18，三族SBI的GPU工作已完成。

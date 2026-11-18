@@ -1,0 +1,22 @@
+{
+  "family": "nb",
+  "source_checkpoints": {
+    "npe": {
+      "state.data-00000-of-00001": "194ae85127bc5ab8f6cfec0780506465cf896a6dd5612874a0b030c64534734f",
+      "state.index": "509451d4608127b62f297f6c59bf86cb56c09ce0a3016717e654f9e06dadaf28"
+    },
+    "classifier": {
+      "state.data-00000-of-00001": "194ae85127bc5ab8f6cfec0780506465cf896a6dd5612874a0b030c64534734f",
+      "state.index": "509451d4608127b62f297f6c59bf86cb56c09ce0a3016717e654f9e06dadaf28"
+    }
+  },
+  "selection": {
+    "best_npe_step": 10000,
+    "best_classifier_step": 10000,
+    "best_validation_nll": 0.3606132585555315,
+    "best_validation_ce": 0.21220571175217628
+  },
+  "device": "CPU",
+  "max_parameter_sample_difference": 0.0,
+  "max_class_probability_difference": 0.0
+}

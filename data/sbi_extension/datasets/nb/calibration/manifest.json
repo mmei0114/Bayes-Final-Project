@@ -1,0 +1,39 @@
+{
+  "spec": {
+    "split": "calibration",
+    "size": 500,
+    "seed": 20461518,
+    "chunk": 1000,
+    "prior": {
+      "beta_normal_sd": 1.5,
+      "logvar_normal_mean": -0.6931471805599453,
+      "logvar_normal_sd": 0.7,
+      "variance_lower": 0.005,
+      "variance_upper": 5.0,
+      "dirichlet_alpha": [
+        2.0,
+        2.0,
+        2.0
+      ],
+      "intercept_order": "ascending",
+      "coefficient_support": "real, proper Normal prior; not ML optimization bounds"
+    },
+    "design": {
+      "n": 300,
+      "T": 20,
+      "K": 3,
+      "times": [
+        -1.0,
+        1.0
+      ],
+      "nb_size": 5.0
+    },
+    "simulator_sha256": "9cfd945ba7be669e02c6059c01b5a5cd7ac534756becc1a442e58f6433db8b81",
+    "family": "nb"
+  },
+  "files": {
+    "shard_0000.npz": "6d47f05a809411a4f997883da125163905262b0c715f420a36be3a5108695a79"
+  },
+  "seconds": 1.1808980721980333,
+  "status": "COMPLETE"
+}

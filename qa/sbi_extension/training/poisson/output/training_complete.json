@@ -1,0 +1,8 @@
+{
+  "reason": "step_budget",
+  "steps": 10000,
+  "seconds": 899.8654995337129,
+  "best_npe_step": 10000,
+  "best_classifier_step": 10000,
+  "calibration_not_used_for_selection": true
+}

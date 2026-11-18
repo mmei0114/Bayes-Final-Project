@@ -17,6 +17,9 @@
 | `remote_convergence.sh` | 补齐参数/观测似然逐轮轨迹，复用已完成的本地11项，仅计算剩余10项 |
 | `probe_convergence_env.py` | 用指定base环境读取依赖和CPU/内存信息 |
 | `remote_sbi_data.sh`、`remote_sbi_pilot.sh` | 二元SBI独立数据生成、GPU预检、训练和校准入口 |
+| `remote_sbi_count_data.sh`、`remote_sbi_count_train.sh` | Poisson、负二项的先验预测数据生成和训练 |
+| `remote_sbi_extension_predict.sh`、`remote_sbi_extension_summary.sh` | 三族固定设计预测与 CPU 汇总 |
+| `remote_sbi_extension_backup.sh` | 在实例写入结束后将扩展文件复制到用户的私有网盘并核对归档哈希 |
 | `probe_sbi_env.py`、`probe_sbi_download.py`、`download_sbi_wheels.py` | GPU运算、下载测速和依赖校验工具 |
 | `progress.py` | 通过 `manage.sh status` 只读显示各批次完成数、异常文件与活动检查点 |
 | `STATUS.md` | 本次接入、依赖安装、检查与回传的完成情况 |

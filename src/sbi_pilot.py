@@ -23,15 +23,20 @@ def configure():
     return [dict(name=g.name,details=tf.config.experimental.get_device_details(g)) for g in devices]
 
 
-def load_split(root,split):
+def load_split(root,split,keys=('y','u','theta')):
     root=Path(root)/split;manifest=json.loads((root/'manifest.json').read_text())
-    result={k:[] for k in ('y','u','theta')}
+    result={k:[] for k in keys}
     for name,sha in manifest['files'].items():
         path=root/name
         assert hashlib.sha256(path.read_bytes()).hexdigest()==sha,name
         with np.load(path) as data:
             for k in result:result[k].append(data[k])
     return {k:np.concatenate(v) for k,v in result.items()},manifest
+
+
+def response_features(y,family):
+    # Cast before log1p so per-shard lossless integer storage does not affect precision.
+    return features(y if family=='binary' else y.astype(np.float32),family)
 
 
 def gradient_step(model,optimizer,loss,tape):
@@ -101,7 +106,7 @@ def save_state(output,step,checkpoint,history,configuration):
 
 def train(args,gpus):
     output=args.output;output.mkdir(parents=True,exist_ok=True)
-    config=dict(stage='pilot, not formal comparison',prior=PRIOR,design=DESIGN,
+    config=dict(stage='pilot, not formal comparison',prior=PRIOR,design=DESIGN,family=args.family,
                 framework='BayesFlow 1.1.6; TF 2.15.1, paper-compatible legacy implementation',
                 network_seed=20261118,training_seed=20261818,max_steps=args.steps,
                 max_seconds=args.minutes*60.,batch_size=args.batch,validation_every=500,
@@ -113,12 +118,13 @@ def train(args,gpus):
     if (output/'configuration.json').exists():
         if not args.resume:raise FileExistsError('Use a new run directory or --resume')
         previous=json.loads((output/'configuration.json').read_text())
-        for key in ('prior','design','sources','batch_size','max_steps','max_seconds','training_seed','network_seed'):
+        for key in ('prior','design','family','sources','batch_size','max_steps','max_seconds','training_seed','network_seed'):
             assert previous[key]==config[key],key
-    train_data,train_manifest=load_split(args.data,'train');val,_=load_split(args.data,'validation')
+    train_data,train_manifest=load_split(args.data,'train');val,val_manifest=load_split(args.data,'validation')
     config['unique_training_datasets']=len(train_data['theta'])
     assert train_manifest['spec']['prior']==PRIOR and train_manifest['spec']['design']==DESIGN
     assert train_manifest['spec']['simulator_sha256']==config['sources']['sbi_model.py']
+    assert all(m['spec'].get('family','binary')==args.family for m in (train_manifest,val_manifest))
     atomic_json(output/'configuration.json',config)
     # Fixed preprocessing from training targets, no validation/calibration/test fitting.
     mean=train_data['theta'].mean(0,dtype=np.float64).astype(np.float32)
@@ -126,7 +132,7 @@ def train(args,gpus):
     assert np.min(scale)>.01
     atomic_json(output/'standardization.json',dict(mean=mean.tolist(),scale=scale.tolist(),from_split='train'))
     train_theta=(train_data['theta']-mean)/scale
-    val_theta=(val['theta']-mean)/scale;val_features=features(val['y'])
+    val_theta=(val['theta']-mean)/scale;val_features=response_features(val['y'],args.family)
     posterior,classifier=make_models(config['network_seed'])
     # Verify person-level permutation invariance before fitting, not time-point shuffling.
     probe=val_features[:4];permutation=np.random.default_rng(20262118).permutation(300)
@@ -140,8 +146,15 @@ def train(args,gpus):
     step_var=tf.Variable(0,dtype=tf.int64,trainable=False)
     checkpoint=tf.train.Checkpoint(posterior=posterior,classifier=classifier,
                                   optimizer_npe=opt_npe,optimizer_classifier=opt_cls,step=step_var)
+    # Transfer compact count arrays and construct the 60 features on the GPU.
+    design_features=tf.constant(val_features[0,0,20:],dtype=tf.float32)
     @tf.function(reduce_retracing=True)
     def update(x,theta,u):
+        if args.family!='binary':
+            with tf.device('/GPU:0'):
+                counts=tf.math.log1p(tf.cast(x,tf.float32))
+                design=tf.broadcast_to(design_features,[tf.shape(x)[0],tf.shape(x)[1],40])
+                x=tf.concat([counts,design],axis=-1)
         with tf.GradientTape() as tape:
             npe=tf.reduce_mean(posterior.nll(theta,x,True))
         g1=gradient_step(posterior,opt_npe,npe,tape)
@@ -170,8 +183,12 @@ def train(args,gpus):
         for step in range(start_step+1,args.steps+1):
             rng=np.random.default_rng(np.random.SeedSequence([config['training_seed'],step]))
             indices=rng.integers(len(train_theta),size=args.batch)
-            yield features(train_data['y'][indices]),train_theta[indices],train_data['u'][indices].astype(np.int32)
-    signature=(tf.TensorSpec((args.batch,300,60),tf.float32),
+            y=train_data['y'][indices]
+            yield (response_features(y,args.family) if args.family=='binary' else y,
+                   train_theta[indices],train_data['u'][indices].astype(np.int32))
+    response_shape=(args.batch,300,60 if args.family=='binary' else 20)
+    response_dtype=tf.float32 if args.family=='binary' else tf.as_dtype(train_data['y'].dtype)
+    signature=(tf.TensorSpec(response_shape,response_dtype),
                tf.TensorSpec((args.batch,11),tf.float32),tf.TensorSpec((args.batch,300),tf.int32))
     dataset=tf.data.Dataset.from_generator(batch_generator,output_signature=signature).prefetch(4)
     begin=time.monotonic();window=time.monotonic();running=[];reason='step_budget'
@@ -212,7 +229,12 @@ if __name__=='__main__':
     ap.add_argument('--steps',type=int,default=10000);ap.add_argument('--batch',type=int,default=256)
     ap.add_argument('--minutes',type=float,default=90.);ap.add_argument('--toy-only',action='store_true')
     ap.add_argument('--resume',action='store_true')
+    ap.add_argument('--family',choices=('binary','poisson','nb'),default='binary')
+    ap.add_argument('--validated-toy',type=Path,help='Reuse a successful unchanged-network interface check')
     args=ap.parse_args();args.output.mkdir(parents=True,exist_ok=True);gpu=configure()
-    if not args.resume:analytic_toy(args.output)
+    if args.validated_toy is not None:
+        toy=json.loads(args.validated_toy.read_text());assert toy['passed']
+        atomic_json(args.output/'toy_check.json',dict(toy,reused_from=str(args.validated_toy)))
+    elif not args.resume:analytic_toy(args.output)
     else:assert json.loads((args.output/'toy_check.json').read_text())['passed']
     if not args.toy_only:train(args,gpu)

@@ -1,0 +1,166 @@
+{
+  "prior": {
+    "beta_normal_sd": 1.5,
+    "logvar_normal_mean": -0.6931471805599453,
+    "logvar_normal_sd": 0.7,
+    "variance_lower": 0.005,
+    "variance_upper": 5.0,
+    "dirichlet_alpha": [
+      2.0,
+      2.0,
+      2.0
+    ],
+    "intercept_order": "ascending",
+    "coefficient_support": "real, proper Normal prior; not ML optimization bounds"
+  },
+  "design": {
+    "n": 300,
+    "T": 20,
+    "K": 3,
+    "times": [
+      -1.0,
+      1.0
+    ],
+    "nb_size": 5.0
+  },
+  "transform_roundtrip_max_error": 1.7763568394002505e-15,
+  "inverse_log_jacobian_max_error": 1.3492318373664602e-10,
+  "moment_checks": {
+    "binary": {
+      "class_count_chisquare": 0.022333333333333334,
+      "per_cluster": [
+        {
+          "cluster": 0,
+          "mean_error": 0.003802077464316822,
+          "covariance_error": 0.0005845394440890366
+        },
+        {
+          "cluster": 1,
+          "mean_error": 0.0002876791310250093,
+          "covariance_error": 0.000615319552097808
+        },
+        {
+          "cluster": 2,
+          "mean_error": 0.0008494071933010661,
+          "covariance_error": 0.001130276727547029
+        }
+      ]
+    },
+    "poisson": {
+      "class_count_chisquare": 0.35436333333333336,
+      "per_cluster": [
+        {
+          "cluster": 0,
+          "mean_error": 0.00024632815787373197,
+          "covariance_error": 0.00013739324347034065
+        },
+        {
+          "cluster": 1,
+          "mean_error": 0.002381516172254683,
+          "covariance_error": 0.15151089792882555
+        },
+        {
+          "cluster": 2,
+          "mean_error": 0.012335053690605946,
+          "covariance_error": 0.03883734294695884
+        }
+      ]
+    },
+    "nb": {
+      "class_count_chisquare": 0.6864533333333334,
+      "per_cluster": [
+        {
+          "cluster": 0,
+          "mean_error": 0.0037143792619740434,
+          "covariance_error": 0.007397140183058232
+        },
+        {
+          "cluster": 1,
+          "mean_error": 0.001068647349123042,
+          "covariance_error": 0.12296622466162122
+        },
+        {
+          "cluster": 2,
+          "mean_error": 0.037574970171007305,
+          "covariance_error": 3.4334671640795005
+        }
+      ]
+    }
+  },
+  "prior_predictive": {
+    "binary": {
+      "response_quantiles": [
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dataset_max_quantiles": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "all_zero_trajectory_fraction": 0.030533854166666666,
+      "all_one_trajectory_fraction": 0.030696614583333334,
+      "minimum_cluster_count_quantiles": [
+        0.0,
+        16.0,
+        48.0,
+        99.0
+      ]
+    },
+    "poisson": {
+      "response_quantiles": [
+        0.0,
+        1.0,
+        12.0,
+        98.0,
+        463.0,
+        10449.0
+      ],
+      "dataset_max_quantiles": [
+        103.0,
+        762.7000000000012,
+        5506.829999999994,
+        10449.0
+      ],
+      "all_zero_trajectory_fraction": 0.027376302083333335,
+      "all_one_trajectory_fraction": 0.0,
+      "minimum_cluster_count_quantiles": [
+        0.0,
+        17.0,
+        47.0,
+        93.0
+      ]
+    },
+    "nb": {
+      "response_quantiles": [
+        0.0,
+        1.0,
+        11.0,
+        99.0,
+        489.0,
+        33482.0
+      ],
+      "dataset_max_quantiles": [
+        143.0,
+        1070.000000000001,
+        9644.899999999989,
+        33482.0
+      ],
+      "all_zero_trajectory_fraction": 0.028268229166666665,
+      "all_one_trajectory_fraction": 0.0,
+      "minimum_cluster_count_quantiles": [
+        0.0,
+        17.0,
+        46.5,
+        98.0
+      ]
+    }
+  },
+  "seed": 20261219,
+  "passed": true
+}

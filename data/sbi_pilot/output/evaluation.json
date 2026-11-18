@@ -1,0 +1,527 @@
+{
+  "stage": "pilot only; no full parameter-posterior MCMC reference yet",
+  "datasets": 128,
+  "draws": 512,
+  "names": [
+    "beta1_intercept",
+    "beta1_slope",
+    "beta2_intercept",
+    "beta2_slope",
+    "beta3_intercept",
+    "beta3_slope",
+    "D1",
+    "D2",
+    "D3",
+    "pi1",
+    "pi2",
+    "pi3"
+  ],
+  "coverage_95": [
+    0.9453125,
+    0.9765625,
+    0.9453125,
+    0.9375,
+    0.96875,
+    0.9296875,
+    0.9609375,
+    0.9140625,
+    0.9296875,
+    0.953125,
+    0.9375,
+    0.9296875
+  ],
+  "coverage_50": [
+    0.4921875,
+    0.59375,
+    0.546875,
+    0.453125,
+    0.546875,
+    0.5234375,
+    0.5,
+    0.3984375,
+    0.4453125,
+    0.5625,
+    0.6015625,
+    0.4921875
+  ],
+  "prior_scaled_RMSE": [
+    0.3607125148664862,
+    0.44726801578869685,
+    0.5474165279302671,
+    0.723272399805846,
+    0.3540471839888915,
+    0.48782158536339343,
+    0.8872799366917637,
+    0.9903071484756271,
+    0.8721262156222396,
+    0.70968507729273,
+    0.885336317575565,
+    0.9143087290173812
+  ],
+  "contraction": [
+    0.8366750216711378,
+    0.6424183816126171,
+    0.7204890559608892,
+    0.486433623755811,
+    0.8607350453233863,
+    0.767909781886205,
+    -0.06618611949318409,
+    0.12956785063293752,
+    0.09406774908605398,
+    0.3839729254960035,
+    0.13581489153184156,
+    0.28142436049745956
+  ],
+  "marginal_rank_histograms": [
+    [
+      7,
+      7,
+      8,
+      8,
+      9,
+      10,
+      6,
+      6,
+      5,
+      7,
+      13,
+      7,
+      10,
+      6,
+      12,
+      7
+    ],
+    [
+      4,
+      9,
+      3,
+      5,
+      6,
+      12,
+      10,
+      7,
+      10,
+      11,
+      9,
+      11,
+      12,
+      8,
+      5,
+      6
+    ],
+    [
+      7,
+      2,
+      8,
+      5,
+      11,
+      6,
+      9,
+      9,
+      13,
+      6,
+      10,
+      6,
+      5,
+      11,
+      11,
+      9
+    ],
+    [
+      12,
+      11,
+      10,
+      6,
+      5,
+      8,
+      6,
+      5,
+      14,
+      9,
+      8,
+      5,
+      7,
+      9,
+      8,
+      5
+    ],
+    [
+      5,
+      12,
+      4,
+      7,
+      5,
+      17,
+      9,
+      7,
+      7,
+      10,
+      5,
+      10,
+      9,
+      5,
+      5,
+      11
+    ],
+    [
+      8,
+      6,
+      6,
+      9,
+      10,
+      12,
+      6,
+      9,
+      9,
+      6,
+      9,
+      6,
+      6,
+      6,
+      10,
+      10
+    ],
+    [
+      8,
+      9,
+      8,
+      9,
+      11,
+      5,
+      7,
+      7,
+      7,
+      8,
+      7,
+      12,
+      8,
+      5,
+      12,
+      5
+    ],
+    [
+      11,
+      8,
+      7,
+      12,
+      8,
+      6,
+      5,
+      5,
+      4,
+      8,
+      7,
+      8,
+      12,
+      7,
+      6,
+      14
+    ],
+    [
+      8,
+      12,
+      6,
+      9,
+      6,
+      6,
+      6,
+      10,
+      6,
+      9,
+      7,
+      7,
+      9,
+      10,
+      10,
+      7
+    ],
+    [
+      9,
+      2,
+      7,
+      6,
+      8,
+      9,
+      2,
+      9,
+      10,
+      7,
+      13,
+      15,
+      9,
+      7,
+      9,
+      6
+    ],
+    [
+      12,
+      2,
+      4,
+      7,
+      10,
+      15,
+      11,
+      7,
+      9,
+      5,
+      12,
+      8,
+      6,
+      5,
+      8,
+      7
+    ],
+    [
+      9,
+      9,
+      7,
+      12,
+      8,
+      4,
+      10,
+      6,
+      17,
+      7,
+      5,
+      7,
+      4,
+      7,
+      8,
+      8
+    ]
+  ],
+  "sbc_interpretation": "128 held-out datasets; pointwise histograms have limited power, not proof of correctness",
+  "posterior_cluster_brier": 0.43445161154761697,
+  "posterior_cluster_cross_entropy": 0.7180311428755501,
+  "label_accuracy": 0.6701041666666666,
+  "conditional_classifier": {
+    "datasets": 32,
+    "probability_RMSE": 0.02387277252861431,
+    "average_KL_from_quadrature": 0.003085669570792468,
+    "argmax_agreement": 0.9789583333333334,
+    "quadrature_checks": [
+      {
+        "loglik_difference": 4.547473508864641e-13,
+        "max_responsibility_difference": 1.6653345369377348e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 1.5543122344752192e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 1.6653345369377348e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 2.7755575615628914e-15
+      },
+      {
+        "loglik_difference": 4.547473508864641e-13,
+        "max_responsibility_difference": 1.3322676295501878e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 1.7763568394002505e-15
+      },
+      {
+        "loglik_difference": 4.547473508864641e-13,
+        "max_responsibility_difference": 2.1094237467877974e-15
+      },
+      {
+        "loglik_difference": 9.094947017729282e-13,
+        "max_responsibility_difference": 2.3314683517128287e-15
+      },
+      {
+        "loglik_difference": 4.547473508864641e-13,
+        "max_responsibility_difference": 1.9984014443252818e-15
+      },
+      {
+        "loglik_difference": 4.547473508864641e-13,
+        "max_responsibility_difference": 1.7763568394002505e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 1.7763568394002505e-15
+      },
+      {
+        "loglik_difference": 4.547473508864641e-13,
+        "max_responsibility_difference": 1.7763568394002505e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 1.7763568394002505e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 1.887379141862766e-15
+      },
+      {
+        "loglik_difference": 4.547473508864641e-13,
+        "max_responsibility_difference": 1.7208456881689926e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 1.4988010832439613e-15
+      },
+      {
+        "loglik_difference": 4.547473508864641e-13,
+        "max_responsibility_difference": 2.1094237467877974e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 1.3322676295501878e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 2.3314683517128287e-15
+      },
+      {
+        "loglik_difference": 4.547473508864641e-13,
+        "max_responsibility_difference": 1.5543122344752192e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 1.7763568394002505e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 1.5543122344752192e-15
+      },
+      {
+        "loglik_difference": 4.547473508864641e-13,
+        "max_responsibility_difference": 1.7208456881689926e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 1.4432899320127035e-15
+      },
+      {
+        "loglik_difference": 4.547473508864641e-13,
+        "max_responsibility_difference": 1.6653345369377348e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 1.5543122344752192e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 1.7763568394002505e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 1.6653345369377348e-15
+      },
+      {
+        "loglik_difference": 4.547473508864641e-13,
+        "max_responsibility_difference": 1.7763568394002505e-15
+      },
+      {
+        "loglik_difference": 4.547473508864641e-13,
+        "max_responsibility_difference": 2.220446049250313e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 2.9976021664879227e-15
+      },
+      {
+        "loglik_difference": 0.0,
+        "max_responsibility_difference": 2.6645352591003757e-15
+      }
+    ]
+  },
+  "posterior_predictive": {
+    "observed_mean_by_time": [
+      0.8233333333333334,
+      0.8433333333333334,
+      0.8566666666666667,
+      0.8166666666666667,
+      0.8366666666666667,
+      0.83,
+      0.82,
+      0.8366666666666667,
+      0.83,
+      0.8,
+      0.83,
+      0.84,
+      0.8133333333333334,
+      0.79,
+      0.79,
+      0.79,
+      0.8,
+      0.77,
+      0.73,
+      0.7466666666666667
+    ],
+    "replicated_mean_by_time_quantiles": [
+      [
+        0.7671666666666667,
+        0.7676666666666667,
+        0.7866666666666666,
+        0.7771666666666667,
+        0.7838333333333333,
+        0.761,
+        0.7843333333333333,
+        0.7833333333333333,
+        0.7766666666666666,
+        0.79,
+        0.7766666666666666,
+        0.78,
+        0.7666666666666667,
+        0.7638333333333334,
+        0.7443333333333333,
+        0.74,
+        0.7171666666666666,
+        0.7105,
+        0.6886666666666666,
+        0.6833333333333333
+      ],
+      [
+        0.8183333333333334,
+        0.8266666666666667,
+        0.8266666666666667,
+        0.8233333333333334,
+        0.8266666666666667,
+        0.8233333333333334,
+        0.83,
+        0.8216666666666667,
+        0.8266666666666667,
+        0.83,
+        0.8183333333333334,
+        0.8166666666666667,
+        0.8133333333333334,
+        0.8,
+        0.7866666666666666,
+        0.7833333333333333,
+        0.7716666666666667,
+        0.76,
+        0.7466666666666667,
+        0.73
+      ],
+      [
+        0.869,
+        0.8661666666666666,
+        0.8679999999999999,
+        0.8694999999999999,
+        0.8666666666666667,
+        0.8684999999999999,
+        0.8566666666666667,
+        0.8761666666666666,
+        0.8628333333333332,
+        0.8666666666666667,
+        0.8528333333333333,
+        0.849,
+        0.84,
+        0.8366666666666667,
+        0.8328333333333333,
+        0.82,
+        0.8161666666666666,
+        0.7995,
+        0.7995,
+        0.7795
+      ]
+    ]
+  },
+  "seconds": 23.533988060429692,
+  "original_formal_test_data_not_read": true
+}

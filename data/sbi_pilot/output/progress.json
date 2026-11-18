@@ -1,0 +1,18 @@
+{
+  "step": 10000,
+  "checkpoint": "checkpoint_010000",
+  "latest": {
+    "step": 10000,
+    "examples_seen": 10240000,
+    "seconds": 2076.9814074635506,
+    "train_nll": 2.8502873520851137,
+    "train_ce": 0.3952424224615097,
+    "validation_nll": 3.3819779455661774,
+    "validation_ce": 0.3919637128710747,
+    "examples_per_second": 4895.558693514631,
+    "gpu_memory": {
+      "current": 17241344,
+      "peak": 1672014080
+    }
+  }
+}

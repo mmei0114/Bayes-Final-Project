@@ -1,0 +1,355 @@
+2026-11-18 11:33:40.135718: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-11-18 11:33:40.135819: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-11-18 11:33:40.137605: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-11-18 11:33:41.087693: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+{
+  "prior": {
+    "beta_normal_sd": 1.5,
+    "logvar_normal_mean": -0.6931471805599453,
+    "logvar_normal_sd": 0.7,
+    "variance_lower": 0.005,
+    "variance_upper": 5.0,
+    "dirichlet_alpha": [
+      2.0,
+      2.0,
+      2.0
+    ],
+    "intercept_order": "ascending",
+    "coefficient_support": "real, proper Normal prior; not ML optimization bounds"
+  },
+  "design": {
+    "n": 300,
+    "T": 20,
+    "K": 3,
+    "times": [
+      -1.0,
+      1.0
+    ],
+    "nb_size": 5.0
+  },
+  "transform_roundtrip_max_error": 1.7763568394002505e-15,
+  "inverse_log_jacobian_max_error": 1.49000811688893e-10,
+  "moment_checks": {
+    "binary": {
+      "class_count_chisquare": 0.022333333333333334,
+      "per_cluster": [
+        {
+          "cluster": 0,
+          "mean_error": 0.0038020774643166,
+          "covariance_error": 0.0005845394440887157
+        },
+        {
+          "cluster": 1,
+          "mean_error": 0.0002876791310248983,
+          "covariance_error": 0.0006153195520979642
+        },
+        {
+          "cluster": 2,
+          "mean_error": 0.0008494071933011771,
+          "covariance_error": 0.0011302767275471887
+        }
+      ]
+    },
+    "poisson": {
+      "class_count_chisquare": 0.35436333333333336,
+      "per_cluster": [
+        {
+          "cluster": 0,
+          "mean_error": 0.000246328157873954,
+          "covariance_error": 0.00013739324347070148
+        },
+        {
+          "cluster": 1,
+          "mean_error": 0.002381516172254683,
+          "covariance_error": 0.15151089792882555
+        },
+        {
+          "cluster": 2,
+          "mean_error": 0.012335053690605946,
+          "covariance_error": 0.03883734294695884
+        }
+      ]
+    },
+    "nb": {
+      "class_count_chisquare": 0.6864533333333334,
+      "per_cluster": [
+        {
+          "cluster": 0,
+          "mean_error": 0.0037143792619738214,
+          "covariance_error": 0.00739714018305862
+        },
+        {
+          "cluster": 1,
+          "mean_error": 0.001068647349123042,
+          "covariance_error": 0.12296622466162122
+        },
+        {
+          "cluster": 2,
+          "mean_error": 0.037574970171007305,
+          "covariance_error": 3.4334671640795023
+        }
+      ]
+    }
+  },
+  "prior_predictive": {
+    "binary": {
+      "response_quantiles": [
+        0.0,
+        0.0,
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "dataset_max_quantiles": [
+        1.0,
+        1.0,
+        1.0,
+        1.0
+      ],
+      "all_zero_trajectory_fraction": 0.030533854166666666,
+      "all_one_trajectory_fraction": 0.030696614583333334,
+      "minimum_cluster_count_quantiles": [
+        0.0,
+        16.0,
+        48.0,
+        99.0
+      ]
+    },
+    "poisson": {
+      "response_quantiles": [
+        0.0,
+        1.0,
+        12.0,
+        98.0,
+        463.0,
+        10449.0
+      ],
+      "dataset_max_quantiles": [
+        103.0,
+        762.7000000000012,
+        5506.829999999994,
+        10449.0
+      ],
+      "all_zero_trajectory_fraction": 0.027376302083333335,
+      "all_one_trajectory_fraction": 0.0,
+      "minimum_cluster_count_quantiles": [
+        0.0,
+        17.0,
+        47.0,
+        93.0
+      ]
+    },
+    "nb": {
+      "response_quantiles": [
+        0.0,
+        1.0,
+        11.0,
+        99.0,
+        489.0,
+        33482.0
+      ],
+      "dataset_max_quantiles": [
+        143.0,
+        1070.000000000001,
+        9644.899999999989,
+        33482.0
+      ],
+      "all_zero_trajectory_fraction": 0.028268229166666665,
+      "all_one_trajectory_fraction": 0.0,
+      "minimum_cluster_count_quantiles": [
+        0.0,
+        17.0,
+        46.5,
+        98.0
+      ]
+    }
+  },
+  "seed": 20261219,
+  "passed": true
+}
+2026-11-18 11:33:47.778743: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-11-18 11:33:47.778831: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-11-18 11:33:47.780623: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-11-18 11:33:48.733465: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1794972848.537662     805 device_compiler.h:186] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+{'batch': 128, 'steps': 20, 'seconds': 0.6649039825424552, 'examples_per_second': 3850.179976680377, 'gpu_memory': {'current': 26668288, 'peak': 208640000}}
+{'batch': 256, 'steps': 20, 'seconds': 0.6917284671217203, 'examples_per_second': 7401.748291933541, 'gpu_memory': {'current': 70098688, 'peak': 430656256}}
+{'batch': 512, 'steps': 20, 'seconds': 0.8873774465173483, 'examples_per_second': 11539.62165726488, 'gpu_memory': {'current': 146683648, 'peak': 866582784}}
+{'batch': 1024, 'steps': 20, 'seconds': 1.4821126395836473, 'examples_per_second': 13818.113045546395, 'gpu_memory': {'current': 283852544, 'peak': 1754977536}}
+2026-11-18 11:35:46.498967: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-11-18 11:35:46.499059: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-11-18 11:35:46.500860: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-11-18 11:35:47.445159: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+I0000 00:00:1794972960.682974    9631 device_compiler.h:186] Compiled cluster using XLA!  This line is logged at most once for the lifetime of the process.
+toy {'step': 250, 'nll': -0.12541839480400085}
+toy {'step': 500, 'nll': -0.1123567670583725}
+toy {'step': 750, 'nll': -0.23937717080116272}
+toy {'step': 1000, 'nll': -0.2661481499671936}
+toy {'step': 1250, 'nll': -0.11949951201677322}
+toy {'step': 1500, 'nll': -0.26171374320983887}
+toy {'step': 1750, 'nll': -0.21276915073394775}
+toy {'step': 2000, 'nll': -0.2924038767814636}
+{
+  "steps": 2000,
+  "seed": 20261718,
+  "seconds": 64.02499455213547,
+  "posterior_mean_RMSE_in_exact_SD": 0.09347853840889067,
+  "median_variance_ratio": 1.0037009716033936,
+  "coverage_95": 0.96,
+  "flow_roundtrip_max_error": 5.136766789703984e-07,
+  "reload_draw_max_error": 0.0,
+  "thresholds": {
+    "mean_RMSE_SD": 0.5,
+    "median_variance_ratio": [
+      0.7,
+      1.3
+    ],
+    "coverage": [
+      0.89,
+      0.99
+    ]
+  },
+  "passed": true,
+  "losses": [
+    {
+      "step": 250,
+      "nll": -0.12541839480400085
+    },
+    {
+      "step": 500,
+      "nll": -0.1123567670583725
+    },
+    {
+      "step": 750,
+      "nll": -0.23937717080116272
+    },
+    {
+      "step": 1000,
+      "nll": -0.2661481499671936
+    },
+    {
+      "step": 1250,
+      "nll": -0.11949951201677322
+    },
+    {
+      "step": 1500,
+      "nll": -0.26171374320983887
+    },
+    {
+      "step": 1750,
+      "nll": -0.21276915073394775
+    },
+    {
+      "step": 2000,
+      "nll": -0.2924038767814636
+    }
+  ]
+}
+{"step": 500, "examples_seen": 512000, "seconds": 125.32859559636563, "train_nll": 9.901759437561035, "train_ce": 0.5163891001343727, "validation_nll": 8.203726053237915, "validation_ce": 0.4211101531982422, "examples_per_second": 4085.229781049818, "gpu_memory": {"current": 14809344, "peak": 1668581888}}
+{"step": 1000, "examples_seen": 1024000, "seconds": 227.06245438661426, "train_nll": 7.193819367408753, "train_ce": 0.41542199337482455, "validation_nll": 7.008298397064209, "validation_ce": 0.4040098413825035, "examples_per_second": 5057.527849116185, "gpu_memory": {"current": 14937344, "peak": 1668581888}}
+{"step": 1500, "examples_seen": 1536000, "seconds": 328.982802266255, "train_nll": 6.330421376228332, "train_ce": 0.4054402009248734, "validation_nll": 6.085875511169434, "validation_ce": 0.3995146378874779, "examples_per_second": 5055.02975501709, "gpu_memory": {"current": 15065344, "peak": 1668581888}}
+{"step": 2000, "examples_seen": 2048000, "seconds": 429.76680173445493, "train_nll": 5.605163433074951, "train_ce": 0.4027213676571846, "validation_nll": 5.859939515590668, "validation_ce": 0.39738813415169716, "examples_per_second": 5112.106282617059, "gpu_memory": {"current": 15193344, "peak": 1671203840}}
+{"step": 2500, "examples_seen": 2560000, "seconds": 530.0610892139375, "train_nll": 5.172446147918701, "train_ce": 0.40072190457582474, "validation_nll": 5.3022244572639465, "validation_ce": 0.3961500935256481, "examples_per_second": 5136.404492781912, "gpu_memory": {"current": 15321344, "peak": 1671566848}}
+{"step": 3000, "examples_seen": 3072000, "seconds": 630.5997825330123, "train_nll": 4.827901315689087, "train_ce": 0.3994905513525009, "validation_nll": 5.228477656841278, "validation_ce": 0.3951833099126816, "examples_per_second": 5123.419329868327, "gpu_memory": {"current": 15449344, "peak": 1671566848}}
+{"step": 3500, "examples_seen": 3584000, "seconds": 732.3050115257502, "train_nll": 4.532501162528992, "train_ce": 0.3987185852527618, "validation_nll": 4.774930357933044, "validation_ce": 0.3944999910891056, "examples_per_second": 5064.287497494636, "gpu_memory": {"current": 15577344, "peak": 1671566848}}
+{"step": 4000, "examples_seen": 4096000, "seconds": 834.564867564477, "train_nll": 4.2684033751487735, "train_ce": 0.3980811053514481, "validation_nll": 4.724007546901703, "validation_ce": 0.3939858265221119, "examples_per_second": 5038.369033993849, "gpu_memory": {"current": 15705344, "peak": 1671566848}}
+{"step": 4500, "examples_seen": 4608000, "seconds": 937.4095143740997, "train_nll": 4.063832717895508, "train_ce": 0.3978216773867607, "validation_nll": 4.347232490777969, "validation_ce": 0.3936156816780567, "examples_per_second": 5007.963260473912, "gpu_memory": {"current": 15833344, "peak": 1671566848}}
+{"step": 5000, "examples_seen": 5120000, "seconds": 1040.827555257827, "train_nll": 3.8889527287483214, "train_ce": 0.39732048535346987, "validation_nll": 4.200230449438095, "validation_ce": 0.3932102434337139, "examples_per_second": 4983.8296223954585, "gpu_memory": {"current": 15961344, "peak": 1671566848}}
+{"step": 5500, "examples_seen": 5632000, "seconds": 1143.3991555040702, "train_nll": 3.7256793937683104, "train_ce": 0.39674681240320203, "validation_nll": 4.113006591796875, "validation_ce": 0.39309240877628326, "examples_per_second": 5022.404033218011, "gpu_memory": {"current": 16089344, "peak": 1671566848}}
+{"step": 6000, "examples_seen": 6144000, "seconds": 1245.2499506883323, "train_nll": 3.5888632445335387, "train_ce": 0.3965208764076233, "validation_nll": 3.954172819852829, "validation_ce": 0.39269790425896645, "examples_per_second": 5057.754679200592, "gpu_memory": {"current": 16217344, "peak": 1671566848}}
+{"step": 6500, "examples_seen": 6656000, "seconds": 1348.0374534036964, "train_nll": 3.463122103214264, "train_ce": 0.3963238612413406, "validation_nll": 3.83487069606781, "validation_ce": 0.3927357457578182, "examples_per_second": 5011.735881439407, "gpu_memory": {"current": 16345344, "peak": 1672014080}}
+{"step": 7000, "examples_seen": 7168000, "seconds": 1451.6328425770625, "train_nll": 3.345542706489563, "train_ce": 0.39622596430778506, "validation_nll": 3.7388050854206085, "validation_ce": 0.3925185017287731, "examples_per_second": 4988.264831284597, "gpu_memory": {"current": 16473344, "peak": 1672014080}}
+{"step": 7500, "examples_seen": 7680000, "seconds": 1557.6372844362631, "train_nll": 3.240563283443451, "train_ce": 0.39609763914346696, "validation_nll": 3.73421847820282, "validation_ce": 0.3923562578856945, "examples_per_second": 4859.067966132093, "gpu_memory": {"current": 16601344, "peak": 1672014080}}
+{"step": 8000, "examples_seen": 8192000, "seconds": 1660.777996070683, "train_nll": 3.135722647190094, "train_ce": 0.3961390238404274, "validation_nll": 3.591756969690323, "validation_ce": 0.392350148409605, "examples_per_second": 4994.414307863025, "gpu_memory": {"current": 16729344, "peak": 1672014080}}
+{"step": 8500, "examples_seen": 8704000, "seconds": 1766.9367493148893, "train_nll": 3.0445599632263183, "train_ce": 0.39576284807920453, "validation_nll": 3.556066185235977, "validation_ce": 0.3921269327402115, "examples_per_second": 4856.335176317438, "gpu_memory": {"current": 16857344, "peak": 1672014080}}
+{"step": 9000, "examples_seen": 9216000, "seconds": 1870.0849968818948, "train_nll": 2.971276268482208, "train_ce": 0.3958978790044785, "validation_nll": 3.52995902299881, "validation_ce": 0.3920157700777054, "examples_per_second": 4994.723384013452, "gpu_memory": {"current": 16985344, "peak": 1672014080}}
+{"step": 9500, "examples_seen": 9728000, "seconds": 1971.7869756687433, "train_nll": 2.898265531539917, "train_ce": 0.3957836374640465, "validation_nll": 3.368617296218872, "validation_ce": 0.39203137159347534, "examples_per_second": 5064.373190208254, "gpu_memory": {"current": 17113344, "peak": 1672014080}}
+{"step": 10000, "examples_seen": 10240000, "seconds": 2076.9814074635506, "train_nll": 2.8502873520851137, "train_ce": 0.3952424224615097, "validation_nll": 3.3819779455661774, "validation_ce": 0.3919637128710747, "examples_per_second": 4895.558693514631, "gpu_memory": {"current": 17241344, "peak": 1672014080}}
+2026-11-18 12:11:41.087918: E external/local_xla/xla/stream_executor/cuda/cuda_dnn.cc:9261] Unable to register cuDNN factory: Attempting to register factory for plugin cuDNN when one has already been registered
+2026-11-18 12:11:41.088004: E external/local_xla/xla/stream_executor/cuda/cuda_fft.cc:607] Unable to register cuFFT factory: Attempting to register factory for plugin cuFFT when one has already been registered
+2026-11-18 12:11:41.089806: E external/local_xla/xla/stream_executor/cuda/cuda_blas.cc:1515] Unable to register cuBLAS factory: Attempting to register factory for plugin cuBLAS when one has already been registered
+2026-11-18 12:11:42.138960: W tensorflow/compiler/tf2tensorrt/utils/py_utils.cc:38] TF-TRT Warning: Could not find TensorRT
+{
+  "stage": "pilot only; no full parameter-posterior MCMC reference yet",
+  "datasets": 128,
+  "draws": 512,
+  "names": [
+    "beta1_intercept",
+    "beta1_slope",
+    "beta2_intercept",
+    "beta2_slope",
+    "beta3_intercept",
+    "beta3_slope",
+    "D1",
+    "D2",
+    "D3",
+    "pi1",
+    "pi2",
+    "pi3"
+  ],
+  "coverage_95": [
+    0.9453125,
+    0.9765625,
+    0.9453125,
+    0.9375,
+    0.96875,
+    0.9296875,
+    0.9609375,
+    0.9140625,
+    0.9296875,
+    0.953125,
+    0.9375,
+    0.9296875
+  ],
+  "coverage_50": [
+    0.4921875,
+    0.59375,
+    0.546875,
+    0.453125,
+    0.546875,
+    0.5234375,
+    0.5,
+    0.3984375,
+    0.4453125,
+    0.5625,
+    0.6015625,
+    0.4921875
+  ],
+  "prior_scaled_RMSE": [
+    0.3607125148664862,
+    0.44726801578869685,
+    0.5474165279302671,
+    0.723272399805846,
+    0.3540471839888915,
+    0.48782158536339343,
+    0.8872799366917637,
+    0.9903071484756271,
+    0.8721262156222396,
+    0.70968507729273,
+    0.885336317575565,
+    0.9143087290173812
+  ],
+  "contraction": [
+    0.8366750216711378,
+    0.6424183816126171,
+    0.7204890559608892,
+    0.486433623755811,
+    0.8607350453233863,
+    0.767909781886205,
+    -0.06618611949318409,
+    0.12956785063293752,
+    0.09406774908605398,
+    0.3839729254960035,
+    0.13581489153184156,
+    0.28142436049745956
+  ],
+  "sbc_interpretation": "128 held-out datasets; pointwise histograms have limited power, not proof of correctness",
+  "posterior_cluster_brier": 0.43445161154761697,
+  "posterior_cluster_cross_entropy": 0.7180311428755501,
+  "label_accuracy": 0.6701041666666666,
+  "seconds": 23.533988060429692,
+  "original_formal_test_data_not_read": true
+}

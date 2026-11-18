@@ -1,0 +1,12 @@
+{
+  "artifact_hashes_verified": true,
+  "posterior_constraints_verified": true,
+  "coverage_recomputed": true,
+  "rank_histograms_recomputed": true,
+  "class_probabilities_normalized": true,
+  "validation_checkpoint_selection_verified": true,
+  "datasets": 128,
+  "draws": 512,
+  "formal_comparison_completed": false,
+  "full_parameter_posterior_MCMC_reference_completed": false
+}

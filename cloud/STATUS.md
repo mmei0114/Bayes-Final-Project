@@ -45,3 +45,9 @@
 本地yellow完成6条QML/GVA及5条Poisson MCEM补充轨迹，共11条；新服务器从不可变快照 `convergence_20261111` 补齐另外10条。共21/21完成、无异常结果文件，远程STATE为COMPLETE、退出码0。预设似然阈值10^-6连续3轮、末窗至少一次接受，MCEM最多比原记录轮数多30轮；未通过者照实保留，完成计算不等于通过诊断。
 
 停止写入后执行 `manage.sh verify convergence_20261111`，新服务器398份运行文件与本地逐一SHA256一致，含执行工作副本、环境、日志、检查点和最终记录。清单为 `received/SHA256SUMS_convergence_20261111`，日志为 `logs/verification_convergence_20261111.log`；原服务器1430份旧清单和备份保持原样。本次定期回传进程已停止，**可以释放新服务器**。报告所需新记录另存 `../data/convergence/`，不依赖完整回传目录或服务器。
+
+## 二元SBI预检（2026-11-18，完成）
+
+使用P100 16GB、12逻辑CPU、64GiB内存，远端Conda base/Python3.11.4。大依赖经镜像与校验安装，TensorFlow在GPU上完成了矩阵运算。安装后`pip check`报告预装JupyterLab缺少`ipykernel`，本批所用依赖均通过实际运行。环境和完整依赖列表见 `../data/sbi_pilot/environment/`。
+
+后台运行在用户关机后继续训练和诊断，最终状态COMPLETE、退出码0。10000步二元训练约34.6分钟，独立诊断约24秒。定时同步和首次最终回传同时写入时发生rsync错误。已停止定时同步，单独重跑最终回传，并确认613个运行文件共337646414字节逐一通过SHA256核验。清单为 `received/SHA256SUMS_sbi_pilot_20261118`，日志为 `logs/verification_sbi_pilot_20261118.log`。**可以释放本次服务器。** [预检记录](../docs/sbi_pilot.md)包含方法和诊断结果。

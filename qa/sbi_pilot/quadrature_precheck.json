@@ -1,0 +1,165 @@
+{
+  "checks": [
+    {
+      "dataset": 0,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.7763568394002505e-15
+    },
+    {
+      "dataset": 1,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.5543122344752192e-15
+    },
+    {
+      "dataset": 2,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.4432899320127035e-15
+    },
+    {
+      "dataset": 3,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 2.3314683517128287e-15
+    },
+    {
+      "dataset": 4,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.4432899320127035e-15
+    },
+    {
+      "dataset": 5,
+      "loglik_difference": 4.547473508864641e-13,
+      "responsibility_difference": 1.6653345369377348e-15
+    },
+    {
+      "dataset": 6,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 2.6645352591003757e-15
+    },
+    {
+      "dataset": 7,
+      "loglik_difference": 9.094947017729282e-13,
+      "responsibility_difference": 1.6653345369377348e-15
+    },
+    {
+      "dataset": 8,
+      "loglik_difference": 4.547473508864641e-13,
+      "responsibility_difference": 1.6653345369377348e-15
+    },
+    {
+      "dataset": 9,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.7763568394002505e-15
+    },
+    {
+      "dataset": 10,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.6653345369377348e-15
+    },
+    {
+      "dataset": 11,
+      "loglik_difference": 4.547473508864641e-13,
+      "responsibility_difference": 1.6653345369377348e-15
+    },
+    {
+      "dataset": 12,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 2.55351295663786e-15
+    },
+    {
+      "dataset": 13,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.4432899320127035e-15
+    },
+    {
+      "dataset": 14,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.4988010832439613e-15
+    },
+    {
+      "dataset": 15,
+      "loglik_difference": 4.547473508864641e-13,
+      "responsibility_difference": 1.4432899320127035e-15
+    },
+    {
+      "dataset": 16,
+      "loglik_difference": 4.547473508864641e-13,
+      "responsibility_difference": 1.887379141862766e-15
+    },
+    {
+      "dataset": 17,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.6653345369377348e-15
+    },
+    {
+      "dataset": 18,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 2.1094237467877974e-15
+    },
+    {
+      "dataset": 19,
+      "loglik_difference": 4.547473508864641e-13,
+      "responsibility_difference": 1.7208456881689926e-15
+    },
+    {
+      "dataset": 20,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.5543122344752192e-15
+    },
+    {
+      "dataset": 21,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.7763568394002505e-15
+    },
+    {
+      "dataset": 22,
+      "loglik_difference": 4.547473508864641e-13,
+      "responsibility_difference": 1.9984014443252818e-15
+    },
+    {
+      "dataset": 23,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.7763568394002505e-15
+    },
+    {
+      "dataset": 24,
+      "loglik_difference": 4.547473508864641e-13,
+      "responsibility_difference": 1.6653345369377348e-15
+    },
+    {
+      "dataset": 25,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.6653345369377348e-15
+    },
+    {
+      "dataset": 26,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.7763568394002505e-15
+    },
+    {
+      "dataset": 27,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.6653345369377348e-15
+    },
+    {
+      "dataset": 28,
+      "loglik_difference": 4.547473508864641e-13,
+      "responsibility_difference": 1.7763568394002505e-15
+    },
+    {
+      "dataset": 29,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.6653345369377348e-15
+    },
+    {
+      "dataset": 30,
+      "loglik_difference": 4.547473508864641e-13,
+      "responsibility_difference": 3.1086244689504383e-15
+    },
+    {
+      "dataset": 31,
+      "loglik_difference": 0.0,
+      "responsibility_difference": 1.3322676295501878e-15
+    }
+  ],
+  "max_loglik_difference": 9.094947017729282e-13
+}

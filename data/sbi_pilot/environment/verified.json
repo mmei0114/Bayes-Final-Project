@@ -1,0 +1,93 @@
+[
+  {
+    "file": "tensorflow-2.15.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "bytes": 475258663,
+    "seconds": 188.171204357408,
+    "sha256": "bb0edd69103c154245c5f209f0507355cc68ba7e4de350084bc31edc562478e4",
+    "status": "verified"
+  },
+  {
+    "file": "nvidia_cublas_cu12-12.2.5.6-py3-none-manylinux1_x86_64.whl",
+    "bytes": 417825305,
+    "seconds": 176.20459100231528,
+    "sha256": "f448d8db463f9a2c7dd9a1e607c0961d3e95f825b86839c5882f7d073d406df0",
+    "status": "verified"
+  },
+  {
+    "file": "nvidia_cuda_cupti_cu12-12.2.142-py3-none-manylinux1_x86_64.whl",
+    "bytes": 13900552,
+    "seconds": 2.9813872622326016,
+    "sha256": "ce68d1009dd14215e38ed49643d31374c71d6fea381181cb0b9da7f19dfd1624",
+    "status": "verified"
+  },
+  {
+    "file": "nvidia_cuda_nvcc_cu12-12.2.140-py3-none-manylinux1_x86_64.whl",
+    "bytes": 21319729,
+    "seconds": 4.044487033970654,
+    "sha256": "c6ff4ae7a636eb6cab7621191e19ac3779690686bbcf52c04d8b1ca2944e1e27",
+    "status": "verified"
+  },
+  {
+    "file": "nvidia_cuda_nvrtc_cu12-12.2.140-py3-none-manylinux1_x86_64.whl",
+    "bytes": 23430053,
+    "seconds": 5.156366357579827,
+    "sha256": "b1cdcae6443cb7cdcfb5d1bf51896a148c9f82f9e65b27db9ab095eaed689aa7",
+    "status": "verified"
+  },
+  {
+    "file": "nvidia_cuda_runtime_cu12-12.2.140-py3-none-manylinux1_x86_64.whl",
+    "bytes": 845802,
+    "seconds": 3.3025544034317136,
+    "sha256": "acb9cb7e44594a3512533497ea790d9f0b0e399abcc888584c157d1ffa080e41",
+    "status": "verified"
+  },
+  {
+    "file": "nvidia_cudnn_cu12-8.9.4.25-py3-none-manylinux1_x86_64.whl",
+    "bytes": 720096787,
+    "seconds": 274.4930180720985,
+    "sha256": "9f882d5b11753c566fd32427839089eb4f8ba7a58c28446ad359e32c40229723",
+    "status": "verified"
+  },
+  {
+    "file": "nvidia_cufft_cu12-11.0.8.103-py3-none-manylinux1_x86_64.whl",
+    "bytes": 98570970,
+    "seconds": 46.58668441046029,
+    "sha256": "72e961e578f9be9e316ccb4db8652c421dd0b57442624faa71061d452f449a67",
+    "status": "verified"
+  },
+  {
+    "file": "nvidia_curand_cu12-10.3.3.141-py3-none-manylinux1_x86_64.whl",
+    "bytes": 56463566,
+    "seconds": 8.551651008427143,
+    "sha256": "7b6bad6817b5df2a6f5ec221206fb895d9195fdd7d2443f3e86554108c141a0a",
+    "status": "verified"
+  },
+  {
+    "file": "nvidia_cusolver_cu12-11.5.2.141-py3-none-manylinux1_x86_64.whl",
+    "bytes": 124890758,
+    "seconds": 43.9809511648491,
+    "sha256": "5a85c4653ce34339a5688137f494a0f903e0f0532418550998167f00844161da",
+    "status": "verified"
+  },
+  {
+    "file": "nvidia_cusparse_cu12-12.1.2.141-py3-none-manylinux1_x86_64.whl",
+    "bytes": 195268625,
+    "seconds": 16.706816902384162,
+    "sha256": "4e13d6a51d2303dcb2a023ba09546811161f0334fc64e13689397bbd3b1eb126",
+    "status": "verified"
+  },
+  {
+    "file": "nvidia_nccl_cu12-2.16.5-py3-none-manylinux1_x86_64.whl",
+    "bytes": 188657797,
+    "seconds": 65.15130889322609,
+    "sha256": "84695a4248138fb2ca12f5fd3defe986e790e71ccdaad51b2ca34ca4e83ef421",
+    "status": "verified"
+  },
+  {
+    "file": "nvidia_nvjitlink_cu12-12.2.140-py3-none-manylinux1_x86_64.whl",
+    "bytes": 20177273,
+    "seconds": 8.43466317281127,
+    "sha256": "95635cafbf9f96c38bea5200ab145a2e6aefbb5405e0b04c1e4ba54df2d84ec9",
+    "status": "verified"
+  }
+]

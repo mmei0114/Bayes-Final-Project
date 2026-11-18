@@ -1,0 +1,2 @@
+jupyterlab 4.2.3 requires ipykernel, which is not installed.
+ERROR conda.cli.main_run:execute(47): `conda run python -m pip check` failed. (See above for error)

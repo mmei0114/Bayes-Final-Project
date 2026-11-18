@@ -1,0 +1,6 @@
+{
+  "best_npe_step": 9500,
+  "best_classifier_step": 10000,
+  "best_validation_nll": 3.368617296218872,
+  "best_validation_ce": 0.3919637128710747
+}

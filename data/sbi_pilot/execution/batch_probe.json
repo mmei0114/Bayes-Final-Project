@@ -1,0 +1,58 @@
+{
+  "devices": [
+    {
+      "name": "/physical_device:GPU:0",
+      "details": {
+        "compute_capability": [
+          6,
+          0
+        ],
+        "device_name": "Tesla P100-SXM2-16GB"
+      }
+    }
+  ],
+  "benchmark": "Disposable networks and synthetic shape-only inputs; no statistical model selected",
+  "results": [
+    {
+      "batch": 128,
+      "steps": 20,
+      "seconds": 0.6649039825424552,
+      "examples_per_second": 3850.179976680377,
+      "gpu_memory": {
+        "current": 26668288,
+        "peak": 208640000
+      }
+    },
+    {
+      "batch": 256,
+      "steps": 20,
+      "seconds": 0.6917284671217203,
+      "examples_per_second": 7401.748291933541,
+      "gpu_memory": {
+        "current": 70098688,
+        "peak": 430656256
+      }
+    },
+    {
+      "batch": 512,
+      "steps": 20,
+      "seconds": 0.8873774465173483,
+      "examples_per_second": 11539.62165726488,
+      "gpu_memory": {
+        "current": 146683648,
+        "peak": 866582784
+      }
+    },
+    {
+      "batch": 1024,
+      "steps": 20,
+      "seconds": 1.4821126395836473,
+      "examples_per_second": 13818.113045546395,
+      "gpu_memory": {
+        "current": 283852544,
+        "peak": 1754977536
+      }
+    }
+  ],
+  "selected_batch": 1024
+}

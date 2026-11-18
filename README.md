@@ -8,7 +8,9 @@
 
 **最新报告：[11页PDF](report.pdf) · [LaTeX正文](report.tex) · [教师要求对应清单](requirements.md)**
 
-2026-11-18新增 [SBI扩展计划](docs/sbi_plan.md) 与 [论文/代码核对记录](docs/sbi_references.md)：建议依照Amortized Bayesian Mixture Models，以BayesFlow NPE＋条件簇分类器与现有方法比较。本次仅调研和规划，未安装依赖、训练或新增实验结果；当前11页报告仍为已完成版本。建议下一阶段单张24GB NVIDIA GPU、12–16逻辑CPU、64GB内存，先短租试跑再按实测确定正式预算。
+2026-11-18完成二元SBI预检。依据Amortized Bayesian Mixture Models实现BayesFlow神经后验估计与条件簇分类器。模拟器、可逆变换、GPU运算和可解析的高斯后验检查均通过。P100训练10000步约34.6分钟，使用100000份不同二元训练数据。128份独立校准数据上，12个参数分量的95%区间覆盖为91.4%至97.7%。随机截距方差D₂的50%区间只覆盖39.8%。下一阶段先建立同先验后验参照，再开展三族正式比较。方法细节、训练设置与诊断图见 [SBI预检](docs/sbi_pilot.md)，论文与代码来源见 [核对记录](docs/sbi_references.md)。
+
+本次代码、100000份无损训练数据、全部检查点及原始诊断已在本地 `cloud/received/runs/sbi_*` 保存，613个文件逐一通过SHA256校验。仓库保存精选检查点、独立校准输入、后验样本、数据生成协议及环境清单。见 [SBI数据索引](data/sbi_pilot/README.md) 和 [回传核验](qa/sbi_pilot/cloud_verification.json)。
 
 正式实验为14个场景、70份不同模拟数据、155次拟合，每次3起点。QML 70/70、GVA 70/70、MCEM 15/15满足各自数值停止标准；28次参数边界、4次内部求解器历史非成功状态均保留并在报告中说明。每场景5次重复，结论限于基础版本；小Q增量停止不等于高精度似然最优。
 
@@ -27,8 +29,9 @@
 | [figures/](figures/) | 报告图件；三类响应各自的参数图及整体观测似然图 |
 | [qa/](qa/) | 数值检查、正式审计与交付核验 |
 | [docs/methods.md](docs/methods.md) | 方法细节、实验设计和复现说明 |
-| [docs/sbi_plan.md](docs/sbi_plan.md)、[docs/sbi_references.md](docs/sbi_references.md) | 待实施的SBI方法、比较/校准步骤、服务器预算与已核对论文代码来源 |
+| [docs/sbi_plan.md](docs/sbi_plan.md)、[docs/sbi_references.md](docs/sbi_references.md)、[docs/sbi_pilot.md](docs/sbi_pilot.md) | SBI后续计划、已核对论文代码来源和本批冻结预检协议 |
 | [data/](data/README.md) | 已完成正式拟合、原始模拟数据、原始采样链、实际执行源码副本及SHA256，随仓库保存 |
+| [data/sbi_pilot/](data/sbi_pilot/README.md)、[qa/sbi_pilot/](qa/sbi_pilot/) | SBI预检输入、精选权重、后验样本、环境与审计 |
 | [docs/reading_notes.md](docs/reading_notes.md) | 三篇课程论文阅读笔记；v1取舍与当前修订范围已区分 |
 | [requirements.md](requirements.md)、[Project.pdf](Project.pdf) | 老师任务清单、九问对应与原始要求 |
 | [scripts/collect_results.py](scripts/collect_results.py) | 从本地完整备份提取报告输入，逐文件核对，不运行实验 |
@@ -51,6 +54,7 @@ make verify       # 核对交付文件及正式数据
 make check        # 小规模梯度、解析期望和MCSE核验
 make summarize    # 从已保存结果重建表图；不重新拟合
 make convergence  # 核验21条补充记录并重建收敛表图；不重新拟合
+make sbi-summary  # 核对SBI后验样本并重建预检表图，无需GPU
 make report       # 双次XeLaTeX编译当前报告
 ```
 
@@ -68,4 +72,4 @@ make report       # 双次XeLaTeX编译当前报告
 
 GitHub仓库当前公开。服务器连接配置、SSH私有目录、历史压缩包、重复工作树、编译缓存和逐页PNG预览由 `.gitignore` 排除，仍在本地保留。重新租用服务器时按 `cloud/config.env.example` 建立本机配置；正常阅读、检查和生成报告不需要服务器。
 
-维护约定：新增交付文件、实验批次或目录变更时同步更新相应README及校验清单。最近更新为2026-11-18（SBI调研与计划；实验/报告完成记录仍为2026-11-11）。
+维护约定：新增交付文件、实验批次或目录变更时同步更新相应README及校验清单。最近更新为2026-11-18，二元SBI预检已完成。

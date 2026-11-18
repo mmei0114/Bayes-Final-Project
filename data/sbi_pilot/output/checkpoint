@@ -1,0 +1,2 @@
+model_checkpoint_path: "toy_state-1"
+all_model_checkpoint_paths: "toy_state-1"

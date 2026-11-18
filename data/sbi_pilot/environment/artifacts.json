@@ -1,0 +1,314 @@
+[
+  {
+    "comment_text": "",
+    "core-metadata": {
+      "sha256": "5512f4b3f6e717439c29c977031cd087c024e19a58c3285a19244c17a6071256"
+    },
+    "digests": {
+      "blake2b_256": "c12d636471492d93b6c1bf5375b81be7105a313a8c91a07c37e43625b00ca5c3",
+      "md5": "f6ce962ea21d17f84b1d81624dc6d4f7",
+      "sha256": "bb0edd69103c154245c5f209f0507355cc68ba7e4de350084bc31edc562478e4"
+    },
+    "downloads": -1,
+    "filename": "tensorflow-2.15.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "has_sig": false,
+    "md5_digest": "f6ce962ea21d17f84b1d81624dc6d4f7",
+    "packagetype": "bdist_wheel",
+    "python_version": "cp311",
+    "requires_python": ">=3.9",
+    "size": 475258663,
+    "upload_time": "2024-03-08T23:47:37",
+    "upload_time_iso_8601": "2024-03-08T23:47:37.697886Z",
+    "url": "https://files.pythonhosted.org/packages/c1/2d/636471492d93b6c1bf5375b81be7105a313a8c91a07c37e43625b00ca5c3/tensorflow-2.15.1-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  {
+    "comment_text": "",
+    "core-metadata": {
+      "sha256": "0e86c02dd47651d9d6f3b098c6381f034bf6c611ab0f50547b004fc9b7e5430d"
+    },
+    "digests": {
+      "blake2b_256": "b66ae8cca34f85b18a0280e3a19faca1923f6a04e7d587e9d8e33bc295a52b6d",
+      "md5": "f56d4fa72266ca69e6a603f71979d87a",
+      "sha256": "f448d8db463f9a2c7dd9a1e607c0961d3e95f825b86839c5882f7d073d406df0"
+    },
+    "downloads": -1,
+    "filename": "nvidia_cublas_cu12-12.2.5.6-py3-none-manylinux1_x86_64.whl",
+    "has_sig": false,
+    "md5_digest": "f56d4fa72266ca69e6a603f71979d87a",
+    "packagetype": "bdist_wheel",
+    "python_version": "py3",
+    "requires_python": ">=3",
+    "size": 417825305,
+    "upload_time": "2023-08-29T16:03:20",
+    "upload_time_iso_8601": "2023-08-29T16:03:20.821385Z",
+    "url": "https://files.pythonhosted.org/packages/b6/6a/e8cca34f85b18a0280e3a19faca1923f6a04e7d587e9d8e33bc295a52b6d/nvidia_cublas_cu12-12.2.5.6-py3-none-manylinux1_x86_64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  {
+    "comment_text": "",
+    "core-metadata": {
+      "sha256": "d6d06a953aca236967ba7adbdd110ecc2a8b8295357b33746d257eb8420f7ca0"
+    },
+    "digests": {
+      "blake2b_256": "cf277c2f33b4fbab658117fce3b029f44cce7886fc5a50f526a81b4b0436af02",
+      "md5": "db774610d1d38ebf3142f2ed983e4320",
+      "sha256": "ce68d1009dd14215e38ed49643d31374c71d6fea381181cb0b9da7f19dfd1624"
+    },
+    "downloads": -1,
+    "filename": "nvidia_cuda_cupti_cu12-12.2.142-py3-none-manylinux1_x86_64.whl",
+    "has_sig": false,
+    "md5_digest": "db774610d1d38ebf3142f2ed983e4320",
+    "packagetype": "bdist_wheel",
+    "python_version": "py3",
+    "requires_python": ">=3",
+    "size": 13900552,
+    "upload_time": "2023-08-29T16:00:25",
+    "upload_time_iso_8601": "2023-08-29T16:00:25.955882Z",
+    "url": "https://files.pythonhosted.org/packages/cf/27/7c2f33b4fbab658117fce3b029f44cce7886fc5a50f526a81b4b0436af02/nvidia_cuda_cupti_cu12-12.2.142-py3-none-manylinux1_x86_64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  {
+    "comment_text": "",
+    "core-metadata": {
+      "sha256": "40221bff1b91f9b08889835d5492a7a83c16039de04d9fcc298b397e062c7b34"
+    },
+    "digests": {
+      "blake2b_256": "a7a51b48eeda9bdc3ac5bf00d84eca6f31b568ab3da9008f754bf1fdd98ee97b",
+      "md5": "0dbf87b68a65cb0b45203bccee4a065d",
+      "sha256": "c6ff4ae7a636eb6cab7621191e19ac3779690686bbcf52c04d8b1ca2944e1e27"
+    },
+    "downloads": -1,
+    "filename": "nvidia_cuda_nvcc_cu12-12.2.140-py3-none-manylinux1_x86_64.whl",
+    "has_sig": false,
+    "md5_digest": "0dbf87b68a65cb0b45203bccee4a065d",
+    "packagetype": "bdist_wheel",
+    "python_version": "py3",
+    "requires_python": ">=3",
+    "size": 21319729,
+    "upload_time": "2023-08-29T16:01:01",
+    "upload_time_iso_8601": "2023-08-29T16:01:01.466509Z",
+    "url": "https://files.pythonhosted.org/packages/a7/a5/1b48eeda9bdc3ac5bf00d84eca6f31b568ab3da9008f754bf1fdd98ee97b/nvidia_cuda_nvcc_cu12-12.2.140-py3-none-manylinux1_x86_64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  {
+    "comment_text": "",
+    "core-metadata": {
+      "sha256": "bfd75da6bc5ff38d50d334efaf789660f8c703e6ef1e0d8fe6a9665e3572913b"
+    },
+    "digests": {
+      "blake2b_256": "cb84bb975ca63e3d4017824ad3d62e141db8492bc53cec6dc84705fb0650c22d",
+      "md5": "e9ab935e7200a6bf9422215944373f1c",
+      "sha256": "b1cdcae6443cb7cdcfb5d1bf51896a148c9f82f9e65b27db9ab095eaed689aa7"
+    },
+    "downloads": -1,
+    "filename": "nvidia_cuda_nvrtc_cu12-12.2.140-py3-none-manylinux1_x86_64.whl",
+    "has_sig": false,
+    "md5_digest": "e9ab935e7200a6bf9422215944373f1c",
+    "packagetype": "bdist_wheel",
+    "python_version": "py3",
+    "requires_python": ">=3",
+    "size": 23430053,
+    "upload_time": "2023-08-29T16:01:36",
+    "upload_time_iso_8601": "2023-08-29T16:01:36.949999Z",
+    "url": "https://files.pythonhosted.org/packages/cb/84/bb975ca63e3d4017824ad3d62e141db8492bc53cec6dc84705fb0650c22d/nvidia_cuda_nvrtc_cu12-12.2.140-py3-none-manylinux1_x86_64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  {
+    "comment_text": "",
+    "core-metadata": {
+      "sha256": "1af21948dfd7b37722bcbc28ab4625e79227829e5411f374df23aca6cfc44993"
+    },
+    "digests": {
+      "blake2b_256": "95466361d45c7a6fe3b3bb8d5fa35eb43c1dcd12d14799a0dc6faef3d76eaf41",
+      "md5": "396da2c839455ea2301ac1f102d4e54c",
+      "sha256": "acb9cb7e44594a3512533497ea790d9f0b0e399abcc888584c157d1ffa080e41"
+    },
+    "downloads": -1,
+    "filename": "nvidia_cuda_runtime_cu12-12.2.140-py3-none-manylinux1_x86_64.whl",
+    "has_sig": false,
+    "md5_digest": "396da2c839455ea2301ac1f102d4e54c",
+    "packagetype": "bdist_wheel",
+    "python_version": "py3",
+    "requires_python": ">=3",
+    "size": 845802,
+    "upload_time": "2023-08-29T16:00:12",
+    "upload_time_iso_8601": "2023-08-29T16:00:12.485771Z",
+    "url": "https://files.pythonhosted.org/packages/95/46/6361d45c7a6fe3b3bb8d5fa35eb43c1dcd12d14799a0dc6faef3d76eaf41/nvidia_cuda_runtime_cu12-12.2.140-py3-none-manylinux1_x86_64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  {
+    "comment_text": "",
+    "core-metadata": {
+      "sha256": "7ed38b2074c60793fe7cbaccfd246007719a6c1eb67888a9a83fc60549e66b03"
+    },
+    "digests": {
+      "blake2b_256": "fad7f46bd08337201ec875bda25e29fcb65d26bdc6d0be306dc33fc0b092faa6",
+      "md5": "f254a6c22d0c06b1d7e12033ebdc6685",
+      "sha256": "9f882d5b11753c566fd32427839089eb4f8ba7a58c28446ad359e32c40229723"
+    },
+    "downloads": -1,
+    "filename": "nvidia_cudnn_cu12-8.9.4.25-py3-none-manylinux1_x86_64.whl",
+    "has_sig": false,
+    "md5_digest": "f254a6c22d0c06b1d7e12033ebdc6685",
+    "packagetype": "bdist_wheel",
+    "python_version": "py3",
+    "requires_python": ">=3",
+    "size": 720096787,
+    "upload_time": "2023-08-09T15:35:13",
+    "upload_time_iso_8601": "2023-08-09T15:35:13.537371Z",
+    "url": "https://files.pythonhosted.org/packages/fa/d7/f46bd08337201ec875bda25e29fcb65d26bdc6d0be306dc33fc0b092faa6/nvidia_cudnn_cu12-8.9.4.25-py3-none-manylinux1_x86_64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  {
+    "comment_text": "",
+    "core-metadata": {
+      "sha256": "1e9d94dbc200d32ffb6134e4f8a0f3538fe3a4c923ad89f69073a178dbfad994"
+    },
+    "digests": {
+      "blake2b_256": "8f86311c32926aa321ebc169d6c910a1ecd30339ae198014e0d4a7cf448f6ce9",
+      "md5": "81ff346d15acb21898e9538c7f40845f",
+      "sha256": "72e961e578f9be9e316ccb4db8652c421dd0b57442624faa71061d452f449a67"
+    },
+    "downloads": -1,
+    "filename": "nvidia_cufft_cu12-11.0.8.103-py3-none-manylinux1_x86_64.whl",
+    "has_sig": false,
+    "md5_digest": "81ff346d15acb21898e9538c7f40845f",
+    "packagetype": "bdist_wheel",
+    "python_version": "py3",
+    "requires_python": ">=3",
+    "size": 98570970,
+    "upload_time": "2023-08-29T16:03:46",
+    "upload_time_iso_8601": "2023-08-29T16:03:46.694103Z",
+    "url": "https://files.pythonhosted.org/packages/8f/86/311c32926aa321ebc169d6c910a1ecd30339ae198014e0d4a7cf448f6ce9/nvidia_cufft_cu12-11.0.8.103-py3-none-manylinux1_x86_64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  {
+    "comment_text": "",
+    "core-metadata": {
+      "sha256": "af18bb7825d1f3aa4299c4d2377bc20372135d80a9a4b5d62a4ea6ee5fa1b358"
+    },
+    "digests": {
+      "blake2b_256": "c12c9677fd666335801f565505bf831891b6ac6f645fe9e7689acc7d09f9a7fb",
+      "md5": "bd2a5e93f6b64c2a030f4015d4ae4df3",
+      "sha256": "7b6bad6817b5df2a6f5ec221206fb895d9195fdd7d2443f3e86554108c141a0a"
+    },
+    "downloads": -1,
+    "filename": "nvidia_curand_cu12-10.3.3.141-py3-none-manylinux1_x86_64.whl",
+    "has_sig": false,
+    "md5_digest": "bd2a5e93f6b64c2a030f4015d4ae4df3",
+    "packagetype": "bdist_wheel",
+    "python_version": "py3",
+    "requires_python": ">=3",
+    "size": 56463566,
+    "upload_time": "2023-08-29T16:04:11",
+    "upload_time_iso_8601": "2023-08-29T16:04:11.710679Z",
+    "url": "https://files.pythonhosted.org/packages/c1/2c/9677fd666335801f565505bf831891b6ac6f645fe9e7689acc7d09f9a7fb/nvidia_curand_cu12-10.3.3.141-py3-none-manylinux1_x86_64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  {
+    "comment_text": "",
+    "core-metadata": {
+      "sha256": "a1f322582f15c43fb937928a506a6d123518d9be2a1ac891f462a7e86eb57cd0"
+    },
+    "digests": {
+      "blake2b_256": "1faf29126e0bae18bad59fe4018c2e32fd5d7ec0aa354a4b1e08c051515a25d1",
+      "md5": "1836b7193ddfa88b3d88045a5db8bdc9",
+      "sha256": "5a85c4653ce34339a5688137f494a0f903e0f0532418550998167f00844161da"
+    },
+    "downloads": -1,
+    "filename": "nvidia_cusolver_cu12-11.5.2.141-py3-none-manylinux1_x86_64.whl",
+    "has_sig": false,
+    "md5_digest": "1836b7193ddfa88b3d88045a5db8bdc9",
+    "packagetype": "bdist_wheel",
+    "python_version": "py3",
+    "requires_python": ">=3",
+    "size": 124890758,
+    "upload_time": "2023-08-29T16:04:41",
+    "upload_time_iso_8601": "2023-08-29T16:04:41.458403Z",
+    "url": "https://files.pythonhosted.org/packages/1f/af/29126e0bae18bad59fe4018c2e32fd5d7ec0aa354a4b1e08c051515a25d1/nvidia_cusolver_cu12-11.5.2.141-py3-none-manylinux1_x86_64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  {
+    "comment_text": "",
+    "core-metadata": {
+      "sha256": "08328f8d46f36698f25eae4575e9f1ba080c506895ff4acb4fc299b502e96562"
+    },
+    "digests": {
+      "blake2b_256": "a9b421af603eba3a803276bbcbbc41d6cf3a20919a2807217084cacef13ec779",
+      "md5": "91735398b27bcb6478549e6345a5a7a7",
+      "sha256": "4e13d6a51d2303dcb2a023ba09546811161f0334fc64e13689397bbd3b1eb126"
+    },
+    "downloads": -1,
+    "filename": "nvidia_cusparse_cu12-12.1.2.141-py3-none-manylinux1_x86_64.whl",
+    "has_sig": false,
+    "md5_digest": "91735398b27bcb6478549e6345a5a7a7",
+    "packagetype": "bdist_wheel",
+    "python_version": "py3",
+    "requires_python": ">=3",
+    "size": 195268625,
+    "upload_time": "2023-08-29T16:05:18",
+    "upload_time_iso_8601": "2023-08-29T16:05:18.977917Z",
+    "url": "https://files.pythonhosted.org/packages/a9/b4/21af603eba3a803276bbcbbc41d6cf3a20919a2807217084cacef13ec779/nvidia_cusparse_cu12-12.1.2.141-py3-none-manylinux1_x86_64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  {
+    "comment_text": "",
+    "core-metadata": {
+      "sha256": "fb06e4cfe029ba8f7c60594477b732a0fee73c61207e31a3ef6f59b581094850"
+    },
+    "digests": {
+      "blake2b_256": "daca2894fe71d9773405746268a4e9fddfb57643c4cf2ac3f38d528bfb3e8af0",
+      "md5": "bc6ae3ca471b9128f1a6b5341f351a82",
+      "sha256": "84695a4248138fb2ca12f5fd3defe986e790e71ccdaad51b2ca34ca4e83ef421"
+    },
+    "downloads": -1,
+    "filename": "nvidia_nccl_cu12-2.16.5-py3-none-manylinux1_x86_64.whl",
+    "has_sig": false,
+    "md5_digest": "bc6ae3ca471b9128f1a6b5341f351a82",
+    "packagetype": "bdist_wheel",
+    "python_version": "py3",
+    "requires_python": ">=3",
+    "size": 188657797,
+    "upload_time": "2023-02-02T04:14:35",
+    "upload_time_iso_8601": "2023-02-02T04:14:35.014230Z",
+    "url": "https://files.pythonhosted.org/packages/da/ca/2894fe71d9773405746268a4e9fddfb57643c4cf2ac3f38d528bfb3e8af0/nvidia_nccl_cu12-2.16.5-py3-none-manylinux1_x86_64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  },
+  {
+    "comment_text": "",
+    "core-metadata": {
+      "sha256": "012225c9c59f2a00a2010499b7d98979ef4f9716eb69cac97b7ec22735374b6f"
+    },
+    "digests": {
+      "blake2b_256": "0af85193b57555cbeecfdb6ade643df0d4218cc6385485492b6e2f64ceae53bb",
+      "md5": "e4a6ba55f6639c5aeba117c0542ff7e0",
+      "sha256": "95635cafbf9f96c38bea5200ab145a2e6aefbb5405e0b04c1e4ba54df2d84ec9"
+    },
+    "downloads": -1,
+    "filename": "nvidia_nvjitlink_cu12-12.2.140-py3-none-manylinux1_x86_64.whl",
+    "has_sig": false,
+    "md5_digest": "e4a6ba55f6639c5aeba117c0542ff7e0",
+    "packagetype": "bdist_wheel",
+    "python_version": "py3",
+    "requires_python": ">=3",
+    "size": 20177273,
+    "upload_time": "2023-08-29T16:06:15",
+    "upload_time_iso_8601": "2023-08-29T16:06:15.162800Z",
+    "url": "https://files.pythonhosted.org/packages/0a/f8/5193b57555cbeecfdb6ade643df0d4218cc6385485492b6e2f64ceae53bb/nvidia_nvjitlink_cu12-12.2.140-py3-none-manylinux1_x86_64.whl",
+    "yanked": false,
+    "yanked_reason": null
+  }
+]

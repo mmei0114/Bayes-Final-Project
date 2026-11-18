@@ -1,0 +1,13 @@
+# Paper-matched legacy BayesFlow pilot in the remote base (Python 3.11).
+# Amortized Bayesian Mixture Models author requirements: BF 1.1.6 / TF 2.15.1.
+numpy==1.26.4
+scipy==1.12.0
+matplotlib==3.8.3
+bayesflow==1.1.6
+tensorflow[and-cuda]==2.15.1
+tensorflow-probability==0.23.0
+# Compatible plotting / diagnostic dependencies; avoid NumPy 2-only pandas.
+pandas==2.2.3
+scikit-learn==1.4.2
+seaborn==0.13.2
+aesara==2.9.4

@@ -1,0 +1,27 @@
+{
+  "python": "3.11.4 (main, Jul  5 2023, 13:45:01) [GCC 11.2.0]",
+  "executable": "/root/miniconda3/bin/python",
+  "platform": "Linux-3.10.0-1160.119.1.el7.x86_64-x86_64-with-glibc2.35",
+  "libc": [
+    "glibc",
+    "2.35"
+  ],
+  "cpu_affinity": 12,
+  "packages": {
+    "numpy": "2.0.0",
+    "scipy": null,
+    "matplotlib": "3.9.0",
+    "torch": null,
+    "tensorflow": null,
+    "keras": null,
+    "bayesflow": null,
+    "cmdstanpy": null,
+    "arviz": null
+  },
+  "resource_limits": {
+    "/sys/fs/cgroup/memory/memory.limit_in_bytes": "68719476736",
+    "/sys/fs/cgroup/cpu/cpu.cfs_quota_us": "-1",
+    "/sys/fs/cgroup/cpu/cpu.cfs_period_us": "100000"
+  },
+  "torch_gpu": null
+}

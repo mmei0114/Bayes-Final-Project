@@ -1,0 +1,15 @@
+{
+  "run_id": "sbi_pilot_20261118",
+  "full_local_run_file_count": 613,
+  "full_local_bytes": 337646414,
+  "all_remote_run_files_match_local": true,
+  "source": "cloud/received/SHA256SUMS_sbi_pilot_20261118",
+  "unique_training_datasets": 100000,
+  "training_arrays_in_public_repository": false,
+  "training_arrays_locally_archived": true,
+  "selected_checkpoints": [
+    9500,
+    10000
+  ],
+  "report_pdf_unchanged": true
+}

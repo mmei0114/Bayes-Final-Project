@@ -1,0 +1,50 @@
+{
+  "python": "3.11.4 (main, Jul  5 2023, 13:45:01) [GCC 11.2.0]",
+  "executable": "/root/miniconda3/bin/python",
+  "platform": "Linux-3.10.0-1160.119.1.el7.x86_64-x86_64-with-glibc2.35",
+  "libc": [
+    "glibc",
+    "2.35"
+  ],
+  "cpu_affinity": 12,
+  "packages": {
+    "numpy": "1.26.4",
+    "scipy": "1.12.0",
+    "matplotlib": "3.8.3",
+    "torch": null,
+    "tensorflow": "2.15.1",
+    "keras": "2.15.0",
+    "bayesflow": "1.1.6",
+    "cmdstanpy": null,
+    "arviz": null
+  },
+  "resource_limits": {
+    "/sys/fs/cgroup/memory/memory.limit_in_bytes": "68719476736",
+    "/sys/fs/cgroup/cpu/cpu.cfs_quota_us": "-1",
+    "/sys/fs/cgroup/cpu/cpu.cfs_period_us": "100000"
+  },
+  "torch_gpu": null,
+  "tensorflow_gpu": {
+    "version": "2.15.1",
+    "physical_devices": [
+      "PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')"
+    ],
+    "matrix_product_device": "/job:localhost/replica:0/task:0/device:GPU:0",
+    "matrix_product_value": 1024.0,
+    "build_info": {
+      "cpu_compiler": "/usr/lib/llvm-17/bin/clang",
+      "cuda_compute_capabilities": [
+        "sm_50",
+        "sm_60",
+        "sm_70",
+        "sm_75",
+        "compute_80"
+      ],
+      "cuda_version": "12.2",
+      "cudnn_version": "8",
+      "is_cuda_build": true,
+      "is_rocm_build": false,
+      "is_tensorrt_build": true
+    }
+  }
+}

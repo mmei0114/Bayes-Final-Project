@@ -1,0 +1,125 @@
+{
+  "date": "2026-11-20",
+  "archives_directory": "cloud/received/matpool_sbi_20261118",
+  "original_archives": {
+    "nb_inference.tar.gz": {
+      "sha256": "0e81e70b242c66387469fbde3f41c9e3f0ed3f7b1fb30ac058f0ff50dd65b1cc",
+      "bytes": 2777170
+    },
+    "poisson_inference.tar.gz": {
+      "sha256": "beac86d093b4ab1445f2795a799eda870146c08dcfce6fb7008980fb252fc784",
+      "bytes": 2776922
+    },
+    "sbi_extension_data_20261118.tar": {
+      "sha256": "168661f719adcc1b360bd46419884bf19711fac4c8363efa00e26e5c9d75080f",
+      "bytes": 699402240
+    },
+    "sbi_extension_predict_20261118.tar": {
+      "sha256": "f005054af693161e634f121b01bc5905833f4a0cd4b54c8d11dd504af64daa0a",
+      "bytes": 73912320
+    },
+    "sbi_extension_summary_20261118.tar": {
+      "sha256": "6ffed8785e468962d5e1ac5881569386db5eb270151b873a71d6d2152ab8e7df",
+      "bytes": 51200
+    },
+    "sbi_extension_train_20261118.tar": {
+      "sha256": "07ca5ae5b0b0b04dc7725a1760e4c925a34bec3f22af20d65407dbe45e9c4b1c",
+      "bytes": 364994560
+    }
+  },
+  "run_files_verified": 445,
+  "runs": {
+    "sbi_extension_data_20261118": {
+      "files": 232,
+      "bytes": 699209846
+    },
+    "sbi_extension_train_20261118": {
+      "files": 159,
+      "bytes": 364825335
+    },
+    "sbi_extension_predict_20261118": {
+      "files": 54,
+      "bytes": 73862539
+    }
+  },
+  "restored_run_files_sha256": "cloud/received/SHA256SUMS_sbi_extension_20261118",
+  "count_dataset_sizes": {
+    "poisson": {
+      "train": 100000,
+      "validation": 512,
+      "calibration": 500,
+      "classifier": 32
+    },
+    "nb": {
+      "train": 100000,
+      "validation": 512,
+      "calibration": 500,
+      "classifier": 32
+    }
+  },
+  "count_model_checkpoints": {
+    "poisson": 20,
+    "nb": 20
+  },
+  "calibration": {
+    "binary": {
+      "datasets": 500,
+      "draws_per_dataset": 1024
+    },
+    "poisson": {
+      "datasets": 500,
+      "draws_per_dataset": 1024
+    },
+    "nb": {
+      "datasets": 500,
+      "draws_per_dataset": 1024
+    }
+  },
+  "comparison_datasets": 15,
+  "redundant_partial_files_removed": 73,
+  "distinct_partial_files_preserved": 90,
+  "distinct_partial_files_directory": "archive/sbi_extension_partial_20261118",
+  "cpu_rebuild": {
+    "tables": {
+      "sbi_extension_calibration.csv": {
+        "rows": 36,
+        "max_abs_numeric_difference": 4.440892098500626e-16
+      },
+      "sbi_extension_comparison_replicates.csv": {
+        "rows": 60,
+        "max_abs_numeric_difference": 1.1102230246251565e-16
+      },
+      "sbi_extension_comparison_summary.csv": {
+        "rows": 12,
+        "max_abs_numeric_difference": 4.163336342344337e-17
+      }
+    },
+    "calibration_rank_histograms_match": true,
+    "conditional_reference": {
+      "binary": {
+        "local_datasets_with_reference": 32,
+        "archived_datasets_with_reference": 32,
+        "local_omitted_datasets": [],
+        "archived_omitted_datasets": []
+      },
+      "poisson": {
+        "local_datasets_with_reference": 30,
+        "archived_datasets_with_reference": 30,
+        "local_omitted_datasets": [
+          9,
+          13
+        ],
+        "archived_omitted_datasets": [
+          9,
+          13
+        ]
+      },
+      "nb": {
+        "local_datasets_with_reference": 32,
+        "archived_datasets_with_reference": 32,
+        "local_omitted_datasets": [],
+        "archived_omitted_datasets": []
+      }
+    }
+  }
+}

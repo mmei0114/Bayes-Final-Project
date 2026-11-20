@@ -8,7 +8,7 @@
 
 每族冻结 500 份独立校准数据，每份抽 1,024 个全局参数后验样本。另取 32 份数据核对给定真参数时的分类概率，以 61 和 101 点自适应 Gauss–Hermite 积分作对照。积分复核失败的个案单列。原基准、Poisson 和负二项各 5 份比较数据在选定检查点以后才用于预测。点估计取原参数尺度的后验均值，按原项目规则进行标签匹配和误差计算。SBI 训练耗时与单份数据预测耗时分开记录。
 
-训练、推断和 CPU 汇总由 `cloud/remote_sbi_count_train.sh`、`cloud/remote_sbi_extension_predict.sh` 和 `src/summarize_sbi_extension.py` 执行。精简权重、原 15 份数据的预测、运行配置及汇总均已在本地。SSH 回传期间，完整分块数据、全部检查点与校准抽样已写入用户的矩池私有网盘 `bayes-sbi-20261118/`。四个归档共约 1.14 GB，均通过 SHA256 复核。大档案的完整本地副本可在释放 GPU 后从网盘恢复，部分已同步分块留在本地。见 [本地恢复步骤](../data/sbi_extension/README.md)、[网盘核验](../qa/sbi_extension/matpool_final_check.log) 及 [平台备份说明](https://matpool.com/supports/snapshot)。
+训练、推断和 CPU 汇总由 `cloud/remote_sbi_count_train.sh`、`cloud/remote_sbi_extension_predict.sh` 和 `src/summarize_sbi_extension.py` 执行。SSH 回传期间，完整分块数据、全部检查点与校准抽样先存入用户的矩池私有网盘。2026-11-20 已在本地核对原始档案和两个精简模型包，并逐个验证恢复出的 445 个运行文件。完整原始文件、精简权重、原 15 份数据的预测、运行配置和汇总均可从本地读取。见 [本地文件索引](../data/sbi_extension/README.md)、[恢复核验](../qa/sbi_extension/local_restore.json) 及 [网盘核验](../qa/sbi_extension/matpool_final_check.log)。
 
 | 响应 | GPU 训练时间 | SBI 平均 ARI | MCEM / GVA / QML 平均 ARI | 12 个分量的 95% 区间覆盖率范围 |
 |---|---:|---:|---:|---:|

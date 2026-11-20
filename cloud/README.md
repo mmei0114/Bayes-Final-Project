@@ -26,7 +26,9 @@
 | `snapshots/<编号>/project.tar.gz`（本地） | 上传前先在本地生成的项目快照，包含当时源码、现有数据和输出 |
 | `snapshots/<编号>/SHA256SUMS` | 快照校验值；传输后在服务器核对 |
 | `received/runs/<运行编号>/`（本地） | 从服务器回传的完整运行目录，不覆盖主项目结果；报告所需子集另复制到 `../data/` 上传 |
+| `received/matpool_sbi_20261118/`（本地） | 三族 SBI 原始下载档案、精简模型与 SHA256。原始运行文件已恢复到 `received/runs/` |
 | `received/SHA256SUMS` | 停止写入后获取的远程运行文件清单与 SHA256 |
+| `received/SHA256SUMS_sbi_extension_20261118`（本地） | 恢复后的 445 个 SBI 扩展运行文件 SHA256 |
 | `logs/verification_latest.log` | 最近一次本地逐文件校验日志 |
 | `received/SHA256SUMS_convergence_20261111`、`logs/verification_convergence_20261111.log`（本地） | 新服务器398份文件的完整校验，与原服务器1430份旧清单分别保留 |
 | `private/` | 主机指纹、临时 SSH 控制套接字与本机连接配置；禁止上传、打包或提交 |

@@ -1,0 +1,8 @@
+\begin{table}[H]\centering\small\setlength{\tabcolsep}{4pt}
+\caption{四种方法使用相同的固定设计数据。每族五次重复，ARI 为均值。错分率、RMSE 和每份预测秒数为 BayesFlow 的均值，经典方法的耗时见前表。}
+\begin{tabular}{lccccccc}\toprule
+响应 & QML ARI & GVA ARI & MCEM ARI & SBI ARI & SBI 错分率 & SBI RMSE $(\beta,D,\pi)$ & SBI 秒 \\\midrule
+二元 & 0.885 & 0.885 & 0.899 & 0.765 & 0.100 & (0.906, 0.522, 0.033) & 0.48 \\
+Poisson & 0.959 & 0.955 & 0.956 & 0.915 & 0.031 & (0.448, 0.495, 0.029) & 0.46 \\
+负二项 & 0.973 & 0.975 & 0.969 & 0.914 & 0.032 & (0.451, 0.487, 0.025) & 0.48 \\
+\bottomrule\end{tabular}\end{table}

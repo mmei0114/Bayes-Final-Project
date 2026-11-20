@@ -4,15 +4,15 @@
 \usepackage[colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
 \setlength{\parskip}{3pt}\clubpenalty=10000\widowpenalty=10000
 \newcommand{\E}{\mathbb E}\newcommand{\N}{\mathcal N}\newcommand{\KL}{\operatorname{KL}}
-\title{离散纵向数据的混合 GLMM 聚类\\\large 误差控制 MCEM、高斯变分近似与积分参照}
-\author{课程大作业基础修订版}\date{2026 年 11 月 11 日}
+\title{离散纵向数据的混合 GLMM 聚类\\\large 蒙特卡洛 EM、变分近似与 BayesFlow 模拟推断}
+\author{课程大作业初稿}\date{2026 年 11 月 20 日}
 \begin{document}\maketitle
 \begin{abstract}
-建立随机截距混合广义线性混合模型，用于二元、Poisson 和负二项纵向数据的个体聚类。实现独立重要性抽样 MCEM、高斯变分近似（GVA），以一维积分最大似然作参照。MCEM 最大化一个加权目标，并用独立样本评估更新增量误差；GVA 对 Poisson 使用解析期望。模拟覆盖轨迹分离、样本量、序列长度、簇数误设、方差及不规则时间。\input{results/abstract_result.tex}另在同一固定参数下比较变分近似、条件 MCMC 与积分。参数均为点估计，不将潜变量分布当作参数后验，不声称多起点获得全局最优。
+建立随机截距混合广义线性混合模型，用于二元、Poisson 和负二项纵向数据的个体聚类。比较独立重要性抽样 MCEM、高斯变分近似（GVA）和一维积分最大似然（QML），并用 BayesFlow 从先验预测模拟学习参数后验与簇归属概率。14 个模拟场景检查分离程度、样本量、序列长度、簇数、方差及不规则时间。\input{results/abstract_result.tex}在三类响应各 5 份固定设计数据上，BayesFlow 的平均 ARI 分别为 0.765、0.915、0.914，均低于三种经典方法。训练完成后，每份数据的 GPU 预测约需 0.5 秒。独立模拟用于校准后验区间。三份同先验的 NUTS 对照显示，分散起点的参数链仍存在混合困难。
 \end{abstract}
 \section{引言}
 离散纵向数据兼有非高斯响应和个体内相关。混合 GLMM 将整条个体序列分配给一个潜在簇，以簇特异轨迹描述组间差异，以随机效应描述组内异质性。
-Zeger--Karim\cite{zeger}讨论分层 GLMM 及条件随机效应抽样；McCulloch\cite{mcculloch}研究 MCEM、MCNR 和 SML 等似然算法；Booth--Hobert\cite{booth}利用独立抽样评估 MC 误差并增样。本文结合这些思想构造混合模型 MCEM，并用 Ormerod--Wand\cite{ormerod}的高斯变分近似作现代扩展。更新验证还参考 Caffo 等\cite{caffo}的上升思想，但下面的抽样、误差公式及预算为明确说明的本题适配，不是对其完整程序的复现。
+Zeger--Karim\cite{zeger}讨论分层 GLMM 及条件随机效应抽样。McCulloch\cite{mcculloch}研究 MCEM、MCNR 和 SML 等似然算法。Booth--Hobert\cite{booth}利用独立抽样评估 MC 误差并增样。本文结合这些思想构造混合模型 MCEM，更新验证参考 Caffo 等\cite{caffo}。现代扩展包括 Ormerod--Wand\cite{ormerod}的高斯变分近似，以及 Kucharský--Bürkner\cite{sbi-mixtures}提出的混合模型神经后验与条件分类，后者由 BayesFlow\cite{bayesflow}实现。
 
 \section{模型与似然}
 个体 $i=1,\ldots,n$ 独立，时点为 $t_{ij}$，$j=1,\ldots,T_i$。设
@@ -36,7 +36,9 @@ A_{ik}=\int e^{\ell_{ik}(b;\beta_k)}\phi(b;0,D_k)\,db.
 MCEM的E步 & $A_{ik}$、$\E_{h_{ik}}g(b)$，如$b^2$与条件log密度 & 各$(i,k)$独立$t_5$重要性抽样；归一化权重近似条件期望，独立验证样本估计更新误差\\
 观测似然与QML & $\log L=\sum_i\log\sum_k\pi_kA_{ik}$ & 条件众数/曲率中心化的一维自适应Gauss--Hermite（GH）求积，61点计算、101点复核\\
 GVA & 高斯$q$下的$\E_q\ell_{ik}(b)$ & Poisson用解析高斯指数矩；二元/负二项标准化后用31点GH\\
-条件分布核验 & 固定参数的$p(U_i,b_i\mid Y_i;\widehat\Omega)$ & 联合独立MH；保存4链样本，与101点积分比较\\\bottomrule
+条件分布核验 & 固定参数的$p(U_i,b_i\mid Y_i;\widehat\Omega)$ & 联合独立MH；保存4链样本，与101点积分比较\\
+BayesFlow & 参数后验下的簇归属概率 & 先验预测模拟训练，预测时平均 1024 次条件分类概率\\
+同先验参照 & 参数与随机效应的联合后验 & 对类别精确求和，Stan/NUTS 对连续变量抽样\\\bottomrule
 \end{tabular}\end{table}
 MCEM的E步采用独立重要性抽样，条件核验中的MH另行实现；两者的提议、权重或接受率分别在下面给出。
 \subsection{MCEM 的 E 步与单目标 M 步}
@@ -45,8 +47,11 @@ MCEM的E步采用独立重要性抽样，条件核验中的MH另行实现；两�
 \tau_{ik}=\frac{\pi_k A_{ik}}{\sum_h\pi_h A_{ih}},\quad
 h_{ik}(b)=p(b_i\mid Y_i,U_i=k;\Omega^r)\propto e^{\ell_{ik}(b;\beta_k^r)}\phi(b;0,D_k^r).
 \]
-这与 Zeger--Karim 的条件随机效应计算直接相连；其全贝叶斯方案另抽样参数，本文不做参数 Gibbs。该文主要用拒绝抽样处理非标准条件分布，不能把所有步骤都写成 MH。
-对一般函数$g$，$\E_{h_{ik}}g(b)=\{\int g(b)e^{\ell_{ik}(b;\beta_k^r)}\phi(b;0,D_k^r)\,db\}/A_{ik}^r$；因此既要近似积分归一化常数，也要近似加权条件期望。
+这与 Zeger--Karim 的条件随机效应计算直接相连。该文的全贝叶斯方案也抽样参数，主要用拒绝抽样处理非标准条件分布。本文另用 NUTS 抽样参数后验。
+对一般函数 $g$，归一化常数和加权条件期望都需要计算积分：
+\[
+\E_{h_{ik}}g(b)=\frac{1}{A_{ik}^r}\int g(b)e^{\ell_{ik}(b;\beta_k^r)}\phi(b;0,D_k^r)\,db.
+\]
 沿用 Booth--Hobert 的独立 $t$ 重要性抽样思想，以带回溯的 Newton 法求条件众数 $\widehat b_{ik}$ 和逆曲率 $V_{ik}=\{-\ell''_{ik}(\widehat b_{ik})+1/D_k^r\}^{-1}$。最多80轮，位移容差 $10^{-9}$，核对得分残差。每个 $(i,k)$ 独立抽 $M$ 个 $t_5(\widehat b_{ik},s_{ik}^2)$，scale平方为 $s_{ik}^2=3V_{ik}/5$，使方差为 $V_{ik}$。令
 \[
 v_{ikm}=\frac{\pi_k^r e^{\ell_{ik}(b_{ikm};\beta_k^r)}\phi(b_{ikm};0,D_k^r)}{q_{ik}(b_{ikm})},\quad
@@ -124,6 +129,26 @@ $\beta\in[-8,8]$、$D_k\in[0.005,5]$；QML/GVA logits限 $[-16,16]$，MCEM 遇�
 \]
 $q_{ih}$ 沿用上述基于条件众数和曲率的$t_5$提议，在固定参数下不再调整。三个响应场景第一次重复各取前30个体，4链各2000次预热、8000次保留。起始标签为0、1、2、0，$b$ 为相应条件众数。保存全部样本；报告经典 split $\widehat R$（非秩标准化）和长度100的批均值 MCSE；均值、方差、责任度与101点积分比较。有限链不是无误差的后验真值，也不能用来声称参数后验区间的准确性。
 
+\subsection{BayesFlow 模拟推断与全贝叶斯参照}
+BayesFlow 估计全局参数后验 $p(\Omega\mid Y)$ 和条件簇概率 $p(U_i\mid Y_i,\Omega)$。先验为 $\beta_{jk}\sim N(0,1.5^2)$、$\log D_k\sim N(\log 0.5,0.7^2)$ 截断在 $(\log 0.005,\log 5)$、$\pi\sim\operatorname{Dirichlet}(2,2,2)$。按截距升序重排整簇参数，固定标签约定。以截距相邻差的对数、方差的区间 logit 及混合比例的两个中心化 stick-breaking 坐标变换到 11 维实空间，再用训练集标准化。
+
+每个响应族独立从先验生成 $10^5$ 份纵向数据，先抽簇和随机截距，再生成该人的整条序列。每人输入顺序保留的响应、时点和掩码，二元响应映射至 $\{-1,1\}$，计数取 $\log(1+y)$。共享多层感知机编码每人并取个体均值，形成置换不变的 64 维摘要。六层仿射耦合流以标准正态为基分布，使用数据摘要估计参数后验。另用独立分类器将单人的编码与模拟真参数连接，输出三类 softmax 概率。两网络分别最小化下式的样本均值：
+\[
+\E_{(\Omega,Y)}[-\log q_\phi(z(\Omega)\mid Y)],\qquad
+\E_{(\Omega,Y,U)}\!\left[-\frac1n\sum_i\log c_\psi(U_i\mid Y_i,\Omega)\right].
+\]
+随机截距由模拟生成，训练只用模拟数据计算损失。推断时从流抽取并反变换 $\Omega^{(s)}$，以样本平均求簇概率：
+\[
+\widehat p(U_i=k\mid Y)=\frac{1}{S}\sum_{s=1}^{S}c_\psi(U_i=k\mid Y_i,\Omega^{(s)}).
+\]
+按验证损失选定检查点后，固定 $S=1024$，用原尺度后验均值计算参数 RMSE。网络与种子配置见 \texttt{docs/sbi\_pilot.md}。
+
+同先验参照采用 NUTS\cite{nuts}。写 $Z_i\sim N(0,1)$，在分量 $k$ 内令 $b_i=\sqrt{D_k}Z_i$。联合后验核为
+\[
+p(\Omega)\prod_i\phi(Z_i;0,1)\sum_k\pi_k\exp\{\ell_{ik}(\sqrt{D_k}Z_i;\beta_k)\}.
+\]
+对 $U_i$ 的求和以 log-sum-exp 计算，Stan 抽样 $(\Omega,Z)$，簇概率可在每个样本上归一化该式的分量权重后取均值。各族取原比较数据的第一次重复，4 链中两链从扰动的 QML 估计起步，另两链从先验抽取初值。各链预热 1000 次、保留 1000 次，目标接受率 0.95，最大树深度 12。以 12 个全局分量的秩标准化 $\widehat R<1.01$、bulk/tail ESS 均不低于 400、无发散和树深度触顶以及各链 E-BFMI $\geq0.3$ 为本次参照筛查标准。
+
 \section{模拟研究}
 \subsection{设计与评价}
 基准为 $n=300,T=20$，等距时间 $[-1,1]$，真值和拟合 $K=3$，$\pi=(0.5,0.3,0.2)$、$D_k=0.5$，二元响应；$\beta_k$ 为 $(-1.5,-1.8),(0.5,1.8),(1.5,-1.8)$。另保留作业建议 $(-1.5,0.2),(0.5,-0.2),(1,0.3)$ 作为困难场景。
@@ -157,10 +182,21 @@ d_t=\max_j\frac{|\vartheta_j^t-\vartheta_j^{t-1}|}{1+|\vartheta_j^{t-1}|},
 \begin{figure}[H]\centering\includegraphics[width=\linewidth]{figures/parameter_convergence.pdf}\caption{二元基准第一次重复的补充参数轨迹。行依次为QML、GVA、MCEM，列为固定效应、方差、混合比例；颜色对应簇，固定效应实线/虚线为截距/斜率。仅在绘图时按末端固定效应作一次标签匹配，同一置换用于整条轨迹。竖虚线为MCEM原记录轮数，灰底为额外迭代。计数响应的参数图随代码保存。}\end{figure}
 \begin{figure}[H]\centering\includegraphics[width=\linewidth]{figures/likelihood_convergence.pdf}\caption{三类响应第一次重复的整体观测log似然（左，除以$n$便于显示）及相对变化$\rho_t$（右）。三方法均按同一观测似然计算，GVA曲线不是ELBO。红虚线为$10^{-6}$，竖虚线为MCEM原记录轮数；右图用含线性零附近区间的对称对数轴，零变化仍按零记录。代表性图不代替全部15次MCEM的汇总检查。}\end{figure}
 
+\subsection{BayesFlow 的同数据比较与校准}
+四种方法使用同一组 15 份模拟数据。各族 BayesFlow 使用 512 份独立验证数据选择检查点，训练 10,000 步，每批 1024 份。P100 上二元、Poisson、负二项训练分别约 34.6、15.0、14.9 分钟。表中预测时间包括编码、1024 次参数抽样和类别概率计算，训练时间另计。经典方法的耗时见前表，来自原 CPU 环境。
+\input{results/sbi_report_table.tex}
+三个响应族的 BayesFlow 平均 ARI 都低于表中三种经典方法。每族另在 500 份独立先验预测数据上检查区间覆盖\cite{sbc}。12 个分量的 95\% 区间覆盖率范围依次为 90.6\%--96.6\%、94.2\%--97.2\% 和 93.4\%--97.2\%。二元 $D_2$ 为 90.6\%。给定模拟真参数时，条件分类器与 61/101 点 GH 复核的最大概率标签一致率依次为 97.9\%、98.7\%、99.1\%。Poisson 两份数据的条件众数核验失败，其一致率基于余下 30 份。
+再取每族比较数据的第一次重复，固定 BayesFlow 的 1024 个参数样本，用 61 点自适应 GH 重新计算条件责任度并取均值，每隔 64 个样本用 101 点复核。三份数据的两种最终标签一致率为 100.0\%、98.3\%、99.7\%。二元数据的 ARI 均为 0.747，说明这份数据上的差距无法仅靠更换分类器缩小。
+\begin{figure}[H]\centering\includegraphics[width=\linewidth]{figures/sbi_extension_coverage.pdf}\caption{各族独立先验预测校准数据的 50\% 与 95\% 边缘区间覆盖。每族 500 份数据，每份 1024 个后验样本。}\end{figure}
+\subsection{同先验的参数后验核验}
+\input{results/sbi_reference_table.tex}
+\input{results/sbi_reference_findings.tex}
+\begin{figure}[H]\centering\includegraphics[width=.96\linewidth]{figures/sbi_reference_trace.pdf}\caption{各族同先验 NUTS 的 $D_2$ 轨迹。颜色区分四条链，每五个保留迭代绘一点，诊断使用全部保留样本。}\end{figure}
+
 \section{讨论}
 MCEM 继承缺失数据分解和独立重要性抽样；增量误差包括责任度归一化。GVA 为现代扩展，利用高斯族及 Poisson 解析结构。其误差包含变分族限制、积分与优化误差；同一参数的 MCMC/积分比较只检验潜变量近似，不能验证参数后验区间。单个GLMM中已有的GVA一致性结果也不能直接当作本混合模型的一致性证明，本文仅作数值验证。
 
-局部变分目标严格凹不代表整体混合目标凹，3起点不能排除局部最优。轨迹重叠和较大随机效应方差使成员难区分，真实标签匹配只校正编号。$K$ 过小合并簇、过大可能拆分簇；本文不做数据驱动选 $K$。点估计没有参数先验敏感性实验；随机效应分布是模型假设，不是参数先验。若做全贝叶斯推断，应使用适当可积先验，并让 VB 与 MCMC 针对同一后验比较。
+局部变分目标严格凹不代表整体混合目标凹，3起点不能排除局部最优。轨迹重叠和较大随机效应方差使成员难区分，真实标签匹配只校正编号。$K$ 过小合并簇、过大可能拆分簇。BayesFlow 使用固定 $K=3$、等距时点及一组先验。其固定设计比较同时反映参数先验、神经后验误差及分类近似，三份同先验参照提供逐数据核验。先验敏感性与不同观测设计的泛化仍待评估。
 
 一维 GH 提供便宜参照；更多随机效应会带来积分维数增长，IS也可能退化。样本存储约 $O(nKM)$，似然约 $O(nKTM)$，Poisson可用充分统计量降低重复计算。只比较到 $n=1000$，不声称解决大规模计算。耗时含全部起点与诊断，云端进程竞争及不同停止标准影响墙钟时间，不能将速度比解释为同等精度下的普遍结论。
 本次三个响应场景中，GVA的实测耗时均小于MCEM，而一维QML又均快于GVA；因此本题的低维积分结构本身有计算优势，不能仅因采用现代扩展就预设其最快。
@@ -169,10 +205,15 @@ MCEM 继承缺失数据分解和独立重要性抽样；增量误差包括责任
 
 模拟设计中，原建议二元参数较难区分，故同时保留困难场景和更分离的基准。随机截距本身可使边缘计数过度离散，负二项另增条件过度离散；固定 size=5 不代表解决未知离散度估计。不同族相同线性预测器不意味着相同信息量。后续宜先增加重复并研究困难场景，避免任意堆叠模型。
 
-\begin{thebibliography}{9}
+\clearpage
+{\raggedright\begin{thebibliography}{9}
 \bibitem{zeger} Zeger, S. L. and Karim, M. R. (1991). Generalized linear models with random effects: a Gibbs sampling approach. \emph{JASA}, 86, 79--86.
 \bibitem{mcculloch} McCulloch, C. E. (1997). Maximum likelihood algorithms for generalized linear mixed models. \emph{JASA}, 92, 162--170.
 \bibitem{booth} Booth, J. G. and Hobert, J. P. (1999). Maximizing generalized linear mixed model likelihoods with an automated Monte Carlo EM algorithm. \emph{JRSS-B}, 61, 265--285.
 \bibitem{ormerod} Ormerod, J. T. and Wand, M. P. (2012). Gaussian variational approximate inference for generalized linear mixed models. \emph{JCGS}, 21, 2--17. \href{https://doi.org/10.1198/jcgs.2011.09118}{doi:10.1198/jcgs.2011.09118}.
 \bibitem{caffo} Caffo, B. S., Jank, W. and Jones, G. L. (2005). Ascent-based Monte Carlo expectation--maximization. \emph{JRSS-B}, 67, 235--251. \href{https://doi.org/10.1111/j.1467-9868.2005.00499.x}{doi:10.1111/j.1467-9868.2005.00499.x}.
-\end{thebibliography}\end{document}
+\bibitem{sbi-mixtures} Kucharský, Š. and Bürkner, P.-C. (2026). Amortized Bayesian Mixture Models. \href{https://arxiv.org/abs/2501.10229v3}{arXiv:2501.10229v3}.
+\bibitem{bayesflow} Radev, S. T., Mertens, U. K., Voss, A., Ardizzone, L. and Köthe, U. (2022). BayesFlow: Learning complex stochastic models with invertible neural networks. \emph{IEEE TNNLS}, 33, 1452--1466. \href{https://arxiv.org/abs/2003.06281}{arXiv:2003.06281}.
+\bibitem{sbc} Talts, S., Betancourt, M., Simpson, D., Vehtari, A. and Gelman, A. (2018). Validating Bayesian Inference Algorithms with Simulation-Based Calibration. \href{https://arxiv.org/abs/1804.06788}{arXiv:1804.06788}.
+\bibitem{nuts} Hoffman, M. D. and Gelman, A. (2014). The No-U-Turn Sampler: Adaptively Setting Path Lengths in Hamiltonian Monte Carlo. \emph{JMLR}, 15, 1593--1623. \href{https://jmlr.org/papers/v15/hoffman14a.html}{论文链接}.
+\end{thebibliography}}\end{document}

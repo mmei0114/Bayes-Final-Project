@@ -22,4 +22,4 @@
 
 逐条记录见 [比较结果](../results/sbi_extension_comparison_summary.csv)、[覆盖图](../figures/sbi_extension_coverage.pdf) 及 [校准审计](../results/sbi_extension_audit.json)。
 
-参数后验的同先验 MCMC 核验安排在 CPU 阶段。已有训练权重可以用 CPU 重载，诊断及正式对照也可直接使用保存的后验样本。
+2026-11-20 已完成 CPU 同先验 NUTS 和固定参数样本的 GH 分类核验，每族取第一次重复。三份数据的分散起点都显示链间混合不足。报告第4.6节给出原始诊断与轨迹。见 [本地核验与复现](../data/sbi_reference/README.md)。

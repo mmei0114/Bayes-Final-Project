@@ -4,15 +4,17 @@
 
 离散纵向数据的混合 GLMM 聚类。
 
-课程大作业基础修订版：独立重要性抽样MCEM、高斯变分近似（GVA）和一维积分ML参照（QML），覆盖二元、Poisson、负二项响应。
+课程大作业初稿比较独立重要性抽样 MCEM、高斯变分近似（GVA）、一维积分最大似然（QML）和 BayesFlow，覆盖二元、Poisson、负二项响应。
 
-**最新报告：[11页PDF](report.pdf) · [LaTeX正文](report.tex) · [教师要求对应清单](requirements.md)**
+**报告交付 [14 页 PDF](report.pdf) · [LaTeX 正文](report.tex) · [教师要求对应清单](requirements.md)**
 
-2026-11-18完成二元SBI预检。依据Amortized Bayesian Mixture Models实现BayesFlow神经后验估计与条件簇分类器。模拟器、可逆变换、GPU运算和可解析的高斯后验检查均通过。P100训练10000步约34.6分钟，使用100000份不同二元训练数据。128份独立校准数据上，12个参数分量的95%区间覆盖为91.4%至97.7%。随机截距方差D₂的50%区间只覆盖39.8%。下一阶段先建立同先验后验参照，再开展三族正式比较。方法细节、训练设置与诊断图见 [SBI预检](docs/sbi_pilot.md)，论文与代码来源见 [核对记录](docs/sbi_references.md)。
+2026-11-18完成二元SBI预检。依据Amortized Bayesian Mixture Models实现BayesFlow神经后验估计与条件簇分类器。模拟器、可逆变换、GPU运算和可解析的高斯后验检查均通过。P100训练10000步约34.6分钟，使用100000份不同二元训练数据。初次校准用128份独立数据，三族正式比较使用后续独立的500份数据。方法细节、训练设置与诊断图见 [SBI预检](docs/sbi_pilot.md)，论文与代码来源见 [核对记录](docs/sbi_references.md)。
 
 本次代码、100000份无损训练数据、全部检查点及原始诊断已在本地 `cloud/received/runs/sbi_*` 保存，613个文件逐一通过SHA256校验。仓库保存精选检查点、独立校准输入、后验样本、数据生成协议及环境清单。见 [SBI数据索引](data/sbi_pilot/README.md) 和 [回传核验](qa/sbi_pilot/cloud_verification.json)。
 
-同日复用现有 P100 完成三类响应的 SBI 训练与推断。Poisson 和负二项各用 10 万份先验预测数据，训练各约 15 分钟。二元沿用预检权重。各族对 500 份独立数据做校准，并在原固定设计的 15 份数据上保存后验样本和分类概率。SBI 的平均 ARI 为 0.765、0.915、0.914，在这组数据上均低于三种经典方法。2026-11-20 已将网盘下载的六个包统一归档至本地 `cloud/received/matpool_sbi_20261118/`，并将 445 个原始运行文件校验恢复到 `cloud/received/runs/`。现在可从本地完整副本读取训练数据、检查点和后验抽样。参数后验的同先验 MCMC 对照留在 CPU 阶段。见 [三类 SBI 记录](docs/sbi_extension.md) 和 [数据与恢复](data/sbi_extension/README.md)。
+三类响应分别用 10 万份先验预测数据训练，并各用 500 份独立数据校准。在原固定设计的 15 份数据上，SBI 的三族平均 ARI 为 0.765、0.915、0.914，低于现有三种方法。已归档六个网盘下载包及恢复的 445 个原始文件。见 [三类 SBI 记录](docs/sbi_extension.md) 和 [数据与恢复](data/sbi_extension/README.md)。
+
+2026-11-20 完成三族同先验 NUTS 诊断与固定后验样本的积分分类核验。NUTS 每族 4 链，三份数据均出现明显的链间混合不足。每族第一次重复的 GH 替代分类实验中，与神经分类器的标签一致率为 100.0%、98.3%、99.7%。方法、数值和局限均写入报告。见 [本地核验与复现](data/sbi_reference/README.md)。
 
 正式实验为14个场景、70份不同模拟数据、155次拟合，每次3起点。QML 70/70、GVA 70/70、MCEM 15/15满足各自数值停止标准；28次参数边界、4次内部求解器历史非成功状态均保留并在报告中说明。每场景5次重复，结论限于基础版本；小Q增量停止不等于高精度似然最优。
 
@@ -35,6 +37,7 @@
 | [data/](data/README.md) | 已完成正式拟合、原始模拟数据、原始采样链、实际执行源码副本及SHA256，随仓库保存 |
 | [data/sbi_pilot/](data/sbi_pilot/README.md)、[qa/sbi_pilot/](qa/sbi_pilot/) | SBI预检输入、精选权重、后验样本、环境与审计 |
 | [data/sbi_extension/](data/sbi_extension/README.md)、[qa/sbi_extension/](qa/sbi_extension/) | 三族SBI数据协议、精简权重、比较样本以及原始运行恢复清单 |
+| [data/sbi_reference/](data/sbi_reference/README.md) | CPU 同先验 NUTS 的全局样本、核验流程和原始链索引 |
 | [docs/reading_notes.md](docs/reading_notes.md) | 三篇课程论文阅读笔记；v1取舍与当前修订范围已区分 |
 | [requirements.md](requirements.md)、[Project.pdf](Project.pdf) | 老师任务清单、九问对应与原始要求 |
 | [scripts/collect_results.py](scripts/collect_results.py) | 从本地完整备份提取报告输入，逐文件核对，不运行实验 |
@@ -61,7 +64,7 @@ make sbi-summary  # 核对SBI后验样本并重建预检表图，无需GPU
 make report       # 双次XeLaTeX编译当前报告
 ```
 
-从GitHub完整下载后即可重建汇总和报告，不依赖原服务器、本地历史归档或完整云端备份。`src/` 为日常编辑入口；`data/runs/*/work/` 为不可变的实际执行副本，供源码哈希核验，勿混用。
+仓库包含编译报告所需的表和图。三族 SBI 全量校准重建读取 `cloud/received/` 中的本地档案。`src/` 为日常编辑入口，`data/runs/*/work/` 为不可变的实际执行副本，供源码哈希核验。
 
 已用仅含待上传文件的独立副本完成 `make verify`、`make summarize`、`make convergence` 与强制双次报告编译；17份重新生成的指标、表格、审计和报告文本与当前交付一致。新增轨迹的来源哈希、接受逻辑、变化量和高阶积分核对通过；原155次拟合的JSON指标与审计保持一致。记录见 [目录核验](qa/repository_check.json) 和 [收敛审计](qa/convergence_audit.json)。
 
@@ -75,4 +78,4 @@ make report       # 双次XeLaTeX编译当前报告
 
 GitHub仓库当前公开。服务器连接配置、SSH私有目录、历史压缩包、重复工作树、编译缓存和逐页PNG预览由 `.gitignore` 排除，仍在本地保留。重新租用服务器时按 `cloud/config.env.example` 建立本机配置；正常阅读、检查和生成报告不需要服务器。
 
-维护约定：新增交付文件、实验批次或目录变更时同步更新相应README及校验清单。最近更新为2026-11-20，三族SBI完整档案已恢复到本地。
+维护约定：新增交付文件、实验批次或目录变更时同步更新相应 README 和校验清单。最近更新为 2026-11-20，三族 SBI、CPU 核验和技术说明已写入报告。

@@ -1,0 +1,17 @@
+{
+  "binary": {
+    "absolute_difference_in_log_density_contrasts": 3.637978807091713e-12,
+    "points": 2,
+    "jacobian": false
+  },
+  "poisson": {
+    "absolute_difference_in_log_density_contrasts": 3.637978807091713e-12,
+    "points": 2,
+    "jacobian": false
+  },
+  "nb": {
+    "absolute_difference_in_log_density_contrasts": 5.4569682106375694e-12,
+    "points": 2,
+    "jacobian": false
+  }
+}

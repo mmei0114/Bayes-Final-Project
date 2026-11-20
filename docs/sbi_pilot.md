@@ -1,6 +1,6 @@
 # SBI预检协议与记录
 
-2026-11-18，二元模型的阶段A/B预检已完成。下一阶段需要同先验的参数后验参照，再在原固定设计数据上与经典方法比较。方法来源见 [论文记录](sbi_references.md)，后续范围见 [计划](sbi_plan.md)。
+2026-11-18，二元模型的阶段 A/B 预检已完成。固定设计的正式对照与后续 CPU 诊断另见 [三族扩展](sbi_extension.md)。方法来源见 [论文记录](sbi_references.md)。
 
 ## 冻结的模型
 
@@ -56,4 +56,4 @@ BayesFlow 1.1.6提供六层affine coupling可逆网络，以11维标准正态为
 
 二元实现通过了模拟器、参数变换和解析后验检查。方差成分的收缩有限，D₂的区间覆盖偏低。现有诊断无法区分模型自身的信息有限与神经后验的近似误差。下一步先在同一个二元模型、同一先验下做合格MCMC参照，再决定是否扩大训练量。给定真参数时的分类一致率衡量条件分类器的近似误差，两种分类结果对应不同诊断。
 
-逐参数指标与四张图见 [数值表](../results/sbi_pilot_metrics.csv)、[训练](../figures/sbi_pilot_training.pdf)、[SBC秩](../figures/sbi_pilot_sbc.pdf)、[覆盖与收缩](../figures/sbi_pilot_recovery.pdf)、[后验预测](../figures/sbi_pilot_predictive.pdf)。预测图只展示第一份校准数据的边际响应均值，用于核对流程。原三方法的正式比较见课程报告，SBI正式比较留到同先验后验参照和固定设计评估完成后。
+逐参数指标与四张图见 [数值表](../results/sbi_pilot_metrics.csv)、[训练](../figures/sbi_pilot_training.pdf)、[SBC秩](../figures/sbi_pilot_sbc.pdf)、[覆盖与收缩](../figures/sbi_pilot_recovery.pdf)、[后验预测](../figures/sbi_pilot_predictive.pdf)。预测图展示第一份预检校准数据的边际响应均值。四种方法在原固定设计上的比较见 [课程报告](../report.pdf)。

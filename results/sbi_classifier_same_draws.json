@@ -1,0 +1,38 @@
+{
+  "binary": {
+    "draws": 1024,
+    "calibration_checks": 16,
+    "failures": [],
+    "rep": 0,
+    "max_log_likelihood_difference": 4.547473508864641e-13,
+    "max_probability_difference": 2.9976021664879227e-15,
+    "rms_probability_difference": 0.003618400096593822,
+    "argmax_agreement": 1.0,
+    "ari_neural": 0.7474880829846018,
+    "ari_quadrature": 0.7474880829846018
+  },
+  "poisson": {
+    "draws": 1024,
+    "calibration_checks": 16,
+    "failures": [],
+    "rep": 0,
+    "max_log_likelihood_difference": 7.275957614183426e-12,
+    "max_probability_difference": 2.832734047331087e-13,
+    "rms_probability_difference": 0.0075941668588267765,
+    "argmax_agreement": 0.9833333333333333,
+    "ari_neural": 0.8482553761965518,
+    "ari_quadrature": 0.8562423119277642
+  },
+  "nb": {
+    "draws": 1024,
+    "calibration_checks": 16,
+    "failures": [],
+    "rep": 0,
+    "max_log_likelihood_difference": 1.8189894035458565e-12,
+    "max_probability_difference": 1.454392162258955e-14,
+    "rms_probability_difference": 0.007375128547382797,
+    "argmax_agreement": 0.9966666666666667,
+    "ari_neural": 0.9810893169735087,
+    "ari_quadrature": 0.990487208339726
+  }
+}

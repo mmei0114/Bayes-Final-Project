@@ -25,7 +25,7 @@ verify:
 	cd data/convergence && shasum -a 256 -c SHA256SUMS
 	cd data/sbi_pilot && shasum -a 256 -c SHA256SUMS
 
-report.pdf: report.tex results/abstract_result.tex results/robustness_table.tex results/comparison_table.tex results/findings.tex results/mcmc_table.tex results/validation_text.tex figures/trajectories.pdf figures/diagnostics.pdf figures/mcmc_trace.pdf results/convergence_table.tex results/convergence_text.tex figures/parameter_convergence.pdf figures/likelihood_convergence.pdf
+report.pdf: report.tex results/abstract_result.tex results/robustness_table.tex results/comparison_table.tex results/findings.tex results/mcmc_table.tex results/validation_text.tex figures/trajectories.pdf figures/diagnostics.pdf figures/mcmc_trace.pdf results/convergence_table.tex results/convergence_text.tex figures/parameter_convergence.pdf figures/likelihood_convergence.pdf results/sbi_report_table.tex results/sbi_reference_table.tex results/sbi_reference_findings.tex figures/sbi_extension_coverage.pdf figures/sbi_reference_trace.pdf
 	mkdir -p build
 	xelatex -interaction=nonstopmode -halt-on-error -output-directory=build report.tex > build/compile-pass1.txt
 	xelatex -interaction=nonstopmode -halt-on-error -output-directory=build report.tex > build/compile-pass2.txt
